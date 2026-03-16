@@ -22,4 +22,9 @@ public class ArticleVendu {
     @NotEmpty private int miseAPrix;
     @NotEmpty private int prixVente;
     @NotNull private String etatVente;
+    @NotNull private Utilisateur vendeur;
+    @NotNull private Utilisateur acheteur;
+    @NotNull private Enchere enchere;
+    @NotNull private Categorie categorie;
+    @NotNull private Adresse lieuRetrait;
 }
