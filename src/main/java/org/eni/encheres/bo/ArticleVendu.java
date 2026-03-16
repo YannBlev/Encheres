@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 
 public class ArticleVendu {
-    @NotEmpty private int Article;
+    @NotEmpty private int noArticle;
     @NotNull private String nomArticle;
     @NotNull private String description;
     private LocalDateTime dateDebutEncheres;
