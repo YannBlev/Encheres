@@ -1,5 +1,6 @@
 package org.eni.encheres.BO;
 
 public class Categorie {
-    private
+    private int noCategorie;
+    private String libelle;
 }
