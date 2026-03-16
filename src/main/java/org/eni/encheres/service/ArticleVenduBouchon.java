@@ -21,7 +21,7 @@ public class ArticleVenduBouchon implements ArticleVenduService {
 
     @Override
     public List<ArticleVendu> consulterArticlesVendu() {
-        return List.of();
+        return List.of() ;
     }
 
     @Override
