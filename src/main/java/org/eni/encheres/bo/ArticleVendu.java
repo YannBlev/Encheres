@@ -21,4 +21,5 @@ public class ArticleVendu {
     @NotEmpty private int miseAPrix;
     @NotEmpty private int prixVente;
     @NotNull private String etatVente;
+
 }
