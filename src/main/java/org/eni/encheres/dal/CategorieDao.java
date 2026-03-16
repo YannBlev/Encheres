@@ -1,0 +1,13 @@
+package org.eni.encheres.dal;
+
+import org.eni.encheres.bo.Categorie;
+
+import java.util.List;
+
+public interface CategorieDao {
+
+    List<Categorie> ListCategorie ();
+    void createCategorie (Categorie categorie);
+    void deleteCategorie(int noCategorie);
+    Categorie getCategorieByNo(int noCategorie);
+}
