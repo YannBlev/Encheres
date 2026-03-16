@@ -1,9 +1,6 @@
 package org.eni.encheres.BO;
 
-import jakarta.validation.constraints.Digits;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -26,11 +23,11 @@ public class Utilisateur {
     private String telephone;
     @NotNull@Min(value =5)@Max(value =30)
     private String rue;
-    @NotNull@Digits(integer = 5, fraction = 0, message = "Le code postal doit comporter 5 chiffres")
+    @Pattern(regexp = "\\d{5}")@NotNull@Digits(integer = 5, fraction = 0, message = "Le code postal doit comporter 5 chiffres")
     private String codePostal;
     @NotNull@Min(value =5)@Max(value =30)
     private String ville;
-    @NotNull@Min(value =5)@Max(value =30, message = "Le mot de passe doit comporter une suite Alphanumérique")
+    @Pattern(regexp = "\\b[A-Z0-9._%-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b")@NotNull@Min(value =5)@Max(value =30, message = "Le mot de passe doit comporter une suite Alphanumérique")
     private String motDePasse;
     @NotNull
     private int credit;
