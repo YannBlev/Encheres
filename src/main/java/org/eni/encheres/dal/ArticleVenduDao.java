@@ -4,7 +4,7 @@ import org.eni.encheres.bo.ArticleVendu;
 
 import java.util.List;
 
-public interface ArticleVenduDao {
+public interface ArticleVenduDao{
     List<ArticleVendu> listArticlesVendu();
     void createArticleVendu(ArticleVendu articleVendu);
     void deleteArticleVendu (int noArticle);
