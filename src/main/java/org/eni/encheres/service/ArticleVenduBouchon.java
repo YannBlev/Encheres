@@ -13,6 +13,7 @@ import java.util.List;
 @Profile("dev")
 
 public class ArticleVenduBouchon implements ArticleVenduService {
+
     @Autowired
     private ArticleVenduDao articleVenduDao;
 

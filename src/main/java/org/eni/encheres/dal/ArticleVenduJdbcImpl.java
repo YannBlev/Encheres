@@ -13,8 +13,8 @@ public class ArticleVenduJdbcImpl implements ArticleVenduDao {
 
     private static final String INSERT = "insert into numéro article vendu (Numero) values (?)";
     private static final String SELECT = "select * from numéro article";
-    private static final String DELETE = "delete from numéro article where id = ?";
-    private static final String SELECT_BY_ID = "select * from genre where id = ?";
+    private static final String DELETE = "delete from numéro article where numero = ?";
+    private static final String SELECT_BY_NUMERO = "select * from genre where numero = ?";
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -26,16 +26,16 @@ public class ArticleVenduJdbcImpl implements ArticleVenduDao {
 
     @Override
     public void createArticleVendu(ArticleVendu articleVendu) {
-
+        jdbcTemplate.update(INSERT, articleVendu);
     }
 
     @Override
     public void deleteArticleVendu(int noArticle) {
-
+        jdbcTemplate.update(DELETE, noArticle);
     }
 
     @Override
-    public ArticleVendu getArticleById(int noArticle) {
-        return null;
+    public ArticleVendu getArticleByNumero(int noArticle) {
+        return jdbcTemplate.queryForObject(SELECT_BY_NUMERO, new BeanPropertyRowMapper<>(ArticleVendu.class), noArticle);
     }
 }

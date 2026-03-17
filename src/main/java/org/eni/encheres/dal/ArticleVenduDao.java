@@ -8,5 +8,5 @@ public interface ArticleVenduDao{
     List<ArticleVendu> listArticlesVendu();
     void createArticleVendu(ArticleVendu articleVendu);
     void deleteArticleVendu (int noArticle);
-    ArticleVendu getArticleById(int noArticle);
+    ArticleVendu getArticleByNumero(int noArticle);
 }
