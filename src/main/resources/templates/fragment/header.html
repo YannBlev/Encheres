@@ -1,11 +1,13 @@
 <header xmlns:sec="http://www.w3.org/1999/xhtml">
     <a><h2>ENI-Enchères</h2></a>
 
-    <a href="/Enchères" sec:authorize="isAuthenticated()" th:text="#{menu.encheres}"></a>
+
+    <nav>
+
+    <a href="/Encheres" sec:authorize="isAuthenticated()" th:text="#{menu.encheres}"></a>
     <a href="/Vendre un article" sec:authorize="hasRole('admin')" th:text="#{menu.vendreunarticle}"></a>
     <a href="/Mon profil" sec:authorize="hasRole('admin')" th:text="#{menu.MonProfil}"></a>
 
-    <nav>
         <section class="inline-display" sec:authorize="isAuthenticated()">
             <!-- on offre la possibilité de se déconnecter (${#authentication.name}" : recupère le username de l'utilisateur connecté) -->
             <form th:action="@{/logout}" method="post">
@@ -17,4 +19,5 @@
             <a th:href="@{/login}">S'incrire - Se connecter</a>
         </section>
     </nav>
+
 </header>
