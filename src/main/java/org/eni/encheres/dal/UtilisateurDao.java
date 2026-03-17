@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface UtilisateurDao {
     void creerUtilisateur (Utilisateur utilisateur);
-    void deleteUtilisateur (Utilisateur idSupprimerUtilisateur);
-    Utilisateur consulterUtilisateurParId(long id);
+    void deleteUtilisateur (int idSupprimerUtilisateur);
+    Utilisateur consulterUtilisateurParId(int id);
     List<Utilisateur> listerUtilisateurs();
-    void getUtilisateurById(int id);
+
 }

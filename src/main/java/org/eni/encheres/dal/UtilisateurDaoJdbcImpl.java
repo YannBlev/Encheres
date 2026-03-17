@@ -20,13 +20,12 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
     private static final String INSERT = "insert into utilisateur (pseudo, nom, prenom, email, telephone, rue, codePostal, ville) values (?,?,?,?,?,?,?)";
     private static final String DELETE = "delete from utilisateur where id = ?";
     private static final String SELECT_BY_ID = "select * from utilisateur where id = ?";
-    private static final String SELECT_UTILISATEUR_BY_ID = "select * from utilisateur where id = ?";
     private static final String SELECT = "select * from utilisateur";
 
 
     @Override
     public void creerUtilisateur(Utilisateur utilisateur) {
-        return jdbcTemplate.update
+        jdbcTemplate.update
                 (INSERT,utilisateur.getPseudo(),
                         utilisateur.getNom(),
                         utilisateur.getPrenom(),
@@ -34,18 +33,14 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
                         utilisateur.getTelephone(),
                         utilisateur.getRue(),
                         utilisateur.getCodePostal(),
-                        utilisateur.getVille();
+                        utilisateur.getVille());
     }
 
     @Override
-    public void deleteUtilisateur(Utilisateur idSupprimerUtilisateur) {
-        return jdbcTemplate.update(DELETE, deleteUtilisateur(idSupprimerUtilisateur);
+    public void deleteUtilisateur(int idSupprimerUtilisateur) {
+        jdbcTemplate.update(DELETE, idSupprimerUtilisateur);
     }
 
-    @Override
-    public Utilisateur consulterUtilisateurParId(long idUtilisateur) {
-        return jdbcTemplate.queryForObject(SELECT_BY_ID, new BeanPropertyRowMapper<>(Utilisateur.class), idUtilisateur);
-    }
 
     @Override
     public List<Utilisateur> listerUtilisateurs() {
@@ -53,8 +48,8 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
     }
 
     @Override
-    public void getUtilisateurById(int id) {
-        return jdbcTemplate.queryForObject(SELECT_BY_ID, new BeanPropertyRowMapper<>(Utilisateur.class), getUtilisateurById();
+    public Utilisateur consulterUtilisateurParId(int id) {
+        return jdbcTemplate.queryForObject(SELECT_BY_ID, new BeanPropertyRowMapper<>(Utilisateur.class), id);
 
     }
 }
