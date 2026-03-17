@@ -1,10 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html lang="en" layout:decorate="~{layout/base}" xmlns:layout="http://www.w3.org/1999/xhtml">
 <body>
-<h1>PROJET ENCHERES ET EN OS</h1>
+
+<main layout:fragment="content">
+    <h1>Listes des enchères</h1>
+    <h2>Filtres :</h2>
+
+    <section>
+        <div>
+            <form class="search-form">
+            <input name="recherche" placeholder="Le nom de l'article contient" th:value="${recherche}">
+            <button>Rechercher</button>
+            </form>
+        </div>
+            <select name="text" id="text" placeholder="Toutes">
+                <option value="chien">chien</option>
+                <option value="chat">chat</option>
+                <option value="poisson">poisson</option>
+            </select>
+        <div>
+
+        </div>
+    </section>
+</main>
+
 </body>
 </html>

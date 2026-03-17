@@ -17,7 +17,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
     private JdbcTemplate jdbcTemplate;
 
 
-    private static final String INSERT = "insert into utilisateur (pseudo, nom, prenom, email, telephone, rue, codePostal, ville) values (?,?,?,?,?,?,?)";
+    private static final String INSERT = "insert into utilisateur (pseudo, nom, prenom, email, telephone, rue, codePostal, ville) values (?,?,?,?,?,?,?,?)";
     private static final String DELETE = "delete from utilisateur where id = ?";
     private static final String SELECT_BY_ID = "select * from utilisateur where id = ?";
     private static final String SELECT = "select * from utilisateur";
@@ -35,18 +35,14 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
                         utilisateur.getCodePostal(),
                         utilisateur.getVille());
     }
-
     @Override
     public void deleteUtilisateur(int idSupprimerUtilisateur) {
         jdbcTemplate.update(DELETE, idSupprimerUtilisateur);
     }
-
-
     @Override
     public List<Utilisateur> listerUtilisateurs() {
         return jdbcTemplate.query(SELECT, new BeanPropertyRowMapper<>(Utilisateur.class));
     }
-
     @Override
     public Utilisateur consulterUtilisateurParId(int id) {
         return jdbcTemplate.queryForObject(SELECT_BY_ID, new BeanPropertyRowMapper<>(Utilisateur.class), id);
