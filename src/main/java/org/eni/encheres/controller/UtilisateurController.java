@@ -15,7 +15,6 @@ import java.util.List;
 
 @Controller
 // @RequestMapping
-@Autowired
 public class UtilisateurController {
     UtilisateurService utilisateurService;
 
