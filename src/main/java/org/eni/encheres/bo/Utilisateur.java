@@ -1,12 +1,16 @@
 package org.eni.encheres.bo;
 
 import jakarta.validation.constraints.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.List;
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Utilisateur {
 
     @NotNull@Min(value = 5)@Max(value = 30)
@@ -34,3 +38,4 @@ public class Utilisateur {
     @NotNull
     private boolean administrateur;
 }
+
