@@ -1,37 +1,46 @@
 package org.eni.encheres.service.impl;
 
 import org.eni.encheres.bo.Utilisateur;
+import org.eni.encheres.dal.UtilisateurDao;
 import org.eni.encheres.service.UtilisateurService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+// TODO : Tu regardes quoi là ? Un soucis?
+
+
 @Service
 @Profile("prod")
 public class UtilisateurServiceJdbcImpl implements UtilisateurService {
+
+    @Autowired
+    UtilisateurDao utilisateurDao;
+
     @Override
     public void creerUtilisateur(Utilisateur utilisateur) {
-        creerUtilisateur(utilisateur);
-    }
-    @Override
-    public void supprimerUtilisateur (Utilisateur utilisateur){
-         supprimerUtilisateur(utilisateur);
+        utilisateurDao.creerUtilisateur(utilisateur);
     }
 
     @Override
+    public void supprimerUtilisateur(Utilisateur idSupprimerUtilisateur) {
+        utilisateurDao.deleteUtilisateur(idSupprimerUtilisateur.getId());
+    }
+    @Override
     public List<Utilisateur> listerUtilisateurs() {
-        return listerUtilisateurs();
+        return utilisateurDao.listerUtilisateurs();
     }
 
     @Override
     public void getUtilisateurById (int id) {
-        getUtilisateurById(id);
+        utilisateurDao.consulterUtilisateurParId(id);
     }
 
     @Override
     public void updateUtilisateur (Utilisateur utilisateur) {
-        updateUtilisateur(utilisateur);
+        utilisateurDao.consulterUtilisateurParId(utilisateur.getId());
     }
 
 
