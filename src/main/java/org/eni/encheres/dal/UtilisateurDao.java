@@ -5,10 +5,9 @@ import org.eni.encheres.bo.Utilisateur;
 import java.util.List;
 
 public interface UtilisateurDao {
-    void creerUtilisateur (Utilisateur Utilisateur);
-    void supprimerUtilisateur (Utilisateur idSupprimerUtilisateur);
+    void creerUtilisateur (Utilisateur utilisateur);
+    void deleteUtilisateur (Utilisateur idSupprimerUtilisateur);
+    Utilisateur consulterUtilisateurParId(long id);
     List<Utilisateur> listerUtilisateurs();
     void getUtilisateurById(int id);
-
-    //    void getUtilisateurByEmail(String email);
 }

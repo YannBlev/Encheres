@@ -9,7 +9,10 @@ public interface UtilisateurService {
      void supprimerUtilisateur (Utilisateur idSupprimerUtilisateur);
      List<Utilisateur> listerUtilisateurs();
      void getUtilisateurById(int id);
-     // void getUtilisateurByEmail(String email);
      void updateUtilisateur(Utilisateur Utilisateur);
 
+
+                            // TODO a vérifier
+                    // void getUtilisateurByEmail(String email);
 }
+

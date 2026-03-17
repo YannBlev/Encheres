@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 
 
-                // TODO mettre correctement les bonnes adresses de redirection : + creerUtilisateur bug
+                // TODO mettre correctement les bonnes adresses de redirection :
 
 @Controller
 // @RequestMapping
