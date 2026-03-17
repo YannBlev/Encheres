@@ -3,6 +3,7 @@ package org.eni.encheres.controller;
 
 import org.eni.encheres.bo.Utilisateur;
 import org.eni.encheres.service.UtilisateurService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @Controller
 // @RequestMapping
+@Autowired
 public class UtilisateurController {
     UtilisateurService utilisateurService;
 
@@ -23,42 +25,35 @@ public class UtilisateurController {
         return "utilisateur";
     }
 
-    @PostMapping// Création Utilisateur
-    public String creerUtilisateur(Utilisateur Utilisateur) {
-        utilisateurService.creerUtilisateur(Utilisateur);
+    @PostMapping("/create")// Création Utilisateur
+    public String creerUtilisateur(Utilisateur utilisateur) {
+        utilisateurService.creerUtilisateur(utilisateur);
         return "redirect:/utilisateur";
     }
 
-    @PostMapping //Supprimer Utilisateur
+    @PostMapping("/delete") //Supprimer Utilisateur
     public String suppressionutilisateur(Utilisateur idUtilisateurASupprimer) {
         utilisateurService.supprimerUtilisateur(idUtilisateurASupprimer);
         return "redirect:/utilisateur";
     }
 
-    @PostMapping
+    @PostMapping("getById")
     public String getUtilisateurById(Utilisateur utilisateur) {
         utilisateurService.getUtilisateurById(utilisateur.getId());
         return "redirect:/utilisateur";
     }
 
 
-    @PostMapping
+    @PostMapping("/list")
     public List<Utilisateur>listerUtilisateur() {
         utilisateurService.listerUtilisateurs();
         return utilisateurService.listerUtilisateurs();
     }
 
-    @PostMapping
+    @PostMapping("/update")
     public String updateUtilisateur(Utilisateur utilisateur) {
         utilisateurService.updateUtilisateur(utilisateur);
         return "redirect:/utilisateur";
     }
-
-
-//    @PostMapping
-//    public String getUtilisateurByEmail(Utilisateur utilisateur) {
-//        utilisateurService.getUtilisateurByEmail(utilisateur.getEmail());
-//        return "redirect:/utilisateur";
-//    }
 
 }
