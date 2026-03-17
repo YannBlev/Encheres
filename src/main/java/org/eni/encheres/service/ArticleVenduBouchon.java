@@ -23,7 +23,7 @@ public class ArticleVenduBouchon implements ArticleVenduService {
 
     @Override
     public List<ArticleVendu> listArticlesVendu() {
-        return ;
+        return null;
     }
 
     @Override
