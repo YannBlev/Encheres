@@ -18,7 +18,7 @@ public class CategorieDaoJdbcImpl implements CategorieDao {
 
     private static final String INSERT = "insert into categorie (libelle) values (?)";
     private static final String SELECT = "select * from categorie";
-    private static final String SELECT_BY_ID = "select * from categorie where no_categorie = ?";
+    private static final String SELECT_BY_NO_CATEGORIE = "select * from categorie where no_categorie = ?";
     private static final String DELETE = "delete from categorie where no_categorie = ?";
 
 
@@ -37,11 +37,13 @@ public class CategorieDaoJdbcImpl implements CategorieDao {
 
     @Override
     public void deleteCategorie(int noCategorie) {
+        jdbcTemplate.update(DELETE,noCategorie);
 
     }
 
     @Override
     public Categorie getCategorieByNo(int noCategorie) {
-        return null;
+
+        return jdbcTemplate.queryForObject(SELECT_BY_NO_CATEGORIE, new BeanPropertyRowMapper<>(Categorie.class), noCategorie);
     }
 }

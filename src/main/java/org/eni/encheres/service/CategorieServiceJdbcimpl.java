@@ -1,27 +1,37 @@
 package org.eni.encheres.service;
 
 import org.eni.encheres.bo.Categorie;
+import org.eni.encheres.dal.CategorieDao;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CategorieServiceJdbcimpl implements CategorieService{
+
+    private CategorieDao categorieDao;
+
     @Override
     public List<Categorie> consulterCategorie() {
-        return List.of();
-    }
-
-    @Override
-    public void creerCategorie(Categorie categorie) {
-
+        return categorieDao.ListCategorie();
     }
 
     @Override
     public Categorie consulterCategorieParNo(int noCategorie) {
-        return null;
+        return categorieDao.getCategorieByNo(noCategorie);
     }
 
     @Override
+    public void creerCategorie(Categorie categorie) {
+        categorieDao.createCategorie(categorie);
+
+    }
+
+
+
+    @Override
     public void supprimerCategorie(int noCategorieAsupprimer) {
+        categorieDao.deleteCategorie(noCategorieAsupprimer);
 
     }
 }
