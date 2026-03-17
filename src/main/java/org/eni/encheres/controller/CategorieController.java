@@ -1,4 +1,4 @@
 package org.eni.encheres.controller;
 
-public class AdresseController {
+public class CategorieController {
 }
