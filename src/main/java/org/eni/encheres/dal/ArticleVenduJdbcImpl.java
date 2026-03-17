@@ -11,9 +11,9 @@ import java.util.List;
 @Repository
 public class ArticleVenduJdbcImpl implements ArticleVenduDao {
 
-    private static final String INSERT = "insert into numéro article vendu (Numero) values (?)";
-    private static final String SELECT = "select * from numéro article";
-    private static final String DELETE = "delete from numéro article where numero = ?";
+    private static final String INSERT = "insert into numero article vendu (Numero) values (?)";
+    private static final String SELECT = "select * from numero article";
+    private static final String DELETE = "delete from numero article where numero = ?";
     private static final String SELECT_BY_NUMERO = "select * from genre where numero = ?";
 
     @Autowired
