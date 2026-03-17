@@ -1,6 +1,7 @@
-package org.eni.encheres.service;
+package org.eni.encheres.service.impl;
 
 import org.eni.encheres.bo.Utilisateur;
+import org.eni.encheres.service.UtilisateurService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -8,7 +9,7 @@ import java.util.List;
 
 @Service
 @Profile("prod")
-public class UtilisateurServiceJdbcImpl implements UtilisateurService{
+public class UtilisateurServiceJdbcImpl implements UtilisateurService {
     @Override
     public void creerUtilisateur(Utilisateur utilisateur) {
         creerUtilisateur(utilisateur);

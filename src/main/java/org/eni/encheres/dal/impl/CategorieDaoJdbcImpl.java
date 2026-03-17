@@ -1,7 +1,8 @@
-package org.eni.encheres.dal;
+package org.eni.encheres.dal.impl;
 
 
 import org.eni.encheres.bo.Categorie;
+import org.eni.encheres.dal.CategorieDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;

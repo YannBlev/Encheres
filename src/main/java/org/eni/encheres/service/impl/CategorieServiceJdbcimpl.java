@@ -1,13 +1,14 @@
-package org.eni.encheres.service;
+package org.eni.encheres.service.impl;
 
 import org.eni.encheres.bo.Categorie;
 import org.eni.encheres.dal.CategorieDao;
+import org.eni.encheres.service.CategorieService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class CategorieServiceJdbcimpl implements CategorieService{
+public class CategorieServiceJdbcimpl implements CategorieService {
 
     private CategorieDao categorieDao;
 
