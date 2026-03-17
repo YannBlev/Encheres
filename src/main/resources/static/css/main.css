@@ -4,14 +4,22 @@
 }
 
 header{
-    /* je veux mettre une marge intéreur afin que mes éléments dne soient pas collés au bord : padding */
-    padding: 5px 20px;  /* marge intérieure de 5px verticalement, 20px horizontalement */
-    color: white;
-    background-color:burlywood; /* couleur de fond : jaune (piqué d'allociné) */
-    /* je vais mettre un dispolay flex pour afficher mon titre et ma navigation dans le sens ghorizontal */
+    padding: 5px 20px;
+    color: black;
+    background-color:burlywood;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h1{
     display: flex;
     /* je veux centrer mes éléments sur l'axe principal (vertical) */
     align-items: center;
-    /* je veux éloigner  mes éléments sur l'axe secondaire (horizontal)  */
-    justify-content: space-between; /* space-between : on dit à flex de mettre le maximum d'espace entre mes éléments */
+    /* je centrer mes éléments sur l'axe secondaire (horizontal)  */
+    justify-content: center;
+}
+
+body{
+    margin: 0;
 }
