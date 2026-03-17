@@ -1,16 +1,14 @@
-package org.eni.encheres.dal;
+package org.eni.encheres.service;
 
 import org.eni.encheres.bo.Adresse;
 import org.eni.encheres.bo.ArticleVendu;
-import org.eni.encheres.bo.Categorie;
 
 import java.util.List;
 
-public interface AdresseDao{
+public interface AdresseService {
 
     List<Adresse> ListAdresse ();
     void creerAdresse(Adresse adresse);
     void supprimerAdresse (int id);
     ArticleVendu consulterAdresseById(int id);
-
 }
