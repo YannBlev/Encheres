@@ -25,17 +25,17 @@ public class ArticleVenduJdbcImpl implements ArticleVenduDao {
     }
 
     @Override
-    public void createArticleVendu(ArticleVendu articleVendu) {
+    public void creerArticleVendu(ArticleVendu articleVendu) {
         jdbcTemplate.update(INSERT, articleVendu);
     }
 
     @Override
-    public void deleteArticleVendu(int noArticle) {
+    public void supprimerArticleVendu(int noArticle) {
         jdbcTemplate.update(DELETE, noArticle);
     }
 
     @Override
-    public ArticleVendu getArticleByNumero(int noArticle) {
+    public ArticleVendu consulterArticleByNumero(int noArticle) {
         return jdbcTemplate.queryForObject(SELECT_BY_NUMERO, new BeanPropertyRowMapper<>(ArticleVendu.class), noArticle);
     }
 }
