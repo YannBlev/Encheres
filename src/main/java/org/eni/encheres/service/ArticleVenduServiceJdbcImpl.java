@@ -6,38 +6,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@Profile("dev")
+@Profile("prod")
 
-public class ArticleVenduBouchon implements ArticleVenduService {
+public class ArticleVenduServiceJdbcImpl implements ArticleVenduService {
 
     @Autowired
     private ArticleVenduDao articleVenduDao;
 
-    private static List<ArticleVendu> LstArticleVendu = new ArrayList<>();
-    private static int indexArticlesVendu = 1;
-
 
     @Override
     public List<ArticleVendu> listArticlesVendu() {
-        return ;
+        return articleVenduDao.listArticlesVendu();
     }
 
     @Override
-    public void creerArticleVendu(ArticleVendu articleVendu) {
-
-    }
+    public void creerArticleVendu(ArticleVendu articleVendu) { articleVenduDao.creerArticleVendu(articleVendu);}
 
     @Override
     public ArticleVendu consulterArticleVendu(int noArticle) {
-        return null;
+        return articleVenduDao.consulterArticleByNumero(noArticle);
     }
 
     @Override
-    public void supprimerArticleVendu(int noArticle) {
+    public void supprimerArticleVendu(int noArticle) { articleVenduDao.supprimerArticleVendu(noArticle);}
 
-    }
 }
+
