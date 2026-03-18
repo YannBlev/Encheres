@@ -17,53 +17,41 @@ import java.util.List;
                 // TODO mettre correctement les bonnes adresses de redirection :
 
 @Controller
-@RequestMapping("/MonProfil")
+@RequestMapping("/profil")
 public class UtilisateurController {
 
     @Autowired
-    private final UtilisateurService utilisateurService;
-    UtilisateurDao utilisateurDao;
-
-    public UtilisateurController(UtilisateurService utilisateurService) {
-        this.utilisateurService = utilisateurService;
-    }
+    private UtilisateurService utilisateurService;
 
 
-    @GetMapping("")
+    @GetMapping()
     public String utilisateur(Model model) {
         model.addAttribute("utilisateur", new Utilisateur());
         return "page/profil";
     }
 
-    @PostMapping("/profil")// Création Utilisateur
+    @PostMapping()// Création Utilisateur
     public String creerUtilisateur(Utilisateur utilisateur) {
         utilisateurService.creerUtilisateur(utilisateur);
-        return "redirect:/Profil";
+        return "redirect:/profil";
     }
 
     @PostMapping("/delete") //Supprimer Utilisateur dans son menu utilisateur
     public String suppressionutilisateur(Utilisateur idUtilisateurASupprimer) {
         utilisateurService.supprimerUtilisateur(idUtilisateurASupprimer);
-        return "redirect:/MonProfil/profil";
+        return "redirect:/profil";
     }
 
-    @PostMapping("getById")
-    public String getUtilisateurById(Utilisateur utilisateur) {
-        utilisateurService.getUtilisateurById(utilisateur.getId());
-        return "redirect:/utilisateur";
+    @GetMapping("/nouveauProfil")
+    public String nouveauProfil(Model model) {
+        model.addAttribute("utilisateur", new Utilisateur());
+        return "page/nouveauProfil";
     }
 
-
-    @PostMapping("/list")
-    public List<Utilisateur>listerUtilisateur() {
-        utilisateurService.listerUtilisateurs();
-        return utilisateurService.listerUtilisateurs();
-    }
-
-    @PostMapping("/update") // menu utilisateur
-    public String updateUtilisateur(Utilisateur utilisateur) {
-        utilisateurService.updateUtilisateur(utilisateur);
-        return "redirect:/MonProfil/profil";
+    @PostMapping("/nouveauProfil")
+    public String ajouterProfil(Utilisateur utilisateur) {
+        utilisateurService.creerUtilisateur(utilisateur);
+        return "redirect:/profil";
     }
 
 }

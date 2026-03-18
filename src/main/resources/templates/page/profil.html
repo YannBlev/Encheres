@@ -1,4 +1,4 @@
-<!--
+
 <!DOCTYPE html>
 <html lang="en" layout:decorate="~{layout/base}" xmlns:layout="http://www.w3.org/1999/xhtml">
 
@@ -14,7 +14,7 @@
     <main>
 
    <form
-         th:action="@{/MonProfil/profil}" method="post" th:object="${utilisateur}">
+         th:action="@{/profil}" method="post" th:object="${utilisateur}">
 
 
          <label>Pseudo : </label>
@@ -42,20 +42,20 @@
          <input type="text" th:field="*{ville}" required><br>
 
          <label>Mot de passe actuel : </label>
-         <input type="password" th:field="*{motDePasse}" required><br>
+         <input type="password" th:text="${utilisateur.motDePasse}" required><br> //hidden
 
          <label>Nouveau mot de passe : </label>
-         <input type="password" th:field="*{MotDePasse}" required><br>
+         <input type="password" th:field="*{motDePasse}" required><br>
 
          <label>Confirmation : </label>
-         <input type="password" th:field="*{confirmation}" required><br>
+         <input type="password"  required><br>          <!--TODO méthode de  confirmation-->
 
-         <button type="submit">Enregister</button>
+       <button type="submit">Enregister</button>
 
   </form>
 
-  <form>
-         th:action="@{/MonProfil/delete}" method="post">
+  <form          th:action="@{/profil/delete}" method="post">
+
          <input type="hidden" name="idASupprimer" th:value="${utilisateur.id}" />
          <button type="submit">Supprimer mon compte</button>
   </form>
