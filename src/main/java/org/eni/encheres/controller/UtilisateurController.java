@@ -2,63 +2,56 @@ package org.eni.encheres.controller;
 
 
 import org.eni.encheres.bo.Utilisateur;
+import org.eni.encheres.dal.UtilisateurDao;
 import org.eni.encheres.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import java.util.List;
 
 
                 // TODO mettre correctement les bonnes adresses de redirection :
 
 @Controller
-// @RequestMapping
+@RequestMapping("/profil")
 public class UtilisateurController {
-    UtilisateurService utilisateurService;
 
-    /**
-     * TODO
-     * @GetMapping("profil")
-     * creer profil.html
-     */
+    @Autowired
+    private UtilisateurService utilisateurService;
 
-//    @GetMapping
-//    public String utilisateur(Model model) {
-//        model.addAttribute("utilisateur", new Utilisateur());
-//        return "utilisateur";
-//    }
-//
-//    @PostMapping("/create")// Création Utilisateur
-//    public String creerUtilisateur(Utilisateur utilisateur) {
-//        utilisateurService.creerUtilisateur(utilisateur);
-//        return "redirect:/utilisateur";
-//    }
-//
-//    @PostMapping("/delete") //Supprimer Utilisateur
-//    public String suppressionutilisateur(Utilisateur idUtilisateurASupprimer) {
-//        utilisateurService.supprimerUtilisateur(idUtilisateurASupprimer);
-//        return "redirect:/utilisateur";
-//    }
-//
-//    @PostMapping("getById")
-//    public String getUtilisateurById(Utilisateur utilisateur) {
-//        utilisateurService.getUtilisateurById(utilisateur.getId());
-//        return "redirect:/utilisateur";
-//    }
-//
-//
-//    @PostMapping("/list")
-//    public List<Utilisateur>listerUtilisateur() {
-//        utilisateurService.listerUtilisateurs();
-//        return utilisateurService.listerUtilisateurs();
-//    }
-//
-//    @PostMapping("/update")
-//    public String updateUtilisateur(Utilisateur utilisateur) {
-//        utilisateurService.updateUtilisateur(utilisateur);
-//        return "redirect:/utilisateur";
-//    }
+
+    @GetMapping()
+    public String utilisateur(Model model) {
+        model.addAttribute("utilisateur", new Utilisateur());
+        return "page/profil";
+    }
+
+    @PostMapping()// Création Utilisateur
+    public String creerUtilisateur(Utilisateur utilisateur) {
+        utilisateurService.creerUtilisateur(utilisateur);
+        return "redirect:/profil";
+    }
+
+    @PostMapping("/delete") //Supprimer Utilisateur dans son menu utilisateur
+    public String suppressionutilisateur(Utilisateur idUtilisateurASupprimer) {
+        utilisateurService.supprimerUtilisateur(idUtilisateurASupprimer);
+        return "redirect:/profil";
+    }
+
+    @GetMapping("/nouveauProfil")
+    public String nouveauProfil(Model model) {
+        model.addAttribute("utilisateur", new Utilisateur());
+        return "page/nouveauProfil";
+    }
+
+    @PostMapping("/nouveauProfil")
+    public String ajouterProfil(Utilisateur utilisateur) {
+        utilisateurService.creerUtilisateur(utilisateur);
+        return "redirect:/profil";
+    }
 
 }
