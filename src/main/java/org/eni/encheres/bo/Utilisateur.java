@@ -30,6 +30,8 @@ public class Utilisateur {
     @Pattern(regexp = "\\b[A-Z0-9._%-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b")@NotNull@Min(value =5)@Max(value =30, message = "Le mot de passe doit comporter une suite Alphanumérique")
     private String motDePasse;
     @NotNull
+    private Adresse adresse;
+    @NotNull
     private int credit;
     @NotNull
     private boolean administrateur;

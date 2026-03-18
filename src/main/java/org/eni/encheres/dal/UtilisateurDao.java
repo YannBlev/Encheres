@@ -10,4 +10,5 @@ public interface UtilisateurDao {
     Utilisateur consulterUtilisateurParId(int id);
     List<Utilisateur> listerUtilisateurs();
 
+
 }

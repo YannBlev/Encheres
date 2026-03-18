@@ -4,11 +4,13 @@ import org.eni.encheres.bo.Categorie;
 import org.eni.encheres.dal.CategorieDao;
 import org.eni.encheres.service.CategorieService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Profile("prod")
 public class CategorieServiceJdbcimpl implements CategorieService {
 
     @Autowired
@@ -20,7 +22,7 @@ public class CategorieServiceJdbcimpl implements CategorieService {
     }
 
     @Override
-    public Categorie consulterCategorieParId(Integer id) {
+    public Categorie consulterCategorieParId(int id) {
         return categorieDao.getCategorieById(id);
     }
 
@@ -33,7 +35,7 @@ public class CategorieServiceJdbcimpl implements CategorieService {
 
 
     @Override
-    public void supprimerCategorie(Integer idAsupprimer) {
+    public void supprimerCategorie(int idAsupprimer) {
         categorieDao.deleteCategorie(idAsupprimer);
 
     }
