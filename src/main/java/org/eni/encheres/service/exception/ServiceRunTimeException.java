@@ -1,4 +1,4 @@
-package org.eni.encheres.security.exception;
+package org.eni.encheres.service.exception;
 
 public class ServiceRunTimeException extends RuntimeException {
     public ServiceRunTimeException(String message) {

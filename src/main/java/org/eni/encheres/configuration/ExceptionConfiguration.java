@@ -1,6 +1,6 @@
 package org.eni.encheres.configuration;
 
-import org.eni.encheres.security.exception.ServiceRunTimeException;
+import org.eni.encheres.service.exception.ServiceRunTimeException;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
