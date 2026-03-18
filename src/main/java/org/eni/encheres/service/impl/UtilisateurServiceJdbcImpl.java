@@ -5,6 +5,7 @@ import org.eni.encheres.dal.UtilisateurDao;
 import org.eni.encheres.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,12 +16,15 @@ import java.util.List;
 @Service
 @Profile("prod")
 public class UtilisateurServiceJdbcImpl implements UtilisateurService {
-
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     @Autowired
     UtilisateurDao utilisateurDao;
 
     @Override
     public void creerUtilisateur(Utilisateur utilisateur) {
+        String motDePasseEncode = passwordEncoder.encode(utilisateur.getMotDePasse());
+        utilisateur.setMotDePasse(motDePasseEncode);
         utilisateurDao.creerUtilisateur(utilisateur);
     }
 

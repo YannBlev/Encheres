@@ -13,15 +13,15 @@ public class Utilisateur {
     private int id;
     @NotNull
     private String pseudo;
-    @NotNull@Max(255)
+    @NotNull@Size(min=3,max=20)
     private String nom;
-    @NotNull
+    @NotNull@Size(min=3,max=50)
     private String prenom;
-    @NotNull
+    @NotNull@Size(min=3,max=50)
     private String email;
     @Size(min =10, max=15)
     private String telephone;
-    @NotNull
+    @NotNull@Size(min=10,max=15)
     private String rue;
     @Pattern(regexp = "\\d{5}")@NotNull@Digits(integer = 5, fraction = 0, message = "Le code postal doit comporter 5 chiffres")
     private String codePostal;

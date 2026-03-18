@@ -10,44 +10,65 @@
 
 
 <body>
-    <main>
+    <main layout:fragment="content">
+
 
    <form
          th:action="@{/profil}" method="post" th:object="${utilisateur}">
 
 
          <label>Pseudo : </label>
-         <input type="text" th:field="*{pseudo}" required><br>
+         <input type="text" th:field="*{pseudo}"
+                required><br>
 
          <label>Nom : </label>
-         <input type="text" th:field="*{nom}" required><br>
+         <input type="text" th:field="*{nom}"
+
+                required><br>
 
          <label>Prenom : </label>
-         <input type="text" th:field="*{prenom}" required><br>
+         <input type="text" th:field="*{prenom}"
+
+                required><br>
 
          <label>Email : </label>
-         <input type="text" th:field="*{email}" required><br>
+         <input type="text" th:field="*{email}"
+
+                required><br>
 
          <label>Télephone : </label>
-         <input type="text" th:field="*{telephone}" required><br>
+         <input type="text" th:field="*{telephone}"
+
+                required><br>
 
          <label>Rue : </label>
-         <input type="text" th:field="*{rue}" required><br>
+         <input type="text" th:field="*{rue}"
+
+                required><br>
 
          <label>Code Postal : </label>
-         <input type="text" th:field="*{codePostal}" required><br>
+         <input type="text" th:field="*{codePostal}"
+
+
+                required><br>
 
          <label>Ville : </label>
-         <input type="text" th:field="*{ville}" required><br>
+         <input type="text" th:field="*{ville}"
+
+                required><br>
 
          <label>Mot de passe actuel : </label>
          <input type="hidden" th:text="${utilisateur.motDePasse}" required><br> //hidden
 
          <label>Nouveau mot de passe : </label>
-         <input type="hidden" th:field="*{motDePasse}" required><br>
+         <input type="hidden" th:field="*{motDePasse}"
+
+                required><br>
 
          <label>Confirmation : </label>
-         <input type="password"  required><br>          <!--TODO méthode de  confirmation-->
+         <input type="password"
+                title="Les mots de passe doivent correspondre"
+                required><br>          <!--TODO méthode de  confirmation-->
 
        <button type="submit">Enregister</button>
 
