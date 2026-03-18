@@ -14,10 +14,10 @@ directement un objet Adresse
 -->
 <form th:action="@{/adresse}" method="post" th:object="${adresse}">
   <label>Adresse : </label>
-  <!-- à la place de name="titre" j'utilise : th:field="*{titre}" afin de remplir l'attribut "titre" de mon objet adresse -->
+  <!-- à la place de name="rue" j'utilise : th:field="*{rue}" afin de remplir l'attribut "rue" de mon objet adresse -->
   <input type="text" th:field="*{rue}" required> <!-- required : rend obligatoire la saisi de ce champs -->
   <br>
-  <input type="text" th:field="*{code_postale}" required> <!-- required : rend obligatoire la saisi de ce champs -->
+  <input type="text" th:field="*{code_postal}" required> <!-- required : rend obligatoire la saisi de ce champs -->
   <br>
   <input type="text" th:field="*{ville}" required> <!-- required : rend obligatoire la saisi de ce champs -->
   <br>
@@ -38,6 +38,7 @@ directement un objet Adresse
     <th>Id adresse</th>
     <th>Adresse</th>
     <th>Action</th>
+
   </tr>
   </thead>
   <!--donnees de la table : tbody-->
@@ -48,23 +49,20 @@ directement un objet Adresse
 
       th:each="a : ${adresses}"
     -->
-  <tr th:each="a : ${adresses}">
-    <!-- td (table data) : une donnée de cellule d'un ligne de ma table -->
-    <td th:text="${a.id}"></td>
-    <td th:text="${a.rue}"></td>
-    <td th:text="${a.code_postale}"></td>
-    <td th:text="${a.ville}"></td>
+    <tr th:each="a : ${adresses}">
+      <!-- td (table data) : une donnée de cellule d'un ligne de ma table -->
+      <td th:text="${a.id}"></td>
+      <td th:text="|${a.rue} ${a.code_postal} ${a.ville}|"></td>
+      <td>
+        <form class="inline-form" th:action="@{adresse/supprimer}" method="post">
+        <button class="delete-button" type="submit" name="IdAdresseASupprimer" th:value="${a.id}">✗</button>
+        </form>
+      </td>
 
-    <td>
-    <!-- pour chaque genre j'affiche un bouton de suppression dans un formulaire qui va envoyer une requête POST
-    sur le chemin "/genres/supprimer" avec un parametre "idAdresseASupprimer" qui indique l'id du genre à supprimer
-    avec : th:value="${adresse.id}"-->
-    <form class="inline-form" action="/adresse/supprimer" method="post">
-    <button class="delete-button" type="submit" name="NoAdresseASupprimer" th:value="${c.id}">✗</button>
-    </form>
 
-    </td>
-  </tr>
+
+    </tr>
+
   </tbody>
 </table>
 
