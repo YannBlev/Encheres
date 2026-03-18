@@ -48,17 +48,17 @@
             <td th:text="${c.id}"></td>
             <td th:text="${c.libelle}"></td>
 
-<!--            <td>-->
-<!--                &lt;!&ndash; pour chaque genre j'affiche un bouton de suppression-->
-<!--                dans un formulaire qui va envoyer une requête POST-->
-<!--                sur le chemin "/genres/supprimer"-->
-<!--                avec un parametre "idGenreASupprimer" qui indique-->
-<!--                l'id du genre à supprimer avec : th:value="${genre.id}"&ndash;&gt;-->
-<!--                <form class="inline-form" action="/categorie/supprimer" method="post">-->
-<!--                    <button class="delete-button" type="submit" name="NoCategorieASupprimer" th:value="${c.id}">✗</button>-->
-<!--                </form>-->
+            <td>
+                <!-- pour chaque ctaegorie j'affiche un bouton de suppression
+                dans un formulaire qui va envoyer une requête POST
+                sur le chemin "/categories/supprimer"
+                avec un parametre "idASupprimer" qui indique
+                l'id de la categorie à supprimer avec : th:value="${categorie.id}"-->
+                <form class="inline-form" th:action="@{/categorie/supprimer}" method="post">
+                    <button class="delete-button" type="submit" name="idAsupprimer" th:value="${c.id}">✗</button>
+                </form>
 
-<!--            </td>-->
+            </td>
         </tr>
         </tbody>
     </table>

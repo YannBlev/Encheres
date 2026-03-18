@@ -54,14 +54,14 @@ public class CategorieController {
      * - 1 : je délègue au service la suppression de la categorie
      * - 2 : je redirige sur la page qui liste les categories (redirect:/categorie)
      */
-//    @PostMapping("/supprimer")
-//    public String supprimerCategorie(int idAsupprimer){
-//        // 1 : je délègue au service la suppression du genre
-//        categorieService.supprimerCategorie(idAsupprimer);
-//
-//        // 2 : je redirige sur la page qui liste les genres (redirect:/genres)
-//        return "redirect:/categorie";
-//    }
+    @PostMapping("/supprimer")
+    public String supprimerCategorie(int idAsupprimer){
+        // 1 : je délègue au service la suppression du genre
+        categorieService.supprimerCategorie(idAsupprimer);
+
+        // 2 : je redirige sur la page qui liste les genres (redirect:/genres)
+        return "redirect:/categorie";
+    }
 
 
 
