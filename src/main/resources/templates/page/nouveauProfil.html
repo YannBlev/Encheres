@@ -17,31 +17,65 @@
     <form th:action="@{/nouveauProfil}" method="post" th:object="${utilisateur}">
 
         <label for="pseudo">Pseudo : </label>
-        <input type="text" id="pseudo" th:field="*{pseudo}" required><br>
+        <input type="text" id="pseudo" th:field="*{pseudo}"
+               pattern="[a-zA-Z0-9]{3,10}"
+               title="Le pseudo doit contenir entre 3 et 20 caractères alphanumériques"
+               minlength="3"
+               maxlength="20"
+               required><br>
 
         <label for="nom">Nom : </label>
-        <input type="text" id="nom" th:field="*{nom}" required><br>
+        <input type="text" id="nom" th:field="*{nom}"
+               pattern="[a-zA-ZÀ-ÿ\-\s]{2,50}"
+               title="Le nom ne doit contenir que des lettres"
+               maxlength="50"
+               required><br>
 
         <label for="prenom">Prenom : </label>
-        <input type="text" id="prenom" th:field="*{prenom}" required><br>
+        <input type="text" id="prenom" th:field="*{prenom}"
+               pattern="[a-zA-ZÀ-ÿ\-\s]{2,50}"
+               title="Le prénom ne doit contenir que des lettres"
+               maxlength="50"
+               required><br>
 
         <label for="email">Email : </label>
-        <input type="email" id="email" th:field="*{email}" required><br>
+        <input type="email" id="email" th:field="*{email}"
+               title="Veuillez entrer une adresse email valide"
+               maxlength="50"
+               required><br>
 
         <label for="telephone">Télephone : </label>
-        <input type="tel" id="telephone" th:field="*{telephone}" required><br>
+        <input type="tel" id="telephone" th:field="*{telephone}"
+               pattern="[0-9\+\s\-]{10,15}"
+               title="Le téléphone ne doit contenir que des chiffres (10 à 15 caractères)"
+               maxlength="10"
+               required><br>
 
         <label for="rue">Rue : </label>
-        <input type="text" id="rue" th:field="*{rue}" required><br>
+        <input type="text" id="rue" th:field="*{rue}"
+               pattern="[a-zA-ZÀ-ÿ0-9\s\-\,\.]{5,100}"
+               title="Adresse invalide"
+               maxlength="100"
+               required><br>
 
         <label for="codePostal">Code Postal : </label>
-        <input type="text" id="codePostal" th:field="*{codePostal}" pattern="[0-9]{5}" required><br>
+        <input type="text" id="codePostal" th:field="*{codePostal}"
+               pattern="[0-9]{5}"
+               title="Le code postal doit contenir exactement 5 chiffres"
+               required><br>
 
         <label for="ville">Ville : </label>
-        <input type="text" id="ville" th:field="*{ville}" required><br>
+        <input type="text" id="ville" th:field="*{ville}"
+               pattern="[a-zA-ZÀ-ÿ\s\-]{2,50}"
+               title="La ville ne doit contenir que des lettres"
+               maxlength="50"
+               required><br>
 
         <label for="motDePasse">Mot de passe : </label>
-        <input type="password" id="motDePasse" th:field="*{motDePasse}" required><br>
+        <input type="password" id="motDePasse" th:field="*{motDePasse}"
+               pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}"
+               title="Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule et un chiffre"
+               required><br>
 
         <!--    <label for="confirmation">Confirmation : </label>-->
         <!--    <input type="password" id="confirmation" th:field="*{confirmation}" required><br>-->
