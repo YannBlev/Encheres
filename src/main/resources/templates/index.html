@@ -25,6 +25,29 @@
                 <option value="Sport&Loisirs">Sport & Loisirs</option>
             </select>
     </section>
+
+    <section style="display: flex; flex-wrap: wrap;">
+        <article th:each="enchere : ${encheres}">
+            <div class="card">
+                <img src="img_avatar.png" alt="Avatar" style="width:100%">
+                <div class="container">
+                    <h4 th:text="${enchere.article.nomArticle}"></h4><br>
+
+                    <label>Prix: </label>
+                    <span th:text="|${enchere.article.prixVente} points|"></span>
+
+                    <label>Fin de l'enchère :</label>
+                    <span th:text="${enchere.article.dateFinEncheres}"></span>
+
+                    <label>Vendeur :</label>
+                    <span th:text="${enchere.article.vendeur}"></span>
+
+                </div>
+            </div>
+        </article>
+
+
+    </section>
 </main>
 
 </body>

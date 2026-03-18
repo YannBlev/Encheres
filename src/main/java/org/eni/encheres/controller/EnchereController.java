@@ -15,35 +15,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("encheres")
+@RequestMapping("/encheres")
+
 public class EnchereController {
     @Autowired
-    private final EnchereService enchereService;
-    EnchereDao enchereDao;
+    private EnchereService enchereService;
 
-    public EnchereController(EnchereService enchereService) {
-        this.enchereService = enchereService;
-    }
-
-    @ModelAttribute
-    public List<Enchere> getEncheres() {
+    @ModelAttribute("encheres")
+    public List<Enchere> getAttributeModelEncheres() {
         return enchereService.ListEncheres();
     }
 
-    public String encheres(Model model){
-        model.addAttribute("enchereDao",enchereDao);
-        return "encheres";
-    }
-    @GetMapping("/index")
-    public String index(){
-        enchereService.ListEncheres();
+    @GetMapping
+    public String getEncheres(){
         return "index";
     }
-    @GetMapping("/NouvelleVente")
+
+
+    @GetMapping("/nouvelleVente")
     public String nouvelleVente(){
         enchereService.creerEnchere(null);
-        return "nouvelleVente";
+        return "page/nouvelleVente";
     }
+
     @GetMapping("/{id}/detail")
     public String detail(@PathVariable("id") int id){
         enchereService.consulterEncheresParId(id);
