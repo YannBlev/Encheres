@@ -9,7 +9,7 @@ import org.jspecify.annotations.Nullable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Categorie {
-    private int id;
+    private Integer id;
     private String libelle;
 
     public Categorie(String libelle) {
