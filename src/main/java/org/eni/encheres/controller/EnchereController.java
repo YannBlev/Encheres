@@ -33,8 +33,8 @@ public class EnchereController {
 
 
     @GetMapping("/nouvelleVente")
-    public String nouvelleVente(){
-        enchereService.creerEnchere(null);
+    public String nouvelleVente(Model model){
+    model.addAttribute("enchere",new Enchere());
         return "page/nouvelleVente";
     }
 

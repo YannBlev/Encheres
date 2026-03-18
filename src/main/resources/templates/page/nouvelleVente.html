@@ -1,18 +1,18 @@
 <!doctype html>
-<html lang="en" layout:decorate="~{layouts/layoutPrincipal}" xmlns:layout="http://www.w3.org/1999/xhtml">
+<html lang="en" layout:decorate="~{layout/base}" xmlns:layout="http://www.w3.org/1999/xhtml">
 
 <body>
 <main layout:fragment="content">
     <h2>Nouvelle Vente</h2>
 
-    <form class="form" th:action="" method="post">
+    <form class="form" th:action="@{/nouvelleVente}" method="post" th:object="${enchere}">
         <section>
             <label>Article :</label>
-            <input type="text" th:field="">
+            <input type="text" th:field="*{enchere.article}">
             <br><br>
 
             <label>Description :</label><br>
-            <textarea cols="40" rows="6" th:text=""></textarea>
+            <textarea cols="40" rows="6" th:field="*{enchere.article.description}"></textarea>
             <br><br>
 
             <label>Catégorie :</label>
