@@ -17,7 +17,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
     private JdbcTemplate jdbcTemplate;
 
 
-    private static final String INSERT = "insert into utilisateur (pseudo, nom, prenom, email, telephone, rue, codePostal, ville) values (?,?,?,?,?,?,?,?)";
+    private static final String INSERT = "insert into utilisateur (pseudo, nom, prenom, email, telephone, id_adresse, motDePasse) values (?,?,?,?,?,?,?)";
     private static final String DELETE = "delete from utilisateur where id = ?";
     private static final String SELECT_BY_ID = "select * from utilisateur where id = ?";
     private static final String SELECT = "select * from utilisateur";
@@ -31,9 +31,8 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
                         utilisateur.getPrenom(),
                         utilisateur.getEmail(),
                         utilisateur.getTelephone(),
-                        utilisateur.getRue(),
-                        utilisateur.getCodePostal(),
-                        utilisateur.getVille());
+                        utilisateur.getAdresse().getId(),
+                        utilisateur.getMotDePasse());
     }
     @Override
     public void deleteUtilisateur(int idSupprimerUtilisateur) {
