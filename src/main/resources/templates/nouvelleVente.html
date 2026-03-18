@@ -3,51 +3,71 @@
 
 <body>
 <main layout:fragment="contenu">
-    <h2>Nouveau Vente</h2>
+    <h2>Nouvelle Vente</h2>
 
     <form class="form" th:action="" method="post">
+        <section>
+            <label>Article :</label>
+            <input type="text" th:field="">
+            <br><br>
 
-        <label>Article :</label>
-        <input type="text" th:field="">
-        <br><br>
+            <label>Description :</label><br>
+            <textarea cols="40" rows="6" th:text=""></textarea>
+            <br><br>
 
-        <label>Description :</label><br>
-        <textarea cols="40" rows="6" th:text=""></textarea>
-        <br><br>
+            <label>Catégorie :</label>
+                <select name="text" id="text">
+                <option value="" disabled selected>Toutes</option>
+                <option value="informatique">Informatique</option>
+                <option value="ameublement">Ameublement</option>
+                <option value="vêtement">Vêtements</option>
+                <option value="Sport&Loisirs">Sport & Loisirs</option>
+                </select>
+            <br><br>
 
-        <label>Catégorie :</label>
-            <select name="text" id="text">
-            <option value="" disabled selected>Toutes</option>
-            <option value="informatique">Informatique</option>
-            <option value="ameublement">Ameublement</option>
-            <option value="vêtement">Vêtements</option>
-            <option value="Sport&Loisirs">Sport & Loisirs</option>
+            <label>Photo de l'article :</label>
+            <button type="submit">UPLOADER</button>
+            <br><br>
+
+            <label>Mise à Prix :</label>
+            <select name="nombre" id="nombre">
+                <option value="" disabled selected>310</option>
+                <option value="informatique">Informatique</option>
+                <option value="ameublement">Ameublement</option>
+                <option value="vêtement">Vêtements</option>
+                <option value="Sport&Loisirs">Sport & Loisirs</option>
             </select>
-        <br><br>
+            <br><br>
 
-        <label>Photo de l'article :</label>
-        <input type="text" th:field="">
-        <br><br>
+            <label>Début de l'enchère:</label>
+            <label for="birthday"></label><input type="date" id="birthday" name="birthday">
+            <input type="submit">
+            <br><br>
+            <label>Fin de l'enchère:</label>
+            <input type="date" id="birthday" name="birthday">
+            <input type="submit">
+            <br><br>
+        </section>
 
-        <label>Mise à Prix :</label>
-        <select name="nombre" id="nombre">
-            <option value="" disabled selected>310</option>
-            <option value="informatique">Informatique</option>
-            <option value="ameublement">Ameublement</option>
-            <option value="vêtement">Vêtements</option>
-            <option value="Sport&Loisirs">Sport & Loisirs</option>
-        </select>
-        <br><br>
+        <fieldset>
+            <legend><h2>Retrait</h2></legend>
+            <label>Rue :</label>
+            <input>
+            <br><br>
+            <label>Code postal :</label>
+            <input>
+            <br><br>
+            <label>Ville :</label>
+            <input>
+            <br><br>
+        </fieldset>
 
-
-
-
-
-
-
-
+        <section>
+            <button type="submit">Enregistré</button>
+            <button type="submit">Annuler</button>
+            <button type="submit">Annuler la vente</button>
+        </section>
     </form>
-
 </main>
 </body>
 </html>
