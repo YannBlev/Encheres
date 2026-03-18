@@ -3,6 +3,7 @@ package org.eni.encheres.dal.impl;
 
 import org.eni.encheres.bo.Categorie;
 import org.eni.encheres.dal.CategorieDao;
+import org.eni.encheres.dal.rowmapper.CategorieRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -19,16 +20,29 @@ public class CategorieDaoJdbcImpl implements CategorieDao {
     private JdbcTemplate jdbcTemplate;
 
 
-    private static final String INSERT = "insert into categorie (libelle) values (?)";
-    private static final String SELECT = "select * from categorie";
-    private static final String SELECT_BY_ID = "select * from categorie where id_categorie = ?";
-    private static final String DELETE = "delete from categorie where id_categorie = ?";
+    private static final String INSERT = """
+                        INSERT INTO CATEGORIE (libelle) VALUES (?)
+                        """;
+
+    private static final String SELECT = """
+                        SELECT * FROM CATEGORIE
+                        """;
+
+    private static final String SELECT_BY_ID = SELECT + """
+                        WHERE id_categorie = ?
+                        """;
+
+    private static final String DELETE = """
+                        DELETE FROM CATEGORIE WHERE id_categorie = ?
+                        """;
 
 
 
     @Override
     public List<Categorie> ListCategorie() {
-        return jdbcTemplate.query(SELECT, new BeanPropertyRowMapper<>(Categorie.class));
+        List<Categorie> categories = jdbcTemplate.query(SELECT, new CategorieRowMapper());
+        System.out.println(categories);
+        return categories;
     }
 
     public void createCategorie(Categorie categorie) {
@@ -44,7 +58,7 @@ public class CategorieDaoJdbcImpl implements CategorieDao {
 
     @Override
     public Categorie getCategorieById(int id) {
-
+        System.out.println(id);
         return jdbcTemplate.queryForObject(SELECT_BY_ID, new BeanPropertyRowMapper<>(Categorie.class), id);
     }
 }

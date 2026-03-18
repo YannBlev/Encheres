@@ -24,9 +24,6 @@ public class CategorieController {
         // 1 - j'ajoute dans mon modèle l'attribut "categorie" qui va servir à générer les lignes de la table HTML de mon template
         // pour cela : j'utilse la méthode consulterCategorie() de mon service
         model.addAttribute("categories", categorieService.consulterCategorie());
-        for (Categorie c : categorieService.consulterCategorie()) {
-            System.out.println(c.getId());
-        }
 
         // 2 - afin de pouvoir utiliser th:object sur ùmon formulaire d'ajout de genre
         // j'initialise mon modèle avec un attribut "nouvelleCategorie" qui contient un objet vide Categorie (que le formulaire va remplir)
