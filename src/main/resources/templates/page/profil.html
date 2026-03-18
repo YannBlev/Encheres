@@ -8,7 +8,6 @@
                         <title>Mon profil</title>
 </head>
 
-                    // TODO vérification des liens
 
 <body>
     <main>
@@ -42,10 +41,10 @@
          <input type="text" th:field="*{ville}" required><br>
 
          <label>Mot de passe actuel : </label>
-         <input type="password" th:text="${utilisateur.motDePasse}" required><br> //hidden
+         <input type="hidden" th:text="${utilisateur.motDePasse}" required><br> //hidden
 
          <label>Nouveau mot de passe : </label>
-         <input type="password" th:field="*{motDePasse}" required><br>
+         <input type="hidden" th:field="*{motDePasse}" required><br>
 
          <label>Confirmation : </label>
          <input type="password"  required><br>          <!--TODO méthode de  confirmation-->
