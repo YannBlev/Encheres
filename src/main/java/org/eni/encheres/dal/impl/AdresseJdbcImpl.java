@@ -20,8 +20,7 @@ public class AdresseJdbcImpl implements AdresseDao {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    @Autowired
-    private AdresseDao adresseDao;
+
 
     @Override
     public List<Adresse> ListAdresse() {
