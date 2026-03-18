@@ -6,11 +6,11 @@ import org.eni.encheres.bo.Categorie;
 
 import java.util.List;
 
-public interface AdresseDao{
+public interface AdresseDao {
 
     List<Adresse> ListAdresse ();
     void creerAdresse(Adresse adresse);
     void supprimerAdresse (int id);
-    ArticleVendu consulterAdresseById(int id);
+    Adresse consulterAdresseById(int id);
 
 }
