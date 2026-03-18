@@ -2,7 +2,10 @@ package org.eni.encheres.dal.impl;
 
 import org.eni.encheres.bo.Adresse;
 import org.eni.encheres.bo.ArticleVendu;
+import org.eni.encheres.bo.Categorie;
 import org.eni.encheres.dal.AdresseDao;
+import org.eni.encheres.dal.rowmapper.AdresseRowMapper;
+import org.eni.encheres.dal.rowmapper.CategorieRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -24,8 +27,10 @@ public class AdresseJdbcImpl implements AdresseDao {
 
     @Override
     public List<Adresse> ListAdresse() {
-        return jdbcTemplate.query(SELECT, new BeanPropertyRowMapper<>(Adresse.class));
+        List<Adresse> adresses = jdbcTemplate.query(SELECT, new AdresseRowMapper());
+        return adresses;
     }
+
 
     @Override
     public void creerAdresse(Adresse adresse) {

@@ -2,6 +2,7 @@ package org.eni.encheres.service.impl;
 
 import org.eni.encheres.bo.Adresse;
 import org.eni.encheres.bo.ArticleVendu;
+import org.eni.encheres.bo.Categorie;
 import org.eni.encheres.dal.AdresseDao;
 import org.eni.encheres.service.AdresseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ public class AdresseServiceJdbcImpl implements AdresseService {
 
     @Override
     public List<Adresse> ListAdresse() {
+
+        List<Adresse> adresses = adresseDao.ListAdresse();
+
         return adresseDao.ListAdresse();
     }
 
