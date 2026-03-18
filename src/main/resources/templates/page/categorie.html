@@ -13,7 +13,7 @@
     Utilise : th:object pour envoyer au controller (méthode annotée @PostMapping)
     directement un objet Catégorie
     -->
-    <form action="/categorie" method="post" th:object="${categorie}">
+    <form th:action="@{/categorie}" method="post" th:object="${categorie}">
         <label>Categorie : </label>
         <!-- à la place de name="titre" j'utilise : th:field="*{titre}" afin de remplir l'attribut "titre" de mon objet genre -->
         <input type="text" th:field="*{libelle}" required> <!-- required : rend obligatoire la saisi de ce champs -->
@@ -39,26 +39,26 @@
         <tbody>
         <!-- je vais générer une ligne  <tr> par genre stocké dans mon application
             pour cela, on va utilser l'attribut : th:each
-            qui va itérer sur la liste contenue dans mon attribut de model : genres
+            qui va itérer sur la liste contenue dans mon attribut de model : categorie c
 
-            th:each="genre : ${genres}"
+            th:each="c : ${categories}"
           -->
-        <tr th:each="categorie : ${categorie}">
+        <tr th:each="c : ${categories}">
             <!-- td (table data) : une donnée de cellule d'un ligne de ma table -->
-            <td th:text="${categorie.id}"></td>
-            <td th:text="${categorie.libelle}"></td>
+            <td th:text="${c.id}"></td>
+            <td th:text="${c.libelle}"></td>
 
-            <td>
-                <!-- pour chaque genre j'affiche un bouton de suppression
-                dans un formulaire qui va envoyer une requête POST
-                sur le chemin "/genres/supprimer"
-                avec un parametre "idGenreASupprimer" qui indique
-                l'id du genre à supprimer avec : th:value="${genre.id}"-->
-                <form class="inline-form" action="/categorie/supprimer" method="post">
-                    <button class="delete-button" type="submit" name="NoCategorieASupprimer" th:value="${categorie.noCategorie}">✗</button>
-                </form>
+<!--            <td>-->
+<!--                &lt;!&ndash; pour chaque genre j'affiche un bouton de suppression-->
+<!--                dans un formulaire qui va envoyer une requête POST-->
+<!--                sur le chemin "/genres/supprimer"-->
+<!--                avec un parametre "idGenreASupprimer" qui indique-->
+<!--                l'id du genre à supprimer avec : th:value="${genre.id}"&ndash;&gt;-->
+<!--                <form class="inline-form" action="/categorie/supprimer" method="post">-->
+<!--                    <button class="delete-button" type="submit" name="NoCategorieASupprimer" th:value="${c.id}">✗</button>-->
+<!--                </form>-->
 
-            </td>
+<!--            </td>-->
         </tr>
         </tbody>
     </table>

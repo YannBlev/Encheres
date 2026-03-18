@@ -7,8 +7,8 @@ import java.util.List;
 public interface CategorieDao {
 
     List<Categorie> ListCategorie ();
-    Categorie getCategorieById(int noCategorie);
+    Categorie getCategorieById(Integer id);
     void createCategorie (Categorie categorie);
-    void deleteCategorie(int noCategorie);
+    void deleteCategorie(Integer id);
 
 }
