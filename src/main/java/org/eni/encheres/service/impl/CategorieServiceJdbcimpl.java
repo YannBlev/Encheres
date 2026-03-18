@@ -19,7 +19,7 @@ public class CategorieServiceJdbcimpl implements CategorieService {
 
     @Override
     public Categorie consulterCategorieParNo(int noCategorie) {
-        return categorieDao.getCategorieByNo(noCategorie);
+        return categorieDao.getCategorieById(noCategorie);
     }
 
     @Override

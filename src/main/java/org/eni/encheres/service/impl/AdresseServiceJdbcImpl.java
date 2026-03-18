@@ -33,7 +33,7 @@ public class AdresseServiceJdbcImpl implements AdresseDao {
     }
 
     @Override
-    public ArticleVendu consulterAdresseById(int id) {
+    public Adresse consulterAdresseById(int id) {
         return adresseDao.consulterAdresseById(id);
     }
 }
