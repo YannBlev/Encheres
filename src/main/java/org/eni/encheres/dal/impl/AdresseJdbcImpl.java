@@ -15,8 +15,8 @@ public class AdresseJdbcImpl implements AdresseDao {
 
     private static final String INSERT = "insert into adresse (rue, code_postal, ville) values (?, ?, ?)";
     private static final String SELECT = "select * from adresse";
-    private static final String DELETE = "delete from adresse where id = ?";
-    private static final String SELECT_BY_ID = "select * from adresse where id = ?";
+    private static final String DELETE = "delete from adresse where id_adresse = ?";
+    private static final String SELECT_BY_ID = "select * from adresse where id_adresse  = ?";
 
     @Autowired
     private JdbcTemplate jdbcTemplate;

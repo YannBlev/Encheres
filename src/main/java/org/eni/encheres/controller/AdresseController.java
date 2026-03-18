@@ -40,10 +40,10 @@ public class AdresseController {
 
     @PostMapping("/supprimer")
     public String supprimerAdresse(int IdAdresseASupprimer){
-        // 1 : je délègue au service la suppression du genre
+        // 1 : je délègue au service la suppression de l'adresse
         adresseService.supprimerAdresse(IdAdresseASupprimer);
 
-        // 2 : je redirige sur la page qui liste les genres (redirect:/genres)
+        // 2 : je redirige sur la page qui liste les adresses (redirect:/adresses)
         return "redirect:/adresse";
     }
 
