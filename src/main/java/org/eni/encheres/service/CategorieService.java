@@ -9,6 +9,6 @@ public interface CategorieService {
 
     List<Categorie> consulterCategorie();
     void creerCategorie(Categorie categorie);
-    Categorie consulterCategorieParId(Integer id);
-    void supprimerCategorie(Integer idAsupprimer);
+    Categorie consulterCategorieParId(int id);
+    void supprimerCategorie(int idAsupprimer);
 }

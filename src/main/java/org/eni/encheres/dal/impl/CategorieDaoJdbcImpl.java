@@ -34,18 +34,16 @@ public class CategorieDaoJdbcImpl implements CategorieDao {
     public void createCategorie(Categorie categorie) {
         jdbcTemplate.update(INSERT, categorie.getLibelle());
 
-
-
     }
 
     @Override
-    public void deleteCategorie(Integer id) {
+    public void deleteCategorie(int id) {
         jdbcTemplate.update(DELETE,id);
 
     }
 
     @Override
-    public Categorie getCategorieById(Integer id) {
+    public Categorie getCategorieById(int id) {
 
         return jdbcTemplate.queryForObject(SELECT_BY_ID, new BeanPropertyRowMapper<>(Categorie.class), id);
     }
