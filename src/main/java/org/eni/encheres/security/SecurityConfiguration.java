@@ -19,7 +19,12 @@ public class SecurityConfiguration {
                         .requestMatchers("/profil").authenticated()
                         .requestMatchers("/**").permitAll())
                 .httpBasic(Customizer.withDefaults())
-                .formLogin(Customizer.withDefaults())
+//                .formLogin(Customizer.withDefaults())
+                .formLogin((formLogin) -> formLogin
+                        .loginPage("/login")
+                        .loginProcessingUrl("/login")
+                        .permitAll()
+                )
                 .logout((logout) -> logout.logoutSuccessUrl("/"));
         return http.build();
     }
