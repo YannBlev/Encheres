@@ -14,7 +14,7 @@
 
                 <!--    Nouveau profil dans le menu : s'inscrire ou se connecter -->
 
-    <form th:action="@{/Utilisateur}" method="post" th:object="${utilisateur}">
+    <form th:action="@{/nouveauProfil}" method="post" th:object="${utilisateur}">
 
         <label for="pseudo">Pseudo : </label>
         <input type="text" id="pseudo" th:field="*{pseudo}" required><br>
