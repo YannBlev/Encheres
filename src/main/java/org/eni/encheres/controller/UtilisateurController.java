@@ -15,38 +15,45 @@ import org.springframework.web.bind.annotation.RequestMapping;
 // TODO mettre correctement les bonnes adresses de redirection :
 
 @Controller
-@RequestMapping("/profil")
+@RequestMapping
 public class UtilisateurController {
 
     @Autowired
     private UtilisateurService utilisateurService;
 
+    @GetMapping("/profils")
+    public String getUtilisateurs(Model model) {
+        model.addAttribute("utilisateurs", utilisateurService.listerUtilisateurs());
+        return "page/profils";
+    }
 
-    @GetMapping("/{pseudo}")
-    public String utilisateur(@PathVariable String pseudo, Model model) {
+    @GetMapping("/profil/{pseudo}")
+    public String getUtilisateur(@PathVariable String pseudo, Model model) {
         model.addAttribute("utilisateur", utilisateurService.listerUtilisateurs().stream().filter(u -> u.getPseudo().equals(pseudo)).findFirst().orElse(null));
         return "page/profilUtilisateur";
     }
 
-    @PostMapping()// Création Utilisateur
+    @PostMapping("/profil/inscription")// Création Utilisateur
     public String creerUtilisateur(Utilisateur utilisateur) {
         utilisateurService.creerUtilisateur(utilisateur);
         return "redirect:/encheres";
     }
 
-    @PostMapping("/delete") //Supprimer Utilisateur dans son menu utilisateur
-    public String suppressionutilisateur(Utilisateur idUtilisateurASupprimer) {
+    @PostMapping("/profil/delete") //Supprimer Utilisateur dans son menu utilisateur
+    public String suppressionUtilisateur(Utilisateur idUtilisateurASupprimer) {
         utilisateurService.supprimerUtilisateur(idUtilisateurASupprimer);
         return "redirect:/profil";
     }
 
-    @GetMapping("/nouveauProfil")
+    // TODO UtilisateurDTO
+    @GetMapping("/profil/nouveauProfil")
     public String nouveauProfil(Model model) {
         model.addAttribute("utilisateur", new Utilisateur());
         return "page/nouveauProfil";
     }
 
-    @PostMapping("/nouveauProfil")
+    //TODO UtilisateurDTO
+    @PostMapping("/profil/nouveauProfil")
     public String ajouterProfil(Utilisateur utilisateur) {
         utilisateurService.creerUtilisateur(utilisateur);
         return "redirect:/encheres";

@@ -45,7 +45,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 
     @Override
     public List<Utilisateur> listerUtilisateurs() {
-        return jdbcTemplate.query(SELECT, new BeanPropertyRowMapper<>(Utilisateur.class));
+        return jdbcTemplate.query(SELECT, new UtilisateurRowMapper());
     }
 
     @Override
