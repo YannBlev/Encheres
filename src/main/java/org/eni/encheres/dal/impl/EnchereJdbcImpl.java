@@ -16,13 +16,10 @@ public class EnchereJdbcImpl implements EnchereDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private static final String INSERT = "insert into enchere (no_utilisateur, no_article, date_enchere, montant_enchere) values (?,?,?,?)";
-    private static final String DELETE = "delete from enchere where no_utilisateur=? and where no_article=?";
-    private static final String SELECT_BY_ID = "select * from enchere where id = ?";
+    private static final String INSERT = "insert into enchere (id_utilisateur, id_article, date_enchere, montant_enchere) values (?,?,?,?)";
+    private static final String DELETE = "delete from enchere where id_utilisateur=? and id_article=?";
+    private static final String SELECT_BY_ID = "select * from enchere where id_enchere = ?";
     private static final String SELECT = "select * from enchere";
-    @Autowired
-    private JdbcClient jdbcClient;
-
 
     @Override
     public List<Enchere> ListEncheres() {

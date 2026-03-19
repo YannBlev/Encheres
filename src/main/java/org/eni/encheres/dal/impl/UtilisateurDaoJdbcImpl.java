@@ -1,5 +1,6 @@
 package org.eni.encheres.dal.impl;
 
+import org.eni.encheres.bo.Enchere;
 import org.eni.encheres.bo.Utilisateur;
 import org.eni.encheres.dal.UtilisateurDao;
 import org.eni.encheres.dal.rowmapper.UtilisateurRowMapper;
@@ -18,7 +19,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
     private JdbcTemplate jdbcTemplate;
 
 
-    private static final String INSERT = "insert into utilisateur (pseudo, nom, prenom, email, telephone, id_adresse, mot_de_passe) values (?,?,?,?,?,?,?)";
+    private static final String INSERT = "insert into utilisateur (pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe) values (?,?,?,?,?,?,?)";
     private static final String DELETE = "delete from utilisateur where id_utilisateur = ?";
     private static final String SELECT_BY_ID = "select * from utilisateur where id_utilisateur = ?";
     private static final String SELECT = "select * from utilisateur";
@@ -32,16 +33,19 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
                         utilisateur.getPrenom(),
                         utilisateur.getEmail(),
                         utilisateur.getTelephone(),
-                        utilisateur.getRetrait().getId(),
+                        utilisateur.getRue(),
+                        utilisateur.getCodePostal(),
+                        utilisateur.getVille(),
                         utilisateur.getMotDePasse());
     }
     @Override
     public void deleteUtilisateur(int idSupprimerUtilisateur) {
         jdbcTemplate.update(DELETE, idSupprimerUtilisateur);
     }
+
     @Override
     public List<Utilisateur> listerUtilisateurs() {
-        return jdbcTemplate.query(SELECT, new UtilisateurRowMapper());
+        return jdbcTemplate.query(SELECT, new BeanPropertyRowMapper<>(Utilisateur.class));
     }
 
     @Override
