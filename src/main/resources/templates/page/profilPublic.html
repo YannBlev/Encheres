@@ -1,10 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Profil de : </title>
-</head>
+<!doctype html>
+<html lang="en" layout:decorate="~{layout/base}" xmlns:layout="http://www.w3.org/1999/xhtml">
+
+
 <body>
 
+
+<main layout:fragment="content">
+
+    <h2 th:text="|Profil de : ${profil}|" method="post" th:object="${utilisateur}"></h2>
+
+    <form action="#" th:action="@{/nouveauProfil}" method="post">
+
+        <label>Pseudo : </label>
+        <input type="text" th:field="*{pseudo}">
+        <br><br>
+
+        <label>Nom :</label>
+        <input type="text" th:field="*{nom}">
+        <br><br>
+
+        <label>Prénom :</label>
+        <input type="text" th:field="*{prenom}">
+        <br><br>
+
+        <label>Email :</label>
+        <input type="text" th:field="*{email}">
+        <br><br>
+
+        <label>Téléphone :</label>
+        <input type="text" th:field="*{telephone}">
+        <br><br>
+
+        <label>Rue :</label>
+        <input type="text" th:field="*{rue}">
+        <br><br>
+
+        <label>Code postal :</label>
+        <input type="text" th:field="*{codePostal}">
+        <br><br>
+
+        <label>Ville :</label>
+        <input type="text" th:field="*{ville}">
+        <br><br>
+
+    </form>
+</main>
 </body>
 </html>
