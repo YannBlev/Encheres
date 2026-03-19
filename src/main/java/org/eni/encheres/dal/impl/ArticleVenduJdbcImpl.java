@@ -19,6 +19,8 @@ public class ArticleVenduJdbcImpl implements ArticleVenduDao {
     private static final String SELECT = "select * from article";
     private static final String DELETE = "delete from article where numero = ?";
     private static final String SELECT_BY_ID = "select * from article where numero = ?";
+    private static final String SELECT_ALL= """
+            """;
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
