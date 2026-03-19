@@ -6,7 +6,7 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class AdresseRowMapper implements RowMapper<Retrait> {
+public class RetraitRowMapper implements RowMapper<Retrait> {
     @Override
     public Retrait mapRow(ResultSet rs, int rowNum) throws SQLException {
 

@@ -1,13 +1,14 @@
-package org.eni.encheres.service;
+package org.eni.encheres.dal;
 
 import org.eni.encheres.bo.Retrait;
 
 import java.util.List;
 
-public interface AdresseService {
+public interface RetraitDao {
 
     List<Retrait> ListAdresse ();
     void creerAdresse(Retrait retrait);
     void supprimerAdresse (int id);
     Retrait consulterAdresseById(int id);
+
 }

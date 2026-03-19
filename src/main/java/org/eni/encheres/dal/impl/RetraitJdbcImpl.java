@@ -1,8 +1,8 @@
 package org.eni.encheres.dal.impl;
 
 import org.eni.encheres.bo.Retrait;
-import org.eni.encheres.dal.AdresseDao;
-import org.eni.encheres.dal.rowmapper.AdresseRowMapper;
+import org.eni.encheres.dal.RetraitDao;
+import org.eni.encheres.dal.rowmapper.RetraitRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class AdresseJdbcImpl implements AdresseDao {
+public class RetraitJdbcImpl implements RetraitDao {
 
     private static final String INSERT = "insert into adresse (rue, code_postal, ville) values (?, ?, ?)";
     private static final String SELECT = "select * from adresse";
@@ -24,7 +24,7 @@ public class AdresseJdbcImpl implements AdresseDao {
 
     @Override
     public List<Retrait> ListAdresse() {
-        List<Retrait> adresses = jdbcTemplate.query(SELECT, new AdresseRowMapper());
+        List<Retrait> adresses = jdbcTemplate.query(SELECT, new RetraitRowMapper());
         return adresses;
     }
 

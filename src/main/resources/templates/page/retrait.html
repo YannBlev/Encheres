@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Adresse</title>
+    <title>Adresse Retrait</title>
 </head>
 <body>
 
-<h2>Ajouter une retrait</h2>
+<h2>Ajouter un retrait</h2>
 
 <!-- ***** FORMULAIRE DE CREATION DE ADRESSE *****
 Utilise : th:object pour envoyer au controller (méthode annotée @PostMapping)
 directement un objet Adresse
 -->
 <form th:action="@{/retrait}" method="post" th:object="${retrait}">
-  <label>Adresse : </label>
+  <label>Retrait : </label>
   <!-- à la place de name="rue" j'utilise : th:field="*{rue}" afin de remplir l'attribut "rue" de mon objet retrait -->
   <input type="text" th:field="*{rue}" required> <!-- required : rend obligatoire la saisi de ce champs -->
   <br>
@@ -26,7 +26,7 @@ directement un objet Adresse
   <button type="submit">Valider</button>
 </form>
 
-<h2>Liste des adresses</h2>
+<h2>Liste des adresses de retrait</h2>
 
 <!-- balise de base : table -->
 <table>
@@ -49,13 +49,13 @@ directement un objet Adresse
 
       th:each="a : ${adresses}"
     -->
-    <tr th:each="a : ${adresses}">
+    <tr th:each="r : ${retraits}">
       <!-- td (table data) : une donnée de cellule d'un ligne de ma table -->
-      <td th:text="${a.id}"></td>
-      <td th:text="|${a.rue} ${a.code_postal} ${a.ville}|"></td>
+      <td th:text="${r.id}"></td>
+      <td th:text="|${r.rue} ${r.code_postal} ${r.ville}|"></td>
       <td>
         <form class="inline-form" th:action="@{retrait/supprimer}" method="post">
-        <button class="delete-button" type="submit" name="IdAdresseASupprimer" th:value="${a.id}">✗</button>
+        <button class="delete-button" type="submit" name="IdAdresseASupprimer" th:value="${r.id}">✗</button>
         </form>
       </td>
 
