@@ -21,6 +21,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
     private static final String DELETE = "delete from utilisateur where id = ?";
     private static final String SELECT_BY_ID = "select * from utilisateur where id = ?";
     private static final String SELECT = "select * from utilisateur";
+    private static final String SELECT_BY_PSEUDO = "select * from utilisateur where pseudo = ?";
 
 
     @Override
@@ -42,6 +43,12 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
     public List<Utilisateur> listerUtilisateurs() {
         return jdbcTemplate.query(SELECT, new BeanPropertyRowMapper<>(Utilisateur.class));
     }
+
+    @Override
+    public Utilisateur consulterUtilisateurParPseudo(String pseudo) {
+        return jdbcTemplate.queryForObject(SELECT_BY_PSEUDO, new BeanPropertyRowMapper<>(Utilisateur.class), pseudo);
+    }
+
     @Override
     public Utilisateur consulterUtilisateurParId(int id) {
         return jdbcTemplate.queryForObject(SELECT_BY_ID, new BeanPropertyRowMapper<>(Utilisateur.class), id);

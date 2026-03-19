@@ -9,6 +9,7 @@ public interface UtilisateurDao {
     void deleteUtilisateur (int idSupprimerUtilisateur);
     Utilisateur consulterUtilisateurParId(int id);
     List<Utilisateur> listerUtilisateurs();
+    Utilisateur consulterUtilisateurParPseudo(String pseudo);
 
 
 }

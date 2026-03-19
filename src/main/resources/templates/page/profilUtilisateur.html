@@ -21,8 +21,7 @@
     <!--
     TODO Ici, pas de form car on ne renvoie rien au controleur
     -->
-   <form
-         th:action="@{/profilUtilisateur}" method="post" th:object="${utilisateur}">
+
 
        <!--
        TODO Plutôt que des inputs avec th:field -> <p> ou <span> avec th:text
@@ -58,10 +57,6 @@
        <a th:href="@{/profilUtilisateur}"></a>
 
 
-
-
-
-
        <!--
 
            **** pas besoin d'afficher les psw dans le profil (ce sera plutot dans nouveauProfil) ****
@@ -83,7 +78,6 @@
         TODO  idem, pas besoin de valider un formulaire ici
        -->
 
-  </form>
 
     <!--
     TODO inserer un lien <a> qui redirigera vers le controller pour arriver sur le template nouveauProfil
