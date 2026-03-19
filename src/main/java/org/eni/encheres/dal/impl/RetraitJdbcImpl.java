@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public class RetraitJdbcImpl implements RetraitDao {
 
-    private static final String INSERT = "insert into retrait (rue, code_postal, ville) values (?, ?, ?)";
+    private static final String INSERT = "insert into retrait (id_article, rue, code_postal, ville) values (?, ?, ?, ?)";
     private static final String SELECT = "select * from retrait";
     private static final String DELETE = "delete from retrait where id_adresse = ?";
     private static final String SELECT_BY_ID = "select * from retrait where id_adresse  = ?";
@@ -31,7 +31,7 @@ public class RetraitJdbcImpl implements RetraitDao {
 
     @Override
     public void creerAdresse(Retrait retrait) {
-        jdbcTemplate.update(INSERT, retrait.getRue(), retrait.getCode_postal(), retrait.getVille());
+        jdbcTemplate.update(INSERT, retrait.getId(), retrait.getRue(), retrait.getCode_postal(), retrait.getVille());
 
     }
 

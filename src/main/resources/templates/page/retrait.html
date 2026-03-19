@@ -15,6 +15,9 @@ directement un objet Adresse
 <form th:action="@{/retrait}" method="post" th:object="${retrait}">
   <label>Retrait : </label>
   <!-- à la place de name="rue" j'utilise : th:field="*{rue}" afin de remplir l'attribut "rue" de mon objet retrait -->
+  <input type="number" th:field="*{id}" required> <!-- required : rend obligatoire la saisi de ce champs -->
+  <br>
+
   <input type="text" th:field="*{rue}" required> <!-- required : rend obligatoire la saisi de ce champs -->
   <br>
   <input type="text" th:field="*{code_postal}" required> <!-- required : rend obligatoire la saisi de ce champs -->

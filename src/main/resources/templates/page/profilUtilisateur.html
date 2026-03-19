@@ -7,6 +7,10 @@
 
                                     <title>Mon profil</title>
                 <!-- TODO vérifier au niveau du bouton "Modifier" par la suite -->
+
+
+                <!--TODO : CE PROFIL PERMET D'AVOIR LE BOUTON ENREGISTER ET SUPPRIMER LE COMPTE
+                                    ET DE VOIR LES CREDITS DE SON COMPTE-->
 </head>
 
 
@@ -15,7 +19,7 @@
 
 
    <form
-         th:action="@{/profil}" method="post" th:object="${utilisateur}">
+         th:action="@{/profilUtilisateur}" method="post" th:object="${utilisateur}">
 
 
          <label>Pseudo : </label>
