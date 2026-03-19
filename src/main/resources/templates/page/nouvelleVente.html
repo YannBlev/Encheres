@@ -8,11 +8,11 @@
     <form class="form" th:action="@{/nouvelleVente}" method="post" th:object="${article}">
         <section>
             <label>Article :</label>
-            <input type="text" th:field="*{enchere.article}">
+            <input type="text" th:field="*{nomArticle}">
             <br><br>
 
             <label>Description :</label><br>
-            <textarea cols="40" rows="6" th:field="*{enchere.article.description}"></textarea>
+            <textarea cols="40" rows="6" th:field="*{description}"></textarea>
             <br><br>
 
             <label>Catégorie :</label>
@@ -25,17 +25,15 @@
             <button type="submit">UPLOADER</button>
             <br><br>
 
-            <label>Mise à Prix :</label>
-            <input type="number" name="nombre" id="nombre" placeholder="Nombre de points">
+            <label>Prix initial :</label>
+            <input type="number" th:field="*{prixInitial}">
             <br><br>
 
             <label>Début de l'enchère:</label>
-            <label></label><input type="date" id="" name="birthday">
-            <input type="submit">
+            <input type="date" th:field="*{dateDebutEncheres}">
             <br><br>
             <label>Fin de l'enchère:</label>
-            <input type="date" id="" name="birthday">
-            <input type="submit">
+            <input type="date" th:field="*{dateFinEncheres}">
             <br><br>
         </section>
 
