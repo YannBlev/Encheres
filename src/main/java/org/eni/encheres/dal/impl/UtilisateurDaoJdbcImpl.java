@@ -19,7 +19,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
     private JdbcTemplate jdbcTemplate;
 
 
-    private static final String INSERT = "insert into utilisateur (pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe) values (?,?,?,?,?,?,?)";
+    private static final String INSERT = "insert into utilisateur (pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe) values (?,?,?,?,?,?,?,?,?)";
     private static final String DELETE = "delete from utilisateur where id_utilisateur = ?";
     private static final String SELECT_BY_ID = "select * from utilisateur where id_utilisateur = ?";
     private static final String SELECT = "select * from utilisateur";
