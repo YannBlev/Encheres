@@ -1,8 +1,7 @@
 
 /*
-	PENSER A SORTIR DE LA DATABASE POUR POUVOIR LA DROP
+	PENSER A SORTIR ET SUPPRIMER LA DATABASE POUR POUVOIR LA CREER
 */
-DROP DATABASE ENCHERES_ORG;
 
 CREATE DATABASE ENCHERES_ORG;
 
@@ -18,7 +17,7 @@ ALTER TABLE CATEGORIE ADD constraint categorie_pk PRIMARY KEY (id_categorie);
 
 CREATE TABLE ENCHERE (
                          id_enchere		INTEGER IDENTITY NOT NULL,
-                         id_utilisateur	INTEGER NOT NULL,
+                         id_enchereur	INTEGER NOT NULL,
                          id_article		INTEGER NOT NULL,
                          date_enchere	DATETIME NOT NULL,
                          montant_enchere	INTEGER NOT NULL
@@ -60,8 +59,8 @@ CREATE TABLE ARTICLE (
                          date_fin_encheres	DATE NOT NULL,
                          prix_initial		INTEGER,
                          prix_vente			INTEGER,
+                         etat_vente			BIT DEFAULT 0,
                          id_vendeur			INTEGER NOT NULL,
-                         id_acheteur			INTEGER,
                          id_categorie		INTEGER NOT NULL
 )
 
@@ -71,16 +70,12 @@ ALTER TABLE ARTICLE
     ADD CONSTRAINT article_utilisateurVendeur_fk FOREIGN KEY ( id_vendeur )
         REFERENCES UTILISATEUR ( id_utilisateur );
 
-ALTER TABLE ARTICLE
-    ADD CONSTRAINT article_utilisateurAcheteur_fk FOREIGN KEY ( id_acheteur )
-        REFERENCES UTILISATEUR ( id_utilisateur );
-
 ALTER TABLE ENCHERE
     ADD CONSTRAINT enchere_article_fk FOREIGN KEY ( id_article )
         REFERENCES ARTICLE ( id_article );
 
 ALTER TABLE ENCHERE
-    ADD CONSTRAINT utilisateur_article_fk FOREIGN KEY ( id_utilisateur )
+    ADD CONSTRAINT utilisateur_article_fk FOREIGN KEY ( id_enchereur )
         REFERENCES UTILISATEUR ( id_utilisateur );
 
 ALTER TABLE ARTICLE

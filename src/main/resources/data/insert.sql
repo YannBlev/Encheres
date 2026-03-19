@@ -13,3 +13,4 @@ VALUES('user2' , 'USER2', 'user2', 'user2@user.test', '00000000', 'Rue Utilisate
 
 INSERT INTO UTILISATEUR (pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur)
 VALUES('user3' , 'USER3', 'user3', 'user3@user.test', '00000000', 'Rue Utilisateur', '55403', 'UserThreeville', '{bcrypt}$2a$10$VwQ7gMUPLeQnFC6vCsOoTevzdPe.JPu0L/7cwPGdJ6TjSpipGwY.y', 50, 0); -- MDP : julien
+
