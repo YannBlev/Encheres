@@ -15,11 +15,19 @@ import java.util.List;
 @Repository
 public class ArticleVenduJdbcImpl implements ArticleVenduDao {
 
-    private static final String INSERT = "insert into article (nom_article, description,date_debut_enchères,date_fin_encheres, prix_initial, id_acheteur, id_vendeur,id_categorie ) values (?,?,?,?,?,?,?,?)";
+    private static final String INSERT = "insert into article (nom_article, description,date_debut_encheres,date_fin_encheres, prix_initial, id_vendeur,id_categorie ) values (?,?,?,?,?,?,?)";
     private static final String SELECT = "select * from article";
-    private static final String DELETE = "delete from article where numero = ?";
-    private static final String SELECT_BY_ID = "select * from article where numero = ?";
+    private static final String DELETE = "delete from article where id_article = ?";
+    private static final String SELECT_BY_ID = "select * from article where id_article = ?";
     private static final String SELECT_ALL= """
+            SELECT	a.id_article, a.nom_article, a.description, a.date_debut_encheres, a.date_fin_encheres, a.prix_initial, a.etat_vente,
+                    c.id_categorie, c.libelle,
+                    u.id_utilisateur, u.rue rueUtilisateur, u.code_postal code_postalUtilisateur, u.ville villeUtilisateur,
+                    r.rue rueRetrait, r.code_postal code_postalRetrait, r.ville villeRetrait
+            FROM ARTICLE a
+            INNER JOIN UTILISATEUR u ON a.id_vendeur = u.id_utilisateur
+            INNER JOIN RETRAIT r ON  r.id_article = a.id_article
+            INNER JOIN CATEGORIE c ON  c.id_categorie = a.id_categorie;
             """;
 
     @Autowired
@@ -45,7 +53,7 @@ public class ArticleVenduJdbcImpl implements ArticleVenduDao {
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
-        jdbcTemplate.update(INSERT, articleVendu.getNomArticle(),articleVendu.getDescription(),articleVendu.getDateDebutEncheres(),articleVendu.getDateFinEncheres(),articleVendu.getPrixInitial(),articleVendu.getAcheteur().getId(),articleVendu.getVendeur().getId(),articleVendu.getCategorie().getId());
+        jdbcTemplate.update(INSERT, articleVendu.getNomArticle(),articleVendu.getDescription(),articleVendu.getDateDebutEncheres(),articleVendu.getDateFinEncheres(),articleVendu.getPrixInitial(),articleVendu.getVendeur().getId(),articleVendu.getCategorie().getId());
     }
 
     @Override
