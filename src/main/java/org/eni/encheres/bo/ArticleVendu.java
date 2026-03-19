@@ -21,7 +21,7 @@ public class ArticleVendu {
     private LocalDateTime dateFinEncheres;
     @NotEmpty private int miseAPrix;
     @NotEmpty private int prixVente;
-    @NotNull private String etatVente;
+    @NotNull private Byte etatVente;
     @NotNull private Utilisateur vendeur;
     @NotNull private Utilisateur acheteur;
     @NotNull private Enchere enchere;
