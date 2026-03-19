@@ -13,10 +13,10 @@ import java.util.List;
 @Repository
 public class RetraitJdbcImpl implements RetraitDao {
 
-    private static final String INSERT = "insert into adresse (rue, code_postal, ville) values (?, ?, ?)";
-    private static final String SELECT = "select * from adresse";
-    private static final String DELETE = "delete from adresse where id_adresse = ?";
-    private static final String SELECT_BY_ID = "select * from adresse where id_adresse  = ?";
+    private static final String INSERT = "insert into retrait (rue, code_postal, ville) values (?, ?, ?)";
+    private static final String SELECT = "select * from retrait";
+    private static final String DELETE = "delete from retrait where id_adresse = ?";
+    private static final String SELECT_BY_ID = "select * from retrait where id_adresse  = ?";
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -24,8 +24,8 @@ public class RetraitJdbcImpl implements RetraitDao {
 
     @Override
     public List<Retrait> ListAdresse() {
-        List<Retrait> adresses = jdbcTemplate.query(SELECT, new RetraitRowMapper());
-        return adresses;
+        List<Retrait> retraits = jdbcTemplate.query(SELECT, new RetraitRowMapper());
+        return retraits;
     }
 
 
