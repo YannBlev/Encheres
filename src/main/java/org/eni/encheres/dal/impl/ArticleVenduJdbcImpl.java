@@ -15,7 +15,7 @@ import java.util.List;
 @Repository
 public class ArticleVenduJdbcImpl implements ArticleVenduDao {
 
-    private static final String INSERT = "insert into article (nom_article, description,date_debut_enchères,date_fin_encheres, prix_initial, id_acheteur, id_vendeur,id_categorie, id_adresse ) values (?,?,?,?,?,?,?,?,?)";
+    private static final String INSERT = "insert into article (nom_article, description,date_debut_enchères,date_fin_encheres, prix_initial, id_acheteur, id_vendeur,id_categorie ) values (?,?,?,?,?,?,?,?)";
     private static final String SELECT = "select * from article";
     private static final String DELETE = "delete from article where numero = ?";
     private static final String SELECT_BY_ID = "select * from article where numero = ?";
@@ -39,12 +39,11 @@ public class ArticleVenduJdbcImpl implements ArticleVenduDao {
                     .addValue("prix_initial", articleVendu.getPrixInitial())
                     .addValue("id_acheteur", articleVendu.getAcheteur())
                     .addValue("id_vendeur", articleVendu.getVendeur())
-                    .addValue("id_catégorie", articleVendu.getCategorie())
-                    .addValue("id_adresse", articleVendu.getRetrait());
+                    .addValue("id_catégorie", articleVendu.getCategorie());
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
-        jdbcTemplate.update(INSERT, articleVendu.getNomArticle(),articleVendu.getDescription(),articleVendu.getDateDebutEncheres(),articleVendu.getDateFinEncheres(),articleVendu.getPrixInitial(),articleVendu.getAcheteur().getId(),articleVendu.getVendeur().getId(),articleVendu.getCategorie().getId(),articleVendu.getRetrait().getId());
+        jdbcTemplate.update(INSERT, articleVendu.getNomArticle(),articleVendu.getDescription(),articleVendu.getDateDebutEncheres(),articleVendu.getDateFinEncheres(),articleVendu.getPrixInitial(),articleVendu.getAcheteur().getId(),articleVendu.getVendeur().getId(),articleVendu.getCategorie().getId());
     }
 
     @Override
