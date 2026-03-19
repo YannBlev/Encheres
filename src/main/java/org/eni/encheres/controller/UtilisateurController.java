@@ -56,7 +56,7 @@ public class UtilisateurController {
     @PostMapping("/profil/nouveauProfil")
     public String ajouterProfil(Utilisateur utilisateur) {
         utilisateurService.creerUtilisateur(utilisateur);
-        return "redirect:/encheres";
+        return "redirect:page/encheres";
     }
 
 }

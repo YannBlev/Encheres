@@ -4,19 +4,18 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Enchere {
 
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-        private DateTimeFormat dateEnchere;
-        @NotNull
-        private int montantEnchere;
+    private LocalDate dateEnchere;
 
-        private Utilisateur utilisateur;
-        private ArticleVendu article;
+    @NotNull
+    private int montantEnchere;
 
+    private Utilisateur utilisateur;
+    private ArticleVendu article;
 }
