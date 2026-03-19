@@ -7,10 +7,7 @@ import org.eni.encheres.service.EnchereService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -37,6 +34,12 @@ public class EnchereController {
     model.addAttribute("enchere",new Enchere());
         return "page/nouvelleVente";
     }
+//    @PostMapping("/{nouvelleVente}")
+//    public String getNouvelleVente(@PathVariable String nouvelleVente, Model model){
+//        model.addAttribute("encheres", enchereService.consulterEncheresParId(nouvelleVente));
+//        return "nouvelleVente";
+//        }
+//    }
 
     @GetMapping("/{id}/detail")
     public String detail(@PathVariable("id") int id){
