@@ -20,7 +20,7 @@ public class RetraitServiceJdbcImpl implements RetraitService {
     @Override
     public List<Retrait> ListAdresse() {
 
-        List<Retrait> adresses = retraitDao.ListAdresse();
+        List<Retrait> retraits = retraitDao.ListAdresse();
 
         return retraitDao.ListAdresse();
     }
