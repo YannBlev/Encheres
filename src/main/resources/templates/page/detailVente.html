@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"layout:decorate="~{layout/base}" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Détail Vente</title>
+</head>
+<body>
+  <main layout:fragment="content">
+
+    <label>Intitulé : </label>
+    <span th:text="${articleVendu.nomArticle}"></span><br>
+
+    <label>Description : </label>
+    <textarea cols="20" rows="4" type= "text" th:text="${articleVendu.descrption}"></textarea><br>
+
+    <label>Catégorie : </label>
+    <span th:text="${articleVendu.categorie}"></span><br>
+
+    <label>Meilleure offre : </label>
+    <span th:text="${}"></span><br>
+
+    <label>Mise à prix : </label>
+    <span th:text="${articleVendu.miseAprix}"></span><br>
+
+    <label>Fin de l'enchère : </label>
+    <span th:text="${articleVendu.dateFinEncheres }"></span><br>
+
+    <label>Retrait : </label>
+    <span th:text="${}"></span><br>
+
+    <label>Vendeur : </label>
+    <span th:text="${vendeur.pseudo}"></span><br>
+
+    <label>Ma proposition : </label>
+    <span th:text="${}"></span><br>
+
+    <label></label>
+    <button type="submit">Enchérir</button>
+
+    <a th:href="@{/detailVente}"></a>
+
+
+  </main>
+
+</body>
+
+</html>
