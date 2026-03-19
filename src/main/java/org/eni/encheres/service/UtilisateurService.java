@@ -10,7 +10,6 @@ public interface UtilisateurService {
      List<Utilisateur> listerUtilisateurs();
      void getUtilisateurById(int id);
      void updateUtilisateur(Utilisateur idUtilisateur);
-     Utilisateur consulterUtilisateurParPseudo(String pseudo);
 
 
 

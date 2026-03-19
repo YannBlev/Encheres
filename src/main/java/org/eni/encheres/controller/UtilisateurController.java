@@ -24,7 +24,7 @@ public class UtilisateurController {
 
     @GetMapping("/{pseudo}")
     public String utilisateur(@PathVariable String pseudo, Model model) {
-        model.addAttribute("utilisateur", utilisateurService.consulterUtilisateurParPseudo(pseudo));
+        model.addAttribute("utilisateur", utilisateurService.listerUtilisateurs().stream().filter(u -> u.getPseudo().equals(pseudo)).findFirst().orElse(null));
         return "page/profilUtilisateur";
     }
 
