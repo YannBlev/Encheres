@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr" layout:decorate="~{layout/base}" xmlns:layout="http://www.w3.org/1999/xhtml"><head>
+
+
+    <meta charset="UTF-8">
+                                    <title>Profil privé de JOJO</title>
+
+</head>
+
+<body>
+
+<main layout:fragment="content">
+
+    <form
+            th:action="@{/profilPrive}" method="post" th:object="${utilisateur}">
+
+
+    <label for="pseudo">Pseudo : </label>
+    <input type="text" id="pseudo" th:field="*{pseudo}">
+
+    <label for="nom">Nom : </label>
+    <input type="text" id="nom" th:field="*{nom}">
+
+    <label for="prenom">Prenom : </label>
+    <input type="text" id="prenom" th:field="*{prenom}">
+
+    <label for="email">Email : </label>
+    <input type="email" id="email" th:field="*{email}">
+
+    <label for="telephone">Télephone : </label>
+    <input type="tel" id="telephone" th:field="*{telephone}">
+
+    <label for="rue">Rue : </label>
+    <input type="text" id="rue" th:field="*{rue}">
+
+    <label for="codePostal">Code Postal : </label>
+    <input type="text" id="codePostal" th:field="*{codePostal}">
+
+    <label for="ville">Ville : </label>
+    <input type="text" id="ville" th:field="*{ville}">
+
+    <button type="button" th:onclick="|window.location.href='@{/profil}'|">Modifier le Profil</button>
+
+
+    </form>
+
+
+</main>
+</body>
+</html>
