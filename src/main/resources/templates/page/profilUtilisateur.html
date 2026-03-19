@@ -18,11 +18,17 @@
     <main layout:fragment="content">
 
 
+    <!--
+    TODO Ici, pas de form car on ne renvoie rien au controleur
+    -->
    <form
          th:action="@{/profilUtilisateur}" method="post" th:object="${utilisateur}">
 
 
          <label>Pseudo : </label>
+       <!--
+       TODO Plutôt que des inputs avec th:field -> <p> ou <span> avec th:text
+       -->
          <input type="text" th:field="*{pseudo}"
                 required><br>
 
@@ -47,6 +53,11 @@
          <label>Ville : </label>
          <input type="text" th:field="*{ville}" required><br>
 
+
+        <!--
+
+            **** pas besoin d'afficher les psw dans le profil (ce sera plutot dans nouveauProfil) ****
+
          <label>Mot de passe actuel : </label>
          <input type="hidden" th:text="${utilisateur.motDePasse}" required><br>
 
@@ -56,19 +67,21 @@
          <label>Confirmation : </label>
          <input type="password"
                 title="Les mots de passe doivent correspondre"
-                required><br>          <!--TODO méthode de  confirmation-->
-
-
-
-                <!--TODO méthode implémentation crédit à 0 lors de la création du compte
-                                     (ici profil déjà crée)-->
-
+                required><br>
+       -->
          <label>Crédits : </label>
          <input type="number">
 
+       <!--
+        TODO  idem, pas besoin de valider un formulaire ici
+       -->
        <button type="submit">Enregister</button>
 
   </form>
+
+    <!--
+    TODO inserer un lien <a> qui redirigera vers le controller pour arriver sur le template nouveauProfil
+    -->
 
   <form          th:action="@{/profil/delete}" method="post">
 
