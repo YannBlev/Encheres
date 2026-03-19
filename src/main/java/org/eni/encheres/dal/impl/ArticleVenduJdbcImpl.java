@@ -40,11 +40,11 @@ public class ArticleVenduJdbcImpl implements ArticleVenduDao {
                     .addValue("id_acheteur", articleVendu.getAcheteur())
                     .addValue("id_vendeur", articleVendu.getVendeur())
                     .addValue("id_catégorie", articleVendu.getCategorie())
-                    .addValue("id_adresse", articleVendu.getAdresse());
+                    .addValue("id_adresse", articleVendu.getRetrait());
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
-        jdbcTemplate.update(INSERT, articleVendu.getNomArticle(),articleVendu.getDescription(),articleVendu.getDateDebutEncheres(),articleVendu.getDateFinEncheres(),articleVendu.getPrixInitial(),articleVendu.getAcheteur().getId(),articleVendu.getVendeur().getId(),articleVendu.getCategorie().getId(),articleVendu.getAdresse().getId());
+        jdbcTemplate.update(INSERT, articleVendu.getNomArticle(),articleVendu.getDescription(),articleVendu.getDateDebutEncheres(),articleVendu.getDateFinEncheres(),articleVendu.getPrixInitial(),articleVendu.getAcheteur().getId(),articleVendu.getVendeur().getId(),articleVendu.getCategorie().getId(),articleVendu.getRetrait().getId());
     }
 
     @Override

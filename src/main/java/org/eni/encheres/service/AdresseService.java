@@ -1,14 +1,13 @@
 package org.eni.encheres.service;
 
-import org.eni.encheres.bo.Adresse;
-import org.springframework.stereotype.Service;
+import org.eni.encheres.bo.Retrait;
 
 import java.util.List;
 
 public interface AdresseService {
 
-    List<Adresse> ListAdresse ();
-    void creerAdresse(Adresse adresse);
+    List<Retrait> ListAdresse ();
+    void creerAdresse(Retrait retrait);
     void supprimerAdresse (int id);
-    Adresse consulterAdresseById(int id);
+    Retrait consulterAdresseById(int id);
 }

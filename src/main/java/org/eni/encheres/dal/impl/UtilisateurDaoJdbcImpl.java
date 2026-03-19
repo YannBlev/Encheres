@@ -31,7 +31,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
                         utilisateur.getPrenom(),
                         utilisateur.getEmail(),
                         utilisateur.getTelephone(),
-                        utilisateur.getAdresse().getId(),
+                        utilisateur.getRetrait().getId(),
                         utilisateur.getMotDePasse());
     }
     @Override

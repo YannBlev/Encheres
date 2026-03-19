@@ -1,7 +1,7 @@
 package org.eni.encheres.controller;
 
 
-import org.eni.encheres.bo.Adresse;
+import org.eni.encheres.bo.Retrait;
 
 import org.eni.encheres.service.AdresseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,15 +23,15 @@ public class AdresseController {
         // 1 - j'ajoute dans mon modèle l'attribut "categorie" qui va servir à générer les lignes de la table HTML de mon template
         // pour cela : j'utilse la méthode consulterCategorie() de mon service
         model.addAttribute("adresses", adresseService.ListAdresse());
-        model.addAttribute("adresse", new Adresse());
+        model.addAttribute("adresse", new Retrait());
 
         return "page/adresse";
     }
 
     @PostMapping
-    public String postCAdresse(Adresse adresse) {
+    public String postCAdresse(Retrait retrait) {
         // 1 : je délègue au service la création du genre
-        adresseService.creerAdresse(adresse);
+        adresseService.creerAdresse(retrait);
 
         // 2 : je redirige sur la page qui liste les genres (redirect:/genres)
         return "redirect:/adresse";

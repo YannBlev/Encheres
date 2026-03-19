@@ -6,15 +6,15 @@
 </head>
 <body>
 
-<h2>Ajouter une adresse</h2>
+<h2>Ajouter une retrait</h2>
 
 <!-- ***** FORMULAIRE DE CREATION DE ADRESSE *****
 Utilise : th:object pour envoyer au controller (méthode annotée @PostMapping)
 directement un objet Adresse
 -->
-<form th:action="@{/adresse}" method="post" th:object="${adresse}">
+<form th:action="@{/retrait}" method="post" th:object="${retrait}">
   <label>Adresse : </label>
-  <!-- à la place de name="rue" j'utilise : th:field="*{rue}" afin de remplir l'attribut "rue" de mon objet adresse -->
+  <!-- à la place de name="rue" j'utilise : th:field="*{rue}" afin de remplir l'attribut "rue" de mon objet retrait -->
   <input type="text" th:field="*{rue}" required> <!-- required : rend obligatoire la saisi de ce champs -->
   <br>
   <input type="text" th:field="*{code_postal}" required> <!-- required : rend obligatoire la saisi de ce champs -->
@@ -35,7 +35,7 @@ directement un objet Adresse
   <!--ligne :tr (table row)-->
   <tr>
     <!-- th (table header) : un colonne de titre de ma table -->
-    <th>Id adresse</th>
+    <th>Id retrait</th>
     <th>Adresse</th>
     <th>Action</th>
 
@@ -45,7 +45,7 @@ directement un objet Adresse
   <tbody>
   <!-- je vais générer une ligne  <tr> par genre stocké dans mon application
       pour cela, on va utilser l'attribut : th:each
-      qui va itérer sur la liste contenue dans mon attribut de model : adresse a
+      qui va itérer sur la liste contenue dans mon attribut de model : retrait a
 
       th:each="a : ${adresses}"
     -->
@@ -54,7 +54,7 @@ directement un objet Adresse
       <td th:text="${a.id}"></td>
       <td th:text="|${a.rue} ${a.code_postal} ${a.ville}|"></td>
       <td>
-        <form class="inline-form" th:action="@{adresse/supprimer}" method="post">
+        <form class="inline-form" th:action="@{retrait/supprimer}" method="post">
         <button class="delete-button" type="submit" name="IdAdresseASupprimer" th:value="${a.id}">✗</button>
         </form>
       </td>

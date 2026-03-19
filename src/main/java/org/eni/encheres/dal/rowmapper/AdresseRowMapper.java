@@ -1,24 +1,23 @@
 package org.eni.encheres.dal.rowmapper;
 
-import org.eni.encheres.bo.Adresse;
-import org.eni.encheres.bo.Categorie;
+import org.eni.encheres.bo.Retrait;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class AdresseRowMapper implements RowMapper<Adresse> {
+public class AdresseRowMapper implements RowMapper<Retrait> {
     @Override
-    public Adresse mapRow(ResultSet rs, int rowNum) throws SQLException {
+    public Retrait mapRow(ResultSet rs, int rowNum) throws SQLException {
 
-        Adresse adresse = new Adresse();
+        Retrait retrait = new Retrait();
 
-        adresse.setId(rs.getInt("id_adresse"));
-        adresse.setRue(rs.getString("rue"));
-        adresse.setCode_postal(rs.getString("code_postal"));
-        adresse.setVille(rs.getString("ville"));
+        retrait.setId(rs.getInt("id_adresse"));
+        retrait.setRue(rs.getString("rue"));
+        retrait.setCode_postal(rs.getString("code_postal"));
+        retrait.setVille(rs.getString("ville"));
 
-        return adresse;
+        return retrait;
 
     }
 }

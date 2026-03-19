@@ -1,11 +1,8 @@
 package org.eni.encheres.dal.impl;
 
-import org.eni.encheres.bo.Adresse;
-import org.eni.encheres.bo.ArticleVendu;
-import org.eni.encheres.bo.Categorie;
+import org.eni.encheres.bo.Retrait;
 import org.eni.encheres.dal.AdresseDao;
 import org.eni.encheres.dal.rowmapper.AdresseRowMapper;
-import org.eni.encheres.dal.rowmapper.CategorieRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -26,15 +23,15 @@ public class AdresseJdbcImpl implements AdresseDao {
 
 
     @Override
-    public List<Adresse> ListAdresse() {
-        List<Adresse> adresses = jdbcTemplate.query(SELECT, new AdresseRowMapper());
+    public List<Retrait> ListAdresse() {
+        List<Retrait> adresses = jdbcTemplate.query(SELECT, new AdresseRowMapper());
         return adresses;
     }
 
 
     @Override
-    public void creerAdresse(Adresse adresse) {
-        jdbcTemplate.update(INSERT, adresse.getRue(), adresse.getCode_postal(), adresse.getVille());
+    public void creerAdresse(Retrait retrait) {
+        jdbcTemplate.update(INSERT, retrait.getRue(), retrait.getCode_postal(), retrait.getVille());
 
     }
 
@@ -45,7 +42,7 @@ public class AdresseJdbcImpl implements AdresseDao {
     }
 
     @Override
-    public Adresse consulterAdresseById(int id) {
-        return jdbcTemplate.queryForObject(SELECT_BY_ID, new BeanPropertyRowMapper<>(Adresse.class), id);
+    public Retrait consulterAdresseById(int id) {
+        return jdbcTemplate.queryForObject(SELECT_BY_ID, new BeanPropertyRowMapper<>(Retrait.class), id);
     }
 }
