@@ -1,0 +1,26 @@
+<html lang="en" layout:decorate="~{layout/base}" xmlns:layout="http://www.w3.org/1999/xhtml">
+<main layout:fragment="content">
+
+    <h1>PROFILS</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>PSEUDO</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="u:${utilisateurs}">
+                <td th:text="${u.id}"></td>
+                <td th:text="${u.pseudo}"></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+</main>
