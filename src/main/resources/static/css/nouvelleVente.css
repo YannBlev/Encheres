@@ -1,5 +1,4 @@
 fieldset{
-    display: flex;
     border: 3px ;
     justify-content: center; /* Centre horizontalement */
     align-items: center;
@@ -24,9 +23,9 @@ legend.log{
     border : 30px solid white;
     background-color:burlywood;
 }
-form.vente{
+form.form{
     margin: 0 auto;
-    width: 180px;
+    width: 400px;
     padding: 2em;
     border: 2px solid black;
     border-radius: 1em;

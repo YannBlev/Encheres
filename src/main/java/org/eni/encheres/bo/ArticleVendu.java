@@ -26,6 +26,5 @@ public class ArticleVendu {
     @NotNull private Utilisateur acheteur;
     @NotNull private Enchere enchere;
     @NotNull private Categorie categorie;
-    @NotNull private Retrait retrait;
     @NotNull private int prixInitial;
 }
