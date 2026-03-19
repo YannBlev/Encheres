@@ -9,7 +9,11 @@
 
     <h2 th:text="|Profil de : ${profil}|" method="post" th:object="${utilisateur}"></h2>
 
-    <form action="#" th:action="@{/nouveauProfil}" method="post">
+            <!--TODO : CE PROFIL PERMET D'ETRE VU PAR TOUT LE MONDE SANS ETRE MODIFIÉ -->
+
+
+    <form
+            th:action="@{/nouveauProfil}" method="post">
 
         <label>Pseudo : </label>
         <input type="text" th:field="*{pseudo}">
