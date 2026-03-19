@@ -24,58 +24,64 @@
    <form
          th:action="@{/profilUtilisateur}" method="post" th:object="${utilisateur}">
 
-
-         <label>Pseudo : </label>
        <!--
        TODO Plutôt que des inputs avec th:field -> <p> ou <span> avec th:text
        -->
-         <input type="text" th:field="*{pseudo}"
-                required><br>
 
-         <label>Nom : </label>
-         <input type="text" th:field="*{nom}" required><br>
+       <label>Profil : </label>
+       <span th:text="${pseudo}"></span><br>
 
-         <label>Prenom : </label>
-         <input type="text" th:field="*{prenom}" required><br>
+       <label>Anné : </label>
+       <span th:text="${nom}"></span><br>
 
-         <label>Email : </label>
-         <input type="text" th:field="*{email}" required><br>
+       <label>Titre : </label>
+       <span th:text="${prenom}"></span><br>
 
-         <label>Télephone : </label>
-         <input type="text" th:field="*{telephone}" required><br>
+       <label>Réalisateur : </label>
+       <span th:text="${email}"></span><br>
 
-         <label>Rue : </label>
-         <input type="text" th:field="*{rue}" required><br>
+       <label>Durée : </label>
+       <span th:text="${telephone }"></span><br>
 
-         <label>Code Postal : </label>
-         <input type="text" th:field="*{codePostal}" required><br>
+       <label>Acteurs : </label>
+       <span th:text="${rue }"></span><br>
 
-         <label>Ville : </label>
-         <input type="text" th:field="*{ville}" required><br>
+       <label>Acteurs : </label>
+       <span th:text="${codePostal }"></span><br>
+
+       <label>Acteurs : </label>
+       <span th:text="${ville }"></span><br>
+
+       <label>Acteurs : </label>
+       <button type="submit">Modifier</button>
+
+       <a th:href="@{/profilUtilisateur}"></a>
 
 
-        <!--
 
-            **** pas besoin d'afficher les psw dans le profil (ce sera plutot dans nouveauProfil) ****
 
-         <label>Mot de passe actuel : </label>
-         <input type="hidden" th:text="${utilisateur.motDePasse}" required><br>
 
-         <label>Nouveau mot de passe : </label>
-         <input type="hidden" th:field="*{motDePasse}" required><br>
 
-         <label>Confirmation : </label>
-         <input type="password"
-                title="Les mots de passe doivent correspondre"
-                required><br>
-       -->
-         <label>Crédits : </label>
-         <input type="number">
+       <!--
+
+           **** pas besoin d'afficher les psw dans le profil (ce sera plutot dans nouveauProfil) ****
+
+        <label>Mot de passe actuel : </label>
+        <input type="hidden" th:text="${utilisateur.motDePasse}" required><br>
+
+        <label>Nouveau mot de passe : </label>
+        <input type="hidden" th:field="*{motDePasse}" required><br>
+
+        <label>Confirmation : </label>
+        <input type="password"
+               title="Les mots de passe doivent correspondre"
+               required><br>
+      -->
+
 
        <!--
         TODO  idem, pas besoin de valider un formulaire ici
        -->
-       <button type="submit">Enregister</button>
 
   </form>
 
@@ -83,11 +89,6 @@
     TODO inserer un lien <a> qui redirigera vers le controller pour arriver sur le template nouveauProfil
     -->
 
-  <form          th:action="@{/profil/delete}" method="post">
-
-         <input type="hidden" name="idASupprimer" th:value="${utilisateur.id}" />
-         <button type="submit">Supprimer mon compte</button>
-  </form>
 
 
 </main>
