@@ -62,7 +62,7 @@ public class ArticleVenduServiceJdbcImpl implements ArticleVenduService {
                 .ville(articleDto.getVille())
             .build();
 
-//        retraitDao.creerAdresse(retrait);
+        retraitDao.creerAdresse(retrait);
 
     }
 
