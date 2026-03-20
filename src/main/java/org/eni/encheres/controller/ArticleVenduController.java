@@ -1,7 +1,7 @@
 package org.eni.encheres.controller;
 
 import lombok.AllArgsConstructor;
-import org.eni.encheres.dto.ArticleDto;
+import org.eni.encheres.bo.dto.ArticleDto;
 import org.eni.encheres.service.ArticleVenduService;
 import org.eni.encheres.service.CategorieService;
 import org.eni.encheres.service.UtilisateurService;

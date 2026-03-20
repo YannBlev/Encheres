@@ -32,4 +32,5 @@ public class ArticleVendu {
     @NotNull private Enchere enchere;
     @NotNull private Categorie categorie;
     @NotNull private int prixInitial;
+    private String imagePath;
 }

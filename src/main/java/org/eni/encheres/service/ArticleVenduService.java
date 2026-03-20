@@ -1,7 +1,7 @@
 package org.eni.encheres.service;
 
 import org.eni.encheres.bo.ArticleVendu;
-import org.eni.encheres.dto.ArticleDto;
+import org.eni.encheres.bo.dto.ArticleDto;
 
 import java.util.List;
 
