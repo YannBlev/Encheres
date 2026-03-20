@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 // TODO mettre correctement les bonnes adresses de redirection :
 
 @Controller
-@RequestMapping("encheres)")
+@RequestMapping
 public class UtilisateurController {
 
     @Autowired
