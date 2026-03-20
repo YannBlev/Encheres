@@ -16,6 +16,7 @@ public class Enchere {
     @NotNull
     private int montantEnchere;
 
-    private Utilisateur utilisateur;
-    private ArticleVendu article;
+        private Utilisateur utilisateur;
+        private ArticleVendu article;
+
 }
