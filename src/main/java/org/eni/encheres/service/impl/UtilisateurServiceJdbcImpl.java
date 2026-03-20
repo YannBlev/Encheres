@@ -38,8 +38,8 @@ public class UtilisateurServiceJdbcImpl implements UtilisateurService {
     }
 
     @Override
-    public void getUtilisateurById (int id) {
-        utilisateurDao.consulterUtilisateurParId(id);
+    public Utilisateur getUtilisateurById (int id) {
+        return utilisateurDao.consulterUtilisateurParId(id);
     }
 
     @Override

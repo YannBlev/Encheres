@@ -8,7 +8,7 @@ public interface UtilisateurService {
      void creerUtilisateur (Utilisateur idUtilisateur);
      void supprimerUtilisateur (Utilisateur idSupprimerUtilisateur);
      List<Utilisateur> listerUtilisateurs();
-     void getUtilisateurById(int id);
+     Utilisateur getUtilisateurById(int id);
      void updateUtilisateur(Utilisateur idUtilisateur);
 
 
