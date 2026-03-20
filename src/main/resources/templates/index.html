@@ -27,20 +27,39 @@
     </section>
 
     <section style="display: flex; flex-wrap: wrap;">
-        <article th:each="enchere : ${encheres}">
+        <section class="my-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 mx-auto">
+                        <h2>Upload Image Example</h2>
+                        <p th:text="${message}" th:if="${message ne null}" class="alert alert-primary"></p>
+                        <form method="post" th:action="@{/upload}" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <input type="file" name="image" accept="image/*" class="form-control-file">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Upload image</button>
+                        </form>
+                        <span th:if="${msg != null}" th:text="${msg}"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <article th:each="article : ${articles}">
             <div class="card">
                 <img src="img_avatar.png" alt="Avatar" style="width:100%">
                 <div class="container">
-                    <h4 th:text="${enchere.article.nomArticle}"></h4><br>
+                    <h4 th:text="${article.nomArticle}"></h4><br>
 
                     <label>Prix: </label>
-                    <span th:text="|${enchere.article.prixVente} points|"></span>
+                    <span th:text="|${article.prixInitial} points|"></span>
+                    <br>
 
                     <label>Fin de l'enchère :</label>
-                    <span th:text="${enchere.article.dateFinEncheres}"></span>
+                    <span th:text="${article.dateFinEncheres}"></span>
+                    <br>
 
                     <label>Vendeur :</label>
-                    <span th:text="${enchere.article.vendeur}"></span>
+                    <span th:text="${article.vendeur}"></span>
 
                 </div>
             </div>
