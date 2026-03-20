@@ -3,9 +3,10 @@
 
 <body>
 <main layout:fragment="content">
-    <h2>Nouvelle Vente</h2>
+    <fieldset class="table-container">
+        <legend class="log"><h2>Nouvelle Vente</h2></legend>
 
-    <form class="form" th:action="@{./nouvelleVente}" method="post" th:object="${articleDto}">
+    <form class="vente" th:action="@{./nouvelleVente}" method="post" th:object="${articleDto}">
         <section>
             <label>Article :</label>
             <input type="text" th:field="*{nomArticle}">
@@ -24,7 +25,7 @@
             <label>Photo de l'article :</label>
                 <div action="/upload" method="post" enctype="multipart/form-data">
                     <input type="file" name="image" accept="image/*" />
-                    <button type="submit">Uploader</button>
+                    <button  type="submit">UPLOADER</button>
                 </div>
             <br><br>
 
@@ -53,11 +54,12 @@
             <br><br>
 
         <section>
-            <button type="submit">Enregistré</button>
-            <button type="submit">Annuler</button>
-            <button type="submit">Annuler la vente</button>
+            <button class="favorite styled" type="submit">Enregistré</button>
+            <button class="favorite styled" type="submit">Annuler</button>
+            <button class="favorite styled" type="submit">Annuler la vente</button>
         </section>
     </form>
+    </fieldset>
 </main>
 </body>
 </html>

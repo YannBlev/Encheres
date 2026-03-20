@@ -5,9 +5,8 @@ import org.eni.encheres.bo.ArticleVendu;
 import org.eni.encheres.bo.Retrait;
 import org.eni.encheres.dal.ArticleVenduDao;
 import org.eni.encheres.dal.RetraitDao;
-import org.eni.encheres.dto.ArticleDto;
+import org.eni.encheres.bo.dto.ArticleDto;
 import org.eni.encheres.service.ArticleVenduService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,6 +28,9 @@ public class ArticleVenduServiceJdbcImpl implements ArticleVenduService {
         return articleVenduDao.listArticlesVendu();
     }
 
+    /**
+     * @Transactionnal est important pour l'atomicité de l'ACID !
+     */
     @Override
     @Transactional
     public void creerArticleVendu(ArticleDto articleDto) {
@@ -50,10 +52,8 @@ public class ArticleVenduServiceJdbcImpl implements ArticleVenduService {
 
 
         int index = articleVenduDao.listArticlesVendu().size();
-        System.out.println("index du dernier article :" + index);
 
         int idArticle = articleVenduDao.listArticlesVendu().get(index-1).getNoArticle();
-        System.out.println("id de l'article :" + idArticle );
 
         Retrait retrait = Retrait.builder()
                 .id(idArticle)
