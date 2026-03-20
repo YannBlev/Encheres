@@ -42,7 +42,7 @@ public class UtilisateurController {
     @PostMapping("/profil/delete") //Supprimer Utilisateur dans son menu utilisateur
     public String suppressionUtilisateur(Utilisateur idUtilisateurASupprimer) {
         utilisateurService.supprimerUtilisateur(idUtilisateurASupprimer);
-        return "redirect:/profil";
+        return "redirect:/encheres";
     }
 
     // TODO UtilisateurDTO
@@ -56,7 +56,7 @@ public class UtilisateurController {
     @PostMapping("/profil/nouveauProfil")
     public String ajouterProfil(Utilisateur utilisateur) {
         utilisateurService.creerUtilisateur(utilisateur);
-        return "redirect:page/profil";
+        return "redirect:encheres";
     }
 
 }
