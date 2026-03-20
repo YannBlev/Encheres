@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 import org.eni.encheres.bo.Categorie;
 import org.eni.encheres.bo.Utilisateur;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.time.LocalDate;
 
 @Data
@@ -32,5 +34,5 @@ public class ArticleDto {
     private String rue;
     private String code_postal;
     private String ville;
-    private String imagePath;
+    private MultipartFile image;
 }

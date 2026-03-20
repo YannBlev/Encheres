@@ -7,7 +7,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -32,5 +34,5 @@ public class ArticleVendu {
     @NotNull private Enchere enchere;
     @NotNull private Categorie categorie;
     @NotNull private int prixInitial;
-    private String imagePath;
+    private MultipartFile image;
 }

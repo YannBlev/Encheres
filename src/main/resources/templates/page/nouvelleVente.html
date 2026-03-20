@@ -6,7 +6,7 @@
     <fieldset class="table-container">
         <legend class="log"><h2>Nouvelle Vente</h2></legend>
 
-    <form class="vente" th:action="@{./nouvelleVente}" method="post" th:object="${articleDto}">
+    <form class="vente" th:action="@{./nouvelleVente}" method="post" th:object="${articleDto}" enctype="multipart/form-data">
         <section>
             <label>Article :</label>
             <input type="text" th:field="*{nomArticle}">
@@ -23,10 +23,7 @@
             <br><br>
 
             <label>Photo de l'article :</label>
-                <div action="/upload" method="post" enctype="multipart/form-data">
-                    <input type="file" name="image" accept="image/*" />
-                    <button  type="submit">UPLOADER</button>
-                </div>
+            <input type="file" name="image" accept="image/*" th:field="*{image}">
             <br><br>
 
             <label>Prix initial :</label>
