@@ -2,6 +2,7 @@ package org.eni.encheres.service.impl;
 
 import org.eni.encheres.bo.ArticleVendu;
 import org.eni.encheres.dal.ArticleVenduDao;
+import org.eni.encheres.dto.ArticleDto;
 import org.eni.encheres.service.ArticleVenduService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
@@ -28,7 +29,7 @@ public class ArticleVenduBouchon implements ArticleVenduService {
     }
 
     @Override
-    public void creerArticleVendu(ArticleVendu articleVendu) {
+    public void creerArticleVendu(ArticleDto articleDto) {
 
     }
 
