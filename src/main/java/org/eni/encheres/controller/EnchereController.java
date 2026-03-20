@@ -36,18 +36,19 @@ public class EnchereController {
     }
 
 
-    @GetMapping("/nouvelleVente")
-    public String nouvelleVente(Model model){
-        model.addAttribute("categories", categorieService.consulterCategorie());
-        model.addAttribute("article",new ArticleVendu());
-
-        return "page/nouvelleVente";
-    }
-    @PostMapping("/nouvelleVente")
-    public String getNouvelleVente(@PathVariable String nouvelleVente, Model model){
-        model.addAttribute("nouvelleVente", articleVenduService.listArticlesVendu().get(Integer.parseInt(nouvelleVente)));
-        return "page/nouvelleVente";
-        }
+//    @GetMapping("/nouvelleVente")
+//    public String nouvelleVente(Model model){
+//        model.addAttribute("categories", categorieService.consulterCategorie());
+//        model.addAttribute("article",new ArticleVendu());
+//
+//        return "page/nouvelleVente";
+//    }
+//
+//    @PostMapping("/nouvelleVente")
+//    public String getNouvelleVente(@PathVariable String nouvelleVente, Model model){
+//        model.addAttribute("nouvelleVente", articleVenduService.listArticlesVendu().get(Integer.parseInt(nouvelleVente)));
+//        return "page/nouvelleVente";
+//        }
 
 
     @GetMapping("/{id}/detail")
