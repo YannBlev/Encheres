@@ -21,13 +21,11 @@ import java.util.List;
 @RequestMapping("/encheres")
 public class EnchereController {
 
-    private EnchereService enchereService;
-    private CategorieService categorieService;
     private ArticleVenduService articleVenduService;
 
-    @ModelAttribute("encheres")
-    public List<Enchere> getAttributeModelEncheres() {
-        return enchereService.ListEncheres();
+    @ModelAttribute("articles")
+    public List<ArticleVendu> getAttributeModelArticles() {
+        return articleVenduService.listArticlesVendu();
     }
 
     @GetMapping
@@ -36,24 +34,9 @@ public class EnchereController {
     }
 
 
-//    @GetMapping("/nouvelleVente")
-//    public String nouvelleVente(Model model){
-//        model.addAttribute("categories", categorieService.consulterCategorie());
-//        model.addAttribute("article",new ArticleVendu());
-//
-//        return "page/nouvelleVente";
-//    }
-//
-//    @PostMapping("/nouvelleVente")
-//    public String getNouvelleVente(@PathVariable String nouvelleVente, Model model){
-//        model.addAttribute("nouvelleVente", articleVenduService.listArticlesVendu().get(Integer.parseInt(nouvelleVente)));
-//        return "page/nouvelleVente";
-//        }
-
-
     @GetMapping("/{id}/detail")
     public String detail(@PathVariable("id") int id){
-        enchereService.consulterEncheresParId(id);
+        articleVenduService.consulterArticleVendu(id);
         return "detail";
     }
 

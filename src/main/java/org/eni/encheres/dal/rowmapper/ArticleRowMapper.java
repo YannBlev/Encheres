@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class ArticleRowMapper implements RowMapper<ArticleVendu> {
@@ -28,8 +29,8 @@ public class ArticleRowMapper implements RowMapper<ArticleVendu> {
         article.setNoArticle(rs.getInt("id_article"));
         article.setNomArticle(rs.getString("nom_article"));
         article.setDescription(rs.getString("description"));
-        article.setDateDebutEncheres(rs.getObject("date_debut_encheres", LocalDateTime.class));
-        article.setDateFinEncheres(rs.getObject("date_fin_encheres", LocalDateTime.class));
+        article.setDateDebutEncheres(rs.getObject("date_debut_encheres", LocalDate.class));
+        article.setDateFinEncheres(rs.getObject("date_fin_encheres", LocalDate.class));
         article.setPrixInitial(rs.getInt("prix_initial"));
         article.setPrixVente(rs.getInt("prix_vente"));
         article.setEtatVente(rs.getByte("etat_vente"));

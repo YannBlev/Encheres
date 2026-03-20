@@ -22,7 +22,7 @@ public class ArticleVenduJdbcImpl implements ArticleVenduDao {
     private JdbcTemplate jdbcTemplate;
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    private static final String INSERT = "insert into article (nom_article, description,date_debut_encheres,date_fin_encheres, prix_initial, id_vendeur,id_categorie ) values (:nom_article, :description,:date_debut_encheres,:date_fin_encheres, :prix_initial,:id_vendeur,:id_categorie )";
+    private static final String INSERT = "insert into article (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, id_vendeur, id_categorie ) values (:nom_article, :description,:date_debut_encheres,:date_fin_encheres, :prix_initial,:id_vendeur,:id_categorie )";
     private static final String SELECT = "select * from article";
     private static final String DELETE = "delete from article where id_article = ?";
     private static final String SELECT_BY_ID = "select * from article where id_article = ?";
@@ -48,11 +48,11 @@ public class ArticleVenduJdbcImpl implements ArticleVenduDao {
         MapSqlParameterSource params = new MapSqlParameterSource()
                     .addValue("nom_article", articleVendu.getNomArticle())
                     .addValue("description", articleVendu.getDescription())
-                    .addValue("date_debut_enchère", articleVendu.getDateDebutEncheres())
-                    .addValue("date_fin_enchère", articleVendu.getDateFinEncheres())
+                    .addValue("date_debut_encheres", articleVendu.getDateDebutEncheres())
+                    .addValue("date_fin_encheres", articleVendu.getDateFinEncheres())
                     .addValue("prix_initial", articleVendu.getPrixInitial())
                     .addValue("id_vendeur", articleVendu.getVendeur().getId())
-                    .addValue("id_catégorie", articleVendu.getCategorie().getId());
+                    .addValue("id_categorie", articleVendu.getCategorie().getId());
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         namedParameterJdbcTemplate.update(INSERT,params, keyHolder);

@@ -16,7 +16,7 @@
             <br><br>
 
             <label>Catégorie :</label>
-                <select name="categorie">
+                <select th:field="*{categorie}">
                     <option th:each="categorie : ${categories}" th:value="${categorie.id}" th:text="${categorie.libelle}"></option>
                 </select>
             <br><br>

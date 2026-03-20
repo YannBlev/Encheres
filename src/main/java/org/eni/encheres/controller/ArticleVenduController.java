@@ -34,9 +34,10 @@ public class ArticleVenduController {
 //        if (bindingResult.hasErrors()) {
 //            return "index";
 //        }
+        if (bindingResult.hasErrors()) {
+            bindingResult.getAllErrors().forEach(System.out::println);
+        }
         articleDto.setVendeur(utilisateurService.listerUtilisateurs().stream().filter(u -> u.getPseudo().equals(pseudo)).findFirst().orElse(null));
-        System.out.println("*******************" + articleDto.getNomArticle() + "*******************");
-        System.out.println("*******************" + articleDto.getDateDebutEncheres() + "*******************");
         articleVenduService.creerArticleVendu(articleDto);
         return "redirect:/encheres";
     }

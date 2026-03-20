@@ -6,7 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -18,10 +20,12 @@ public class ArticleVendu {
     @NotEmpty private int noArticle;
     @NotNull private String nomArticle;
     @NotNull private String description;
-    private LocalDateTime dateDebutEncheres;
-    private LocalDateTime dateFinEncheres;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dateDebutEncheres;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dateFinEncheres;
     @NotEmpty private int miseAPrix;
-    @NotEmpty private int prixVente;
+    private Integer prixVente;
     @NotNull private Byte etatVente;
     @NotNull private Utilisateur vendeur;
     @NotNull private Utilisateur acheteur;

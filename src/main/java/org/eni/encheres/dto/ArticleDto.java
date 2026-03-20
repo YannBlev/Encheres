@@ -11,7 +11,9 @@ import lombok.NoArgsConstructor;
 import org.eni.encheres.bo.Categorie;
 import org.eni.encheres.bo.Enchere;
 import org.eni.encheres.bo.Utilisateur;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -22,10 +24,12 @@ public class ArticleDto {
 
     private String nomArticle;
     private String description;
-    private LocalDateTime dateDebutEncheres;
-    private LocalDateTime dateFinEncheres;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dateDebutEncheres;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dateFinEncheres;
     private int miseAPrix;
-    private int prixVente;
+    private Integer prixVente;
     private Byte etatVente;
     private Utilisateur vendeur;
     private Categorie categorie;

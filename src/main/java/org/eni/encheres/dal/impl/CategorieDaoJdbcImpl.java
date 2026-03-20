@@ -58,7 +58,6 @@ public class CategorieDaoJdbcImpl implements CategorieDao {
 
     @Override
     public Categorie getCategorieById(int id) {
-        System.out.println(id);
-        return jdbcTemplate.queryForObject(SELECT_BY_ID, new BeanPropertyRowMapper<>(Categorie.class), id);
+        return jdbcTemplate.queryForObject(SELECT_BY_ID, new CategorieRowMapper(), id);
     }
 }

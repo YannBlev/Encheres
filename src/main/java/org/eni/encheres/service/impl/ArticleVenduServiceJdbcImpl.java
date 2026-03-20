@@ -48,8 +48,12 @@ public class ArticleVenduServiceJdbcImpl implements ArticleVenduService {
 
         articleVenduDao.creerArticleVendu(article);
 
+
         int index = articleVenduDao.listArticlesVendu().size();
+        System.out.println("index du dernier article :" + index);
+
         int idArticle = articleVenduDao.listArticlesVendu().get(index-1).getNoArticle();
+        System.out.println("id de l'article :" + idArticle );
 
         Retrait retrait = Retrait.builder()
                 .id(idArticle)
@@ -58,7 +62,7 @@ public class ArticleVenduServiceJdbcImpl implements ArticleVenduService {
                 .ville(articleDto.getVille())
             .build();
 
-        retraitDao.creerAdresse(retrait);
+//        retraitDao.creerAdresse(retrait);
 
     }
 

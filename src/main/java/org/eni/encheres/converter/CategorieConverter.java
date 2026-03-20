@@ -15,6 +15,8 @@ public class CategorieConverter implements Converter<String, Categorie> {
     @Override
     public Categorie convert(String idFormatTexte) {
         int id = Integer.parseInt(idFormatTexte);
+        Categorie cat = categorieService.consulterCategorieParId(id);
+        System.out.println("Conversion catégorie : " + id + " -> " + cat);
         return categorieService.consulterCategorieParId(id);
     }
 

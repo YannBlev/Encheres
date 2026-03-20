@@ -18,7 +18,6 @@ public class CategorieServiceJdbcimpl implements CategorieService {
 
     @Override
     public List<Categorie> consulterCategorie() {
-        List<Categorie> categories = categorieDao.ListCategorie();
         return categorieDao.ListCategorie();
     }
 
@@ -32,7 +31,6 @@ public class CategorieServiceJdbcimpl implements CategorieService {
         categorieDao.createCategorie(categorie);
 
     }
-
 
 
     @Override
