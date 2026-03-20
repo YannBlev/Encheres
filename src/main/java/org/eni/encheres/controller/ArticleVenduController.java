@@ -37,6 +37,7 @@ public class ArticleVenduController {
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(System.out::println);
         }
+
         articleDto.setVendeur(utilisateurService.listerUtilisateurs().stream().filter(u -> u.getPseudo().equals(pseudo)).findFirst().orElse(null));
         articleVenduService.creerArticleVendu(articleDto);
         return "redirect:/encheres";

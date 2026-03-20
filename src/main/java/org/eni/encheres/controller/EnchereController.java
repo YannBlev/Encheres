@@ -30,6 +30,7 @@ public class EnchereController {
 
     @GetMapping
     public String getEncheres(){
+        System.out.println("*****************" + articleVenduService.listArticlesVendu() + "**********************");
         return "index";
     }
 

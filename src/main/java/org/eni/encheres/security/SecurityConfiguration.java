@@ -17,8 +17,10 @@ public class SecurityConfiguration {
         http.authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers("/films/nouveau", "/participants/**", "/genres/**", "/membres/**").hasRole("admin")
                         .requestMatchers("/profil").authenticated()
+                        .requestMatchers("/profil/nouveauProfil").permitAll()
                         .requestMatchers("/profil/**").permitAll()
                         .requestMatchers("/**").permitAll())
+
                 .httpBasic(Customizer.withDefaults())
 //                .formLogin(Customizer.withDefaults())
                 .formLogin((formLogin) -> formLogin

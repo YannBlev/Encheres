@@ -40,9 +40,7 @@ public class CategorieDaoJdbcImpl implements CategorieDao {
 
     @Override
     public List<Categorie> ListCategorie() {
-        List<Categorie> categories = jdbcTemplate.query(SELECT, new CategorieRowMapper());
-        System.out.println(categories);
-        return categories;
+        return jdbcTemplate.query(SELECT, new CategorieRowMapper());
     }
 
     public void createCategorie(Categorie categorie) {
