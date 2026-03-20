@@ -2,12 +2,14 @@ package org.eni.encheres.bo;
 
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Utilisateur {
                                         //TODO modifier avec les bonnes valeurs dans l'énnoncé
     private int id;

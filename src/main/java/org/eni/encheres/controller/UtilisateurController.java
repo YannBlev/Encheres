@@ -29,7 +29,12 @@ public class UtilisateurController {
 
     @GetMapping("/profil/{pseudo}")
     public String getUtilisateur(@PathVariable String pseudo, Model model) {
-        model.addAttribute("utilisateur", utilisateurService.listerUtilisateurs().stream().filter(u -> u.getPseudo().equals(pseudo)).findFirst().orElse(null));
+        Utilisateur utilisateur = utilisateurService.listerUtilisateurs().stream().filter(u -> u.getPseudo().equals(pseudo)).findFirst().orElse(null);
+
+        if (utilisateur == null) {
+            return "redirect:/encheres"; // Ou une page d'erreur 404 personnalisée
+        }
+        model.addAttribute("utilisateur", utilisateur);
         return "page/profilUtilisateur";
     }
 
@@ -56,34 +61,7 @@ public class UtilisateurController {
     @PostMapping("/profil/nouveauProfil")
     public String ajouterProfil(Utilisateur utilisateur) {
         utilisateurService.creerUtilisateur(utilisateur);
-        System.out.println("utilisateur crée ou pas, test");
-        return "redirect:/encheres";
+        return "redirect:encheres";
     }
+
 }
-
-    // TODO consultation
-////    @GetMapping("/profil")
-////    public String monProfil(Model model, Principal principal) {
-////        // Principal est injecté automatiquement par Spring Security
-////        Utilisateur utilisateur = utilisateurService.trouverParPseudo(principal.getName());
-////        model.addAttribute("utilisateur", utilisateur);
-////        return "page/monProfil"; // page consultation + bouton "Modifier"
-//    }
-
-//// ── Modification du profil ────────────────────────────────────────────────
-//
-//@GetMapping("/profil/modifier")
-//public String afficherModificationProfil(Model model, Principal principal) {
-//    Utilisateur utilisateur = utilisateurService.trouverParPseudo(principal.getName());
-//    model.addAttribute("utilisateur", utilisateur);
-//    return "page/modifierProfil"; // formulaire pré-rempli
-//}
-
-//@PostMapping("/profil/modifier")
-//public String modifierProfil(Utilisateur utilisateur) {
-//    utilisateurService.modifierUtilisateur(utilisateur);
-//    return "redirect:/profil"; // retour à la page profil après modification
-//}
-
-
-
