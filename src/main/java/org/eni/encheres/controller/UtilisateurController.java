@@ -29,7 +29,12 @@ public class UtilisateurController {
 
     @GetMapping("/profil/{pseudo}")
     public String getUtilisateur(@PathVariable String pseudo, Model model) {
-        model.addAttribute("utilisateur", utilisateurService.listerUtilisateurs().stream().filter(u -> u.getPseudo().equals(pseudo)).findFirst().orElse(null));
+        Utilisateur utilisateur = utilisateurService.listerUtilisateurs().stream().filter(u -> u.getPseudo().equals(pseudo)).findFirst().orElse(null);
+
+        if (utilisateur == null) {
+            return "redirect:/encheres"; // Ou une page d'erreur 404 personnalisée
+        }
+        model.addAttribute("utilisateur", utilisateur);
         return "page/profilUtilisateur";
     }
 
