@@ -11,4 +11,10 @@ public interface UtilisateurDao {
     List<Utilisateur> listerUtilisateurs();
 
 
+
+    // TODO A RAJOUTER DANS UTILISATEURJDBCIMPL
+    /*void modifierUtilisateur (Utilisateur utilisateur);*/
+//    Utilisateur findByPseudo(String pseudo);
+
+
 }

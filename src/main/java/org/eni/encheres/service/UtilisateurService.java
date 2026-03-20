@@ -10,7 +10,7 @@ public interface UtilisateurService {
      List<Utilisateur> listerUtilisateurs();
      Utilisateur getUtilisateurById(int id);
      void updateUtilisateur(Utilisateur idUtilisateur);
-
+//    Utilisateur trouverParPseudo(String pseudo);
 
 
     // TODO a vérifier
