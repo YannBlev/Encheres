@@ -3,7 +3,7 @@ package org.eni.encheres.dal.impl;
 import lombok.AllArgsConstructor;
 import org.eni.encheres.bo.ArticleVendu;
 import org.eni.encheres.dal.ArticleVenduDao;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.eni.encheres.dal.rowmapper.ArticleVenduRowMapper;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -27,19 +27,21 @@ public class ArticleVenduJdbcImpl implements ArticleVenduDao {
     private static final String DELETE = "delete from article where id_article = ?";
     private static final String SELECT_BY_ID = "select * from article where id_article = ?";
     private static final String SELECT_ALL= """
-            SELECT	a.id_article, a.nom_article, a.description, a.date_debut_encheres, a.date_fin_encheres, a.prix_initial, a.etat_vente,
-                    c.id_categorie, c.libelle,
-                    u.id_utilisateur, u.rue rueUtilisateur, u.code_postal code_postalUtilisateur, u.ville villeUtilisateur,
-                    r.rue rueRetrait, r.code_postal code_postalRetrait, r.ville villeRetrait
-            FROM ARTICLE a
-            INNER JOIN UTILISATEUR u ON a.id_vendeur = u.id_utilisateur
-            INNER JOIN RETRAIT r ON  r.id_article = a.id_article
-            INNER JOIN CATEGORIE c ON  c.id_categorie = a.id_categorie;
+        SELECT	a.id_article, a.nom_article, a.description, a.date_debut_encheres, a.date_fin_encheres, a.prix_initial, a.etat_vente, a.prix_vente,
+                c.id_categorie, c.libelle,
+                u.id_utilisateur, u.rue rueUtilisateur, u.code_postal code_postalUtilisateur, u.ville villeUtilisateur, u.pseudo,
+                r.rue rueRetrait, r.code_postal code_postalRetrait, r.ville villeRetrait
+        FROM ARTICLE a
+        INNER JOIN UTILISATEUR u ON a.id_vendeur = u.id_utilisateur
+        LEFT JOIN RETRAIT r ON r.id_article = a.id_article
+        INNER JOIN CATEGORIE c ON  c.id_categorie = a.id_categorie;
             """;
 
     @Override
     public List<ArticleVendu> listArticlesVendu() {
-        return jdbcTemplate.query(SELECT, new BeanPropertyRowMapper<>(ArticleVendu.class));
+        System.out.println(">>> APPEL listArticlesVendu");
+        return jdbcTemplate.query(SELECT_ALL, new ArticleVenduRowMapper());
+//        return jdbcTemplate.query(SELECT, new BeanPropertyRowMapper<>(ArticleVendu.class));
     }
 
     @Override

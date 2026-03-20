@@ -8,9 +8,8 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
-public class ArticleRowMapper implements RowMapper<ArticleVendu> {
+public class ArticleVenduRowMapper implements RowMapper<ArticleVendu> {
     @Override
     public ArticleVendu mapRow(ResultSet rs, int rowNum) throws SQLException {
 
@@ -18,10 +17,13 @@ public class ArticleRowMapper implements RowMapper<ArticleVendu> {
         Utilisateur vendeur = new Utilisateur();
         Categorie categorie = new Categorie();
 
+        System.out.println(" ICI C  EST LE ROWMAPPER !!! " );
+
         categorie.setId(rs.getInt("id_categorie"));
         categorie.setLibelle(rs.getString("libelle"));
 
         vendeur.setId(rs.getInt("id_utilisateur"));
+        vendeur.setPseudo(rs.getString("pseudo"));
         vendeur.setRue(rs.getString("rueUtilisateur"));
         vendeur.setCodePostal(rs.getString("code_postalUtilisateur"));
         vendeur.setVille(rs.getString("villeUtilisateur"));
