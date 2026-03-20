@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 // TODO mettre correctement les bonnes adresses de redirection :
 
 @Controller
-@RequestMapping
+@RequestMapping("encheres)")
 public class UtilisateurController {
 
     @Autowired
@@ -56,7 +56,7 @@ public class UtilisateurController {
     @PostMapping("/profil/nouveauProfil")
     public String ajouterProfil(Utilisateur utilisateur) {
         utilisateurService.creerUtilisateur(utilisateur);
-        return "redirect:/encheres";
+        return "redirect:encheres";
     }
 
 }
