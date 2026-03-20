@@ -64,4 +64,19 @@ public class UtilisateurController {
         return "redirect:encheres";
     }
 
+    @GetMapping("/profil")
+    public String monProfil(Model model, Utilisateur Utilisateur) {
+        Utilisateur utilisateur = utilisateurService.getUtilisateurById(Integer.parseInt(Utilisateur.getPseudo()));
+        model.addAttribute("utilisateur", utilisateur);
+        return "page/profilUtilisateur";
+    }
+
+//    @GetMapping("/profil/modifier")
+//    public String afficherModification(Model model, Utilisateur utilisateur) {
+//        Utilisateur utilisateurById = utilisateurService.getUtilisateurById();
+//        model.addAttribute("utilisateur", utilisateur);
+//        return "page/nouveauProfil";
+//
+//
+//    }
 }
