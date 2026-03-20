@@ -36,7 +36,11 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
                         utilisateur.getRue(),
                         utilisateur.getCodePostal(),
                         utilisateur.getVille(),
-                        utilisateur.getMotDePasse());
+                        utilisateur.getMotDePasse(),
+                        100,
+                        0 );
+
+
     }
     @Override
     public void deleteUtilisateur(int idSupprimerUtilisateur) {
