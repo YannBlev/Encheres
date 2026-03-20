@@ -1,21 +1,28 @@
 package org.eni.encheres.dal.impl;
 
+import lombok.AllArgsConstructor;
 import org.eni.encheres.bo.ArticleVendu;
 import org.eni.encheres.dal.ArticleVenduDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+
 @Repository
+@AllArgsConstructor
 public class ArticleVenduJdbcImpl implements ArticleVenduDao {
 
-    private static final String INSERT = "insert into article (nom_article, description,date_debut_encheres,date_fin_encheres, prix_initial, id_vendeur,id_categorie ) values (?,?,?,?,?,?,?)";
+    private JdbcTemplate jdbcTemplate;
+    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+
+    private static final String INSERT = "insert into article (nom_article, description,date_debut_encheres,date_fin_encheres, prix_initial, id_vendeur,id_categorie ) values (:nom_article, :description,:date_debut_encheres,:date_fin_encheres, :prix_initial,:id_vendeur,:id_categorie )";
     private static final String SELECT = "select * from article";
     private static final String DELETE = "delete from article where id_article = ?";
     private static final String SELECT_BY_ID = "select * from article where id_article = ?";
@@ -29,9 +36,6 @@ public class ArticleVenduJdbcImpl implements ArticleVenduDao {
             INNER JOIN RETRAIT r ON  r.id_article = a.id_article
             INNER JOIN CATEGORIE c ON  c.id_categorie = a.id_categorie;
             """;
-
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
 
     @Override
     public List<ArticleVendu> listArticlesVendu() {
@@ -47,13 +51,12 @@ public class ArticleVenduJdbcImpl implements ArticleVenduDao {
                     .addValue("date_debut_enchère", articleVendu.getDateDebutEncheres())
                     .addValue("date_fin_enchère", articleVendu.getDateFinEncheres())
                     .addValue("prix_initial", articleVendu.getPrixInitial())
-                    .addValue("id_acheteur", articleVendu.getAcheteur())
-                    .addValue("id_vendeur", articleVendu.getVendeur())
-                    .addValue("id_catégorie", articleVendu.getCategorie());
+                    .addValue("id_vendeur", articleVendu.getVendeur().getId())
+                    .addValue("id_catégorie", articleVendu.getCategorie().getId());
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
-
-        jdbcTemplate.update(INSERT, articleVendu.getNomArticle(),articleVendu.getDescription(),articleVendu.getDateDebutEncheres(),articleVendu.getDateFinEncheres(),articleVendu.getPrixInitial(),articleVendu.getVendeur().getId(),articleVendu.getCategorie().getId());
+        namedParameterJdbcTemplate.update(INSERT,params, keyHolder);
+//jdbcTemplate.update(INSERT, articleVendu.getNomArticle(),articleVendu.getDescription(),articleVendu.getDateDebutEncheres(),articleVendu.getDateFinEncheres(),articleVendu.getPrixInitial(),articleVendu.getVendeur().getId(),articleVendu.getCategorie().getId());
     }
 
     @Override
