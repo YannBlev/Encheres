@@ -22,7 +22,10 @@
             <br><br>
 
             <label>Photo de l'article :</label>
-            <button type="submit">UPLOADER</button>
+                <div action="/upload" method="post" enctype="multipart/form-data">
+                    <input type="file" name="image" accept="image/*" />
+                    <button type="submit">Uploader</button>
+                </div>
             <br><br>
 
             <label>Prix initial :</label>
