@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
-<html lang="en" layout:decorate="~{layout/base}" xmlns:layout="http://www.w3.org/1999/xhtml">
+<html lang="en" layout:decorate="~{layout/base}" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -51,27 +52,27 @@
        <label>Ville : </label>
        <span th:text="${utilisateur.ville }"></span><br>
 
-       <label></label>
-       <button type="submit">Modifier</button>
+        <a th:href="@{/profil/nouveauProfil}" sec:authorize="isAuthenticated()">
+            <button type="button">Modifier mon profil</button>
+        </a>
 
-       <a th:href="@{/profilUtilisateur}"></a>
 
 
-       <!--
+        <!--
 
-           **** pas besoin d'afficher les psw dans le profil (ce sera plutot dans nouveauProfil) ****
+            **** pas besoin d'afficher les psw dans le profil (ce sera plutot dans nouveauProfil) ****
 
-        <label>Mot de passe actuel : </label>
-        <input type="hidden" th:text="${utilisateur.motDePasse}" required><br>
+         <label>Mot de passe actuel : </label>
+         <input type="hidden" th:text="${utilisateur.motDePasse}" required><br>
 
-        <label>Nouveau mot de passe : </label>
-        <input type="hidden" th:field="*{motDePasse}" required><br>
+         <label>Nouveau mot de passe : </label>
+         <input type="hidden" th:field="*{motDePasse}" required><br>
 
-        <label>Confirmation : </label>
-        <input type="password"
-               title="Les mots de passe doivent correspondre"
-               required><br>
-      -->
+         <label>Confirmation : </label>
+         <input type="password"
+                title="Les mots de passe doivent correspondre"
+                required><br>
+       -->
 
 
        <!--
