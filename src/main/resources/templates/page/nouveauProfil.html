@@ -15,7 +15,7 @@
 <main layout:fragment="content">
 
 
-    <form th:action="@{/nouveauProfil}" method="post" th:object="${utilisateur}">
+    <form th:action="@{/profil/nouveauProfil}" method="post" th:object="${utilisateur}">
 
         <label for="pseudo">Pseudo : </label>
         <input type="text" id="pseudo" th:field="*{pseudo}"
@@ -109,8 +109,8 @@
         </script>
 
 
-        <button
-                th:onclick="|window.location.href='@{/encheres}'|" type="submit">
+        <button type="submit">
+<!--                th:onclick="|window.location.href='@{/encheres}'|" -->
             <span class="text">Créer</span>
             <span class="icon"
             ><svg

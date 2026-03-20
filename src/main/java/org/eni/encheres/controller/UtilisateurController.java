@@ -56,7 +56,17 @@ public class UtilisateurController {
     @PostMapping("/profil/nouveauProfil")
     public String ajouterProfil(Utilisateur utilisateur) {
         utilisateurService.creerUtilisateur(utilisateur);
-        return "redirect:encheres";
+        return "redirect:/encheres";
     }
+
+
+    // TODO consultation
+////    @GetMapping("/profil")
+////    public String monProfil(Model model, Principal principal) {
+////        // Principal est injecté automatiquement par Spring Security
+////        Utilisateur utilisateur = utilisateurService.trouverParPseudo(principal.getName());
+////        model.addAttribute("utilisateur", utilisateur);
+////        return "page/monProfil"; // page consultation + bouton "Modifier"
+//    }
 
 }
