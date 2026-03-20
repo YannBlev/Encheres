@@ -31,9 +31,10 @@ public class ArticleVenduController {
 
     @PostMapping("/encheres/{pseudo}/nouvelleVente")
     public String postNouvelleVente(@PathVariable String pseudo, ArticleDto articleDto, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "index";
-        }
+//        if (bindingResult.hasErrors()) {
+//            return "index";
+//        }
+        articleDto.setVendeur(utilisateurService.listerUtilisateurs().stream().filter(u -> u.getPseudo().equals(pseudo)).findFirst().orElse(null));
         articleVenduService.creerArticleVendu(articleDto);
         return "redirect:/encheres";
     }
