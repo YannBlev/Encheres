@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 // TODO mettre correctement les bonnes adresses de redirection :
 
 @Controller
-@RequestMapping
+@RequestMapping("encheres)")
 public class UtilisateurController {
 
     @Autowired
@@ -56,9 +56,10 @@ public class UtilisateurController {
     @PostMapping("/profil/nouveauProfil")
     public String ajouterProfil(Utilisateur utilisateur) {
         utilisateurService.creerUtilisateur(utilisateur);
+        System.out.println("utilisateur crée ou pas, test");
         return "redirect:/encheres";
     }
-
+}
 
     // TODO consultation
 ////    @GetMapping("/profil")
@@ -69,4 +70,20 @@ public class UtilisateurController {
 ////        return "page/monProfil"; // page consultation + bouton "Modifier"
 //    }
 
-}
+//// ── Modification du profil ────────────────────────────────────────────────
+//
+//@GetMapping("/profil/modifier")
+//public String afficherModificationProfil(Model model, Principal principal) {
+//    Utilisateur utilisateur = utilisateurService.trouverParPseudo(principal.getName());
+//    model.addAttribute("utilisateur", utilisateur);
+//    return "page/modifierProfil"; // formulaire pré-rempli
+//}
+
+//@PostMapping("/profil/modifier")
+//public String modifierProfil(Utilisateur utilisateur) {
+//    utilisateurService.modifierUtilisateur(utilisateur);
+//    return "redirect:/profil"; // retour à la page profil après modification
+//}
+
+
+
