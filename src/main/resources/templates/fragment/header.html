@@ -5,7 +5,7 @@
 
     <a href="/Encheres" sec:authorize="isAuthenticated()" th:text="#{menu.encheres}"></a>
     <a href="/encheres/nouvelleVente"  th:text="#{menu.vendreunarticle}"></a> <!-- sec:authorize="hasRole('admin')" -->
-    <a th:href="@{/profil/profilUtilisateur}" sec:authorize="isAuthenticated()" th:text="#{menu.MonCompte}"></a>
+    <a href="/profil/pseudo" sec:authorize="isAuthenticated()" th:text="#{menu.MonCompte}"></a>
 
 
         <section class="inline-display" sec:authorize="isAuthenticated()">
