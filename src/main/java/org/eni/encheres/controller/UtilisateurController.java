@@ -2,8 +2,10 @@ package org.eni.encheres.controller;
 
 
 import org.eni.encheres.bo.Utilisateur;
+import org.eni.encheres.security.UtilisateurSpringSecurity;
 import org.eni.encheres.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,14 +30,18 @@ public class UtilisateurController {
     }
 
     @GetMapping("/profil/{pseudo}")
-    public String getUtilisateur(@PathVariable String pseudo, Model model) {
+    public String getUtilisateur(@PathVariable String pseudo, @AuthenticationPrincipal UtilisateurSpringSecurity utilisateurConnecte, Model model ) {
         Utilisateur utilisateur = utilisateurService.listerUtilisateurs().stream().filter(u -> u.getPseudo().equals(pseudo)).findFirst().orElse(null);
-
-        if (utilisateur == null) {
-            return "redirect:/encheres"; // Ou une page d'erreur 404 personnalisée
-        }
+        String pseudo1 = utilisateurConnecte.getPseudo();
+        model.addAttribute("pseudo1", pseudo1);
+//        if (utilisateur == null || pseudo1 == null) {
+//            return "redirect:/encheres"; // Ou une page d'erreur 404 personnalisée
+//        }
         model.addAttribute("utilisateur", utilisateur);
+
         return "page/profilUtilisateur";
+
+
     }
 
     @PostMapping("/profil/inscription")// Création Utilisateur
