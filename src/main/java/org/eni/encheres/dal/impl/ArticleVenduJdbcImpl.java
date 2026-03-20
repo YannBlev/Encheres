@@ -39,9 +39,7 @@ public class ArticleVenduJdbcImpl implements ArticleVenduDao {
 
     @Override
     public List<ArticleVendu> listArticlesVendu() {
-        System.out.println(">>> APPEL listArticlesVendu");
         return jdbcTemplate.query(SELECT_ALL, new ArticleVenduRowMapper());
-//        return jdbcTemplate.query(SELECT, new BeanPropertyRowMapper<>(ArticleVendu.class));
     }
 
     @Override
@@ -58,7 +56,6 @@ public class ArticleVenduJdbcImpl implements ArticleVenduDao {
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         namedParameterJdbcTemplate.update(INSERT,params, keyHolder);
-//jdbcTemplate.update(INSERT, articleVendu.getNomArticle(),articleVendu.getDescription(),articleVendu.getDateDebutEncheres(),articleVendu.getDateFinEncheres(),articleVendu.getPrixInitial(),articleVendu.getVendeur().getId(),articleVendu.getCategorie().getId());
     }
 
     @Override

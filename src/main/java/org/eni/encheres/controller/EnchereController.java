@@ -30,7 +30,6 @@ public class EnchereController {
 
     @GetMapping
     public String getEncheres(){
-        System.out.println("*****************" + articleVenduService.listArticlesVendu() + "**********************");
         return "index";
     }
 
@@ -40,27 +39,5 @@ public class EnchereController {
         articleVenduService.consulterArticleVendu(id);
         return "detail";
     }
-
-    /**
- *
- *
- *
- *
- * TODO
- *
- * 1.
- * un getEncheres
- * page index.html
- *
- * 2.
- * un getVentes @GetMapping("nouvelleVente")
- * page nouvelleVente.html
- *
- *3. un getDetail @GetMapping("/{id}/detail")
- * page detail.html
- *
- *
- *
- */
 
 }
