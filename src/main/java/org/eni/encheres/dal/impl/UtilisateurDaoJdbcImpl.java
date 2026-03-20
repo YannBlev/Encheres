@@ -13,6 +13,7 @@ import java.util.List;
 
 @Repository
 
+
 public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 
     @Autowired
@@ -38,6 +39,19 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
                         utilisateur.getVille(),
                         utilisateur.getMotDePasse());
     }
+//    @Override
+//    public void modifierUtilisateur(Utilisateur utilisateur) {
+//        jdbcTemplate.update(UPDATE,
+//                utilisateur.getNom(),
+//                utilisateur.getPrenom(),
+//                utilisateur.getEmail(),
+//                utilisateur.getTelephone(),
+//                utilisateur.getRue(),
+//                utilisateur.getCodePostal(),
+//                utilisateur.getVille(),
+//                utilisateur.getMotDePasse(),
+//                utilisateur.getIdUtilisateur());
+
     @Override
     public void deleteUtilisateur(int idSupprimerUtilisateur) {
         jdbcTemplate.update(DELETE, idSupprimerUtilisateur);
@@ -53,4 +67,9 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
         return jdbcTemplate.queryForObject(SELECT_BY_ID, new UtilisateurRowMapper(), id);
 
     }
+
+//    @Override
+//    public Utilisateur findByPseudo(String pseudo) {
+//        return jdbcTemplate.queryForObject(SELECT_BY_PSEUDO, new UtilisateurRowMapper(), pseudo);
+//    }
 }
