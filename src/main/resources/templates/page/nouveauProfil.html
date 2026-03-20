@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="fr" layout:decorate="~{layout/base}" xmlns:layout="http://www.w3.org/1999/xhtml">
+<html lang="fr" layout:decorate="~{layout/base}" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:>
 
 <head>
                                 <meta charset="UTF-8">
@@ -108,31 +109,31 @@
             }
         </script>
 
-                                    <!--TODO A MODIFIER EN FONCTION -->
-        <button type="submit">
-<!--                th:onclick="|window.location.href='@{/encheres}'|" -->
-            <span class="text">Créer</span>
-            <span class="icon"
-            ><svg
-                viewBox="0 0 24 24"
-                height="24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z">
+                                    <!--TODO CREATION COMPTE  -->
+        <button type="submit"
+                sec:authorize="isAnonymous()">Créer</button>
 
-            </path></svg
-        ></span>
-
-        </button>
+        <button type="button"
+                th:onclick="|window.location.href='@{/login}'|" sec:authorize="isAnonymous()">Annuler</button>
 
 
-                <!-- TODO REDIRIGER LA CONFIRMATION VERS LE SITE PRINCIPAL LORS DE LA CONFIRMATION -->
+                            <!--    TODO : BOUTON ENREGISTER / SUPPRIMER COMPTE    -->
 
-        <button type="button" th:onclick="|window.location.href='@{/login}'|">Annuler</button>
+<!--        <button th:if="${#authentication.principal != null}" type="button"-->
+<!--                th:href="@{/profil/profilUtilisateur}" sec:authorize="Authenticated()">Enregister</button>-->
+
+<!--        <button type="button"-->
+<!--                th:href="@{/encheres}" sec:authorize="Authenticated()">Supprimer le compte</button>-->
+
+        <!--TODO MODIFIER LES LIENS + BOUTON ENREGISTER ET SUPPRIMER COMPTE  -->
+
+
 
     </form>
 </main>
 
 </body>
 </html>
+
+
+                <!--TODO MODIFIER LE FORMULAIRE DE CREATION DE COMPTE EN MODIFICATION DE COMPTE -->

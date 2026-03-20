@@ -77,12 +77,18 @@ public class UtilisateurController {
         return "page/profilUtilisateur";
     }
 
-//    @GetMapping("/profil/modifier")
-//    public String afficherModification(Model model, Utilisateur utilisateur) {
-//        Utilisateur utilisateurById = utilisateurService.getUtilisateurById();
-//        model.addAttribute("utilisateur", utilisateur);
-//        return "page/nouveauProfil";
-//
-//
-//    }
+    @GetMapping("/profil/{pseudo}/modifier")
+    public String afficherModification(@PathVariable String pseudo, @AuthenticationPrincipal UtilisateurSpringSecurity utilisateurConnecte, Model model ) {
+        Utilisateur utilisateur = utilisateurService.listerUtilisateurs().stream().filter(u -> u.getPseudo().equals(pseudo)).findFirst().orElse(null);
+        String pseudo1 = utilisateurConnecte.getPseudo();
+        model.addAttribute("pseudo1", pseudo1);
+//        if (utilisateur == null || pseudo1 == null) {
+//            return "redirect:/encheres"; // Ou une page d'erreur 404 personnalisée
+//        }
+        model.addAttribute("utilisateur", utilisateur);
+
+        return "page/nouveauProfil";
+
+
+    }
 }
