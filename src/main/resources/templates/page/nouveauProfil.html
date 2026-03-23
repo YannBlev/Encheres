@@ -119,11 +119,25 @@
 
                             <!--    TODO : BOUTON ENREGISTER / SUPPRIMER COMPTE    -->
 
-<!--        <button th:if="${#authentication.principal != null}" type="button"-->
+        <button type="submit"
+                sec:authorize="isAuthenticated()">Modifier</button>
+                th:onclick="|window.location.href='@{/ProfilUtilisateur}'|"sec:authorize="isAuthenticated()">Modifier</button>
+
+        <button type="button"
+                sec:authorize="isAuthenticated()">Supprimer mon compte</button>
+                th:onclick="|window.location.href='@{/encheres}'|" sec:authorize="isAuthenticated()">Supprimer mon compte</button>
+<!--                th:if-->
+
+
+        <!--        <button th:if="${#authentication.principal != null}" type="button"-->
 <!--                th:href="@{/profil/profilUtilisateur}" sec:authorize="Authenticated()">Enregister</button>-->
 
 <!--        <button type="button"-->
 <!--                th:href="@{/encheres}" sec:authorize="Authenticated()">Supprimer le compte</button>-->
+
+<!--        <form class="inline-form" th:action="@{/categorie/supprimer}" method="post">-->
+<!--            <button class="delete-button" type="submit" name="idAsupprimer" th:value="${c.id}">✗</button>-->
+<!--        </form>-->
 
         <!--TODO MODIFIER LES LIENS + BOUTON ENREGISTER ET SUPPRIMER COMPTE  -->
 
