@@ -58,13 +58,10 @@ public class ArticleVenduController {
          */
         articleDto.setVendeur(utilisateurService.listerUtilisateurs().stream().filter(u -> u.getPseudo().equals(pseudo)).findFirst().orElse(null));
 
+        // Si les champs rue/code_postal/ville sont vides, mettre l'adresse du vendeur
         if (articleDto.getRue().isEmpty()) {articleDto.setRue(articleDto.getVendeur().getRue());}
-
         if (articleDto.getCode_postal().isEmpty()) {articleDto.setCode_postal(articleDto.getVendeur().getCodePostal());}
-
         if (articleDto.getVille().isEmpty()) {articleDto.setVille(articleDto.getVendeur().getVille());}
-
-
 
         articleVenduService.creerArticleVendu(articleDto);
         return "redirect:/encheres";

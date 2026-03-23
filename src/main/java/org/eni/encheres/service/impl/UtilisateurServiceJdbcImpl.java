@@ -29,8 +29,8 @@ public class UtilisateurServiceJdbcImpl implements UtilisateurService {
     }
 
     @Override
-    public void supprimerUtilisateur(Utilisateur idSupprimerUtilisateur) {
-        utilisateurDao.deleteUtilisateur(idSupprimerUtilisateur.getId());
+    public void supprimerUtilisateur(int idSupprimerUtilisateur) {
+        utilisateurDao.deleteUtilisateur(idSupprimerUtilisateur);
     }
     @Override
     public List<Utilisateur> listerUtilisateurs() {
@@ -43,16 +43,16 @@ public class UtilisateurServiceJdbcImpl implements UtilisateurService {
     }
 
     @Override
-    public void modifierUtilisateur(Utilisateur idUtilisateur) {
-        utilisateurDao.modifierUtilisateur(idUtilisateur);
+    public void modifierUtilisateur(Utilisateur utilisateur) {
+        Utilisateur utilisateurExistant = utilisateurDao.consulterUtilisateurParId(utilisateur.getId());
 
+        if (utilisateur.getMotDePasse() == null || utilisateur.getMotDePasse().isEmpty()) {
+            utilisateur.setMotDePasse(utilisateurExistant.getMotDePasse());
+        } else {
+            utilisateur.setMotDePasse(passwordEncoder.encode(utilisateur.getMotDePasse()));
+        }
+
+        utilisateurDao.modifierUtilisateur(utilisateur);
     }
-
-
-//    @Override
-//    public Utilisateur trouverParPseudo(String pseudo) {
-//        return utilisateurDao.findByPseudo(pseudo);
-//    }
-
 
 }

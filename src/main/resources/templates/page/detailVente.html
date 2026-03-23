@@ -7,38 +7,41 @@
 <body>
   <main layout:fragment="content">
 
-    <label>Intitulé : </label>
-    <span th:text="${articleVendu.nomArticle}"></span><br>
+    <form th:action="|@{/${article.noArticle}/encherir}|" method="post">
 
-    <label>Description : </label>
-    <textarea cols="20" rows="4" type= "text" th:text="${articleVendu.descrption}"></textarea><br>
+      <label>Intitulé : </label>
+      <span th:text="${article.nomArticle}"></span><br>
 
-    <label>Catégorie : </label>
-    <span th:text="${articleVendu.categorie}"></span><br>
+      <label>Description : </label>
+      <textarea cols="20" rows="4" type= "text" th:text="${article.description}"></textarea><br>
 
-    <label>Meilleure offre : </label>
-    <span th:text="${}"></span><br>
+      <label>Catégorie : </label>
+      <span th:text="${article.categorie.libelle}"></span><br>
 
-    <label>Mise à prix : </label>
-    <span th:text="${articleVendu.miseAprix}"></span><br>
+      <label>Meilleure offre : </label>
+      <span></span><br>
 
-    <label>Fin de l'enchère : </label>
-    <span th:text="${articleVendu.dateFinEncheres }"></span><br>
+      <label>Mise à prix : </label>
+      <span th:text="${article.prixInitial}"></span><br>
 
-    <label>Retrait : </label>
-    <span th:text="${}"></span><br>
+      <label>Fin de l'enchère : </label>
+      <span th:text="${article.dateFinEncheres }"></span><br>
 
-    <label>Vendeur : </label>
-    <span th:text="${vendeur.pseudo}"></span><br>
+      <label>Retrait : </label>
+      <span th:text="${retrait.rue}"></span><br>
+      <span th:text="${retrait.code_postal}"></span><br>
+      <span th:text="${retrait.ville}"></span><br>
 
-    <label>Ma proposition : </label>
-    <span th:text="${}"></span><br>
+      <label>Vendeur : </label>
+      <span th:text="${article.vendeur.pseudo}"></span><br>
 
-    <label></label>
-    <button type="submit">Enchérir</button>
+      <label>Ma proposition : </label>
+      <input type="number"><br>
 
-    <a th:href="@{/detailVente}"></a>
+      <label></label>
+      <button type="submit">Enchérir</button>
 
+    </form>
 
   </main>
 
