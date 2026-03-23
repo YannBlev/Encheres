@@ -14,9 +14,9 @@
             </form>
         </section>
         <!-- on n'affiche cette section que pour les utilisateurs NON connectés -->
-        <section class="inline-display" sec:authorize="!isAuthenticated()">
+        <div class="inline-display" sec:authorize="!isAuthenticated()">
             <a th:href="@{/login}">S'incrire - Se connecter</a>
-        </section>
+        </div>
     </nav>
 
 </header>
