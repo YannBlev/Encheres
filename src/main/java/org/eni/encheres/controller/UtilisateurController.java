@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 
 // TODO mettre correctement les bonnes adresses de redirection :
@@ -45,9 +42,9 @@ public class UtilisateurController {
     }
 
     @PostMapping("/profil/delete") //Supprimer Utilisateur dans son menu utilisateur
-    public String suppressionUtilisateur(Utilisateur idUtilisateurASupprimer) {
+    public String suppressionUtilisateur(@RequestParam("idUtilisateurASupprimer")Utilisateur idUtilisateurASupprimer) {
         utilisateurService.supprimerUtilisateur(idUtilisateurASupprimer);
-        return "redirect:/encheres";
+        return "redirect:/login";
     }
 
     // TODO UtilisateurDTO

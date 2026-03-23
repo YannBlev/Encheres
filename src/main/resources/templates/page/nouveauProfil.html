@@ -118,16 +118,17 @@
         <button type="button"
                 th:onclick="|window.location.href='@{/login}'|" sec:authorize="isAnonymous()">Annuler</button>
 
+    </form>
+
 
                             <!--    TODO : BOUTON ENREGISTER / SUPPRIMER COMPTE    -->
 
 <!--        <button type="submit"-->
 <!--                sec:authorize="isAuthenticated()">Modifier</button>-->
 <!--                th:onclick="|window.location.href='@{/ProfilUtilisateur}'|"sec:authorize="isAuthenticated()">Modifier</button>-->
-
-<!--        <button type="button"-->
-<!--                sec:authorize="isAuthenticated()">Supprimer mon compte</button>-->
-<!--                th:onclick="|window.location.href='@{/encheres}'|" sec:authorize="isAuthenticated()">Supprimer mon compte</button>-->
+    <form class="inline-form" th:action="@{/profil/delete}" method="post">
+        <button class="delete-button" type="submit" name="idUtilisateurASupprimer" th:value="${utilisateur.id}">Supprimer mon compte</button>
+    </form>
 
 <!--                th:if-->
 
@@ -146,7 +147,6 @@
 
 
 
-    </form>
 </main>
 
 </body>
