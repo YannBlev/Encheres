@@ -110,51 +110,26 @@
         </script>
 
                                     <!--TODO CREATION COMPTE  -->
-                <!--        TODO REDIRIGER SI ON A LE TEMPS VERS LA PAGE PRINCIPALE "ENCHERES" ET METTRE UN MESSAGE COMME QUOI TU AS CREE TON COMPTE-->
+                <!--        TODO REDIRIGER SI ON A LE TEMPS VERS LA PAGE PRINCIPALE "ENCHERES"-->
         <button type="submit"
                 sec:authorize="isAnonymous()">Créer
         </button>
 
         <button type="button"
                 th:onclick="|window.location.href='@{/login}'|" sec:authorize="isAnonymous()">Annuler</button>
-    </form>
-
-
-
-                        <!--    TODO : BOUTON ENREGISTER / SUPPRIMER COMPTE    -->
-
-    <form th:action="@{/profil/nouveauProfil}" method="post">
-
-
-        <button type="submit"
-                name="action"
-                value="update"
-                sec:authorize="isAuthenticated()">
-            Enregistrer les modifications
-        </button>
-
-        <button type="submit"
-                name="action"
-                value="delete"
-                sec:authorize="isAuthenticated()"
-                onclick="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ?');">
-            Supprimer mon compte
-        </button>
 
     </form>
 
-<!--        <form>-->
+
+                            <!--    TODO : BOUTON ENREGISTER / SUPPRIMER COMPTE    -->
+
 <!--        <button type="submit"-->
-<!--                sec:authorize="isAuthenticated()">Modifier-->
-<!--            -->
-<!--        </button>-->
+<!--                sec:authorize="isAuthenticated()">Modifier</button>-->
+<!--                th:onclick="|window.location.href='@{/ProfilUtilisateur}'|"sec:authorize="isAuthenticated()">Modifier</button>-->
+    <form class="inline-form" th:action="@{/profil/delete}" method="post">
+        <button class="delete-button" type="submit" name="idUtilisateurASupprimer" th:value="${utilisateur.id}">Supprimer mon compte</button>
+    </form>
 
-<!--        <button type="button"-->
-<!--                th:onclick="|window.location.href='@{/login}'|" sec:authorize="isAnonymous()">Supprimer mon compte-->
-
-<!--            </button>-->
-
-<!--        </form>-->
 <!--                th:if-->
 
 
@@ -164,12 +139,15 @@
 <!--        <button type="button"-->
 <!--                th:href="@{/encheres}" sec:authorize="Authenticated()">Supprimer le compte</button>-->
 
+<!--        <form class="inline-form" th:action="@{/categorie/supprimer}" method="post">-->
+<!--            <button class="delete-button" type="submit" name="idAsupprimer" th:value="${c.id}">✗</button>-->
+<!--        </form>-->
 
         <!--TODO MODIFIER LES LIENS + BOUTON ENREGISTER ET SUPPRIMER COMPTE  -->
 
 
 
-
+    </form>
 </main>
 
 </body>

@@ -29,8 +29,8 @@ public class UtilisateurServiceJdbcImpl implements UtilisateurService {
     }
 
     @Override
-    public void supprimerUtilisateur(Utilisateur idSupprimerUtilisateur) {
-        utilisateurDao.deleteUtilisateur(idSupprimerUtilisateur.getId());
+    public void supprimerUtilisateur(int idSupprimerUtilisateur) {
+        utilisateurDao.deleteUtilisateur(idSupprimerUtilisateur);
     }
     @Override
     public List<Utilisateur> listerUtilisateurs() {
@@ -47,12 +47,6 @@ public class UtilisateurServiceJdbcImpl implements UtilisateurService {
         utilisateurDao.modifierUtilisateur(idUtilisateur);
 
     }
-
-
-//    @Override
-//    public Utilisateur trouverParPseudo(String pseudo) {
-//        return utilisateurDao.findByPseudo(pseudo);
-//    }
 
 
 }

@@ -28,7 +28,13 @@ public class SecurityConfiguration {
                         .loginProcessingUrl("/login")
                         .permitAll()
                 )
-                .logout((logout) -> logout.logoutSuccessUrl("/"));
+                .logout((logout) -> logout.logoutSuccessUrl("/")
+                                .logoutUrl("/logout")                  // route qui déclenche le logout
+                                .invalidateHttpSession(true)           // invalide la session
+                                .deleteCookies("JSESSIONID")           // supprime le cookie de session
+                                .clearAuthentication(true)             // efface le SecurityContext
+                        );
+
         return http.build();
     }
 
