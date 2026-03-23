@@ -43,9 +43,11 @@ public class UtilisateurServiceJdbcImpl implements UtilisateurService {
     }
 
     @Override
-    public void updateUtilisateur (Utilisateur utilisateur) {
-        utilisateurDao.consulterUtilisateurParId(utilisateur.getId());
+    public void modifierUtilisateur(Utilisateur idUtilisateur) {
+        utilisateurDao.modifierUtilisateur(idUtilisateur);
+
     }
+
 
 //    @Override
 //    public Utilisateur trouverParPseudo(String pseudo) {
