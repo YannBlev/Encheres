@@ -29,8 +29,8 @@ public class UtilisateurServiceJdbcImpl implements UtilisateurService {
     }
 
     @Override
-    public void supprimerUtilisateur(Utilisateur idSupprimerUtilisateur) {
-        utilisateurDao.deleteUtilisateur(idSupprimerUtilisateur.getId());
+    public void supprimerUtilisateur(int idSupprimerUtilisateur) {
+        utilisateurDao.deleteUtilisateur(idSupprimerUtilisateur);
     }
     @Override
     public List<Utilisateur> listerUtilisateurs() {

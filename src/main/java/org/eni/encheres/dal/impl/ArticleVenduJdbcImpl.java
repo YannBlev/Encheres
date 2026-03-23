@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import org.eni.encheres.bo.ArticleVendu;
 import org.eni.encheres.dal.ArticleVenduDao;
 import org.eni.encheres.dal.rowmapper.ArticleVenduRowMapper;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -22,10 +21,11 @@ public class ArticleVenduJdbcImpl implements ArticleVenduDao {
     private JdbcTemplate jdbcTemplate;
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    private static final String INSERT = "insert into article (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, imagePath, id_vendeur, id_categorie ) values (:nom_article, :description,:date_debut_encheres,:date_fin_encheres, :prix_initial, :imagePath,:id_vendeur,:id_categorie )";
-    private static final String SELECT = "select * from article";
+    private static final String INSERT = """
+        INSERT INTO article (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, imagePath, id_vendeur, id_categorie )
+        VALUES (:nom_article, :description,:date_debut_encheres,:date_fin_encheres, :prix_initial, :imagePath,:id_vendeur,:id_categorie );
+        """;
     private static final String DELETE = "delete from article where id_article = ?";
-    private static final String SELECT_BY_ID = "select * from article where id_article = ?";
     private static final String SELECT_ALL= """
         SELECT	a.id_article, a.nom_article, a.description, a.date_debut_encheres, a.date_fin_encheres, a.prix_initial, a.etat_vente, a.prix_vente, a.imagePath,
                 c.id_categorie, c.libelle,
@@ -34,8 +34,11 @@ public class ArticleVenduJdbcImpl implements ArticleVenduDao {
         FROM ARTICLE a
         INNER JOIN UTILISATEUR u ON a.id_vendeur = u.id_utilisateur
         LEFT JOIN RETRAIT r ON r.id_article = a.id_article
-        INNER JOIN CATEGORIE c ON  c.id_categorie = a.id_categorie;
+        INNER JOIN CATEGORIE c ON  c.id_categorie = a.id_categorie
             """;
+    private static final String SELECT_BY_ID = SELECT_ALL + """
+        WHERE a.id_article = ?
+        """;
 
     @Override
     public List<ArticleVendu> listArticlesVendu() {
@@ -66,6 +69,6 @@ public class ArticleVenduJdbcImpl implements ArticleVenduDao {
 
     @Override
     public ArticleVendu consulterArticleByNumero(int noArticle) {
-        return jdbcTemplate.queryForObject(SELECT_BY_ID, new BeanPropertyRowMapper<>(ArticleVendu.class), noArticle);
+        return jdbcTemplate.queryForObject(SELECT_BY_ID, new ArticleVenduRowMapper(), noArticle);
     }
 }
