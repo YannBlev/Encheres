@@ -110,8 +110,10 @@
         </script>
 
                                     <!--TODO CREATION COMPTE  -->
+                <!--        TODO REDIRIGER SI ON A LE TEMPS VERS LA PAGE PRINCIPALE "ENCHERES"-->
         <button type="submit"
-                sec:authorize="isAnonymous()">Créer</button>
+                sec:authorize="isAnonymous()">Créer
+        </button>
 
         <button type="button"
                 th:onclick="|window.location.href='@{/login}'|" sec:authorize="isAnonymous()">Annuler</button>
@@ -119,13 +121,14 @@
 
                             <!--    TODO : BOUTON ENREGISTER / SUPPRIMER COMPTE    -->
 
-        <button type="submit"
-                sec:authorize="isAuthenticated()">Modifier</button>
-                th:onclick="|window.location.href='@{/ProfilUtilisateur}'|"sec:authorize="isAuthenticated()">Modifier</button>
+<!--        <button type="submit"-->
+<!--                sec:authorize="isAuthenticated()">Modifier</button>-->
+<!--                th:onclick="|window.location.href='@{/ProfilUtilisateur}'|"sec:authorize="isAuthenticated()">Modifier</button>-->
 
-        <button type="button"
-                sec:authorize="isAuthenticated()">Supprimer mon compte</button>
-                th:onclick="|window.location.href='@{/encheres}'|" sec:authorize="isAuthenticated()">Supprimer mon compte</button>
+<!--        <button type="button"-->
+<!--                sec:authorize="isAuthenticated()">Supprimer mon compte</button>-->
+<!--                th:onclick="|window.location.href='@{/encheres}'|" sec:authorize="isAuthenticated()">Supprimer mon compte</button>-->
+
 <!--                th:if-->
 
 
