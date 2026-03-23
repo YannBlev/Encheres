@@ -53,7 +53,19 @@ public class ArticleVenduController {
             articleDto.setImagePath(imagePath);
         }
 
+        /**
+         * Bien penser à modifier le vendeur avant de vérifier les champs vides du RETRAIT
+         */
         articleDto.setVendeur(utilisateurService.listerUtilisateurs().stream().filter(u -> u.getPseudo().equals(pseudo)).findFirst().orElse(null));
+
+        if (articleDto.getRue().isEmpty()) {articleDto.setRue(articleDto.getVendeur().getRue());}
+
+        if (articleDto.getCode_postal().isEmpty()) {articleDto.setCode_postal(articleDto.getVendeur().getCodePostal());}
+
+        if (articleDto.getVille().isEmpty()) {articleDto.setVille(articleDto.getVendeur().getVille());}
+
+
+
         articleVenduService.creerArticleVendu(articleDto);
         return "redirect:/encheres";
     }
