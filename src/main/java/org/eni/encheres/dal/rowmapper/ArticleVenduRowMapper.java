@@ -17,8 +17,6 @@ public class ArticleVenduRowMapper implements RowMapper<ArticleVendu> {
         Utilisateur vendeur = new Utilisateur();
         Categorie categorie = new Categorie();
 
-        System.out.println(" ICI C  EST LE ROWMAPPER !!! " );
-
         categorie.setId(rs.getInt("id_categorie"));
         categorie.setLibelle(rs.getString("libelle"));
 
@@ -36,6 +34,7 @@ public class ArticleVenduRowMapper implements RowMapper<ArticleVendu> {
         article.setPrixInitial(rs.getInt("prix_initial"));
         article.setPrixVente(rs.getInt("prix_vente"));
         article.setEtatVente(rs.getByte("etat_vente"));
+        article.setImagePath(rs.getString("imagePath"));
 
         article.setCategorie(categorie);
         article.setVendeur(vendeur);
