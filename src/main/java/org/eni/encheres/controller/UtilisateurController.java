@@ -85,4 +85,22 @@ public class UtilisateurController {
 
 
     }
+    @PostMapping("/profil/{pseudo}/modifier")
+    public String modifierProfil(
+            @PathVariable String pseudo,
+            @AuthenticationPrincipal UtilisateurSpringSecurity utilisateurConnecte,
+            Utilisateur utilisateur,
+            Model model) {
+
+        if (utilisateurConnecte == null) {
+            return "redirect:/login";
+        }
+
+        if (!utilisateurConnecte.getPseudo().equals(pseudo)) {
+            return "redirect:/encheres";
+        }
+
+        utilisateurService.modifierUtilisateur(utilisateur);
+        return "redirect:/profilUtilisateur/" + pseudo;
+    }
 }
