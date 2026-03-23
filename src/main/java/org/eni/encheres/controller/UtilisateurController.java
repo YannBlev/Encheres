@@ -98,6 +98,6 @@ public class UtilisateurController {
         }
 
         utilisateurService.modifierUtilisateur(utilisateur);
-        return "redirect:/profilUtilisateur/" + pseudo;
+        return "redirect:/profil/" + pseudo + "/modifier";
     }
 }

@@ -21,8 +21,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
     private static final String DELETE = "delete from utilisateur where id_utilisateur = ?";
     private static final String SELECT_BY_ID = "select * from utilisateur where id_utilisateur = ?";
     private static final String SELECT = "select * from utilisateur";
-    private static final String UPDATE = "update utilisateur set (pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) values (?,?,?,?,?,?,?,?,?,?,?)";
-
+    private static final String UPDATE = "UPDATE utilisateur SET " + "pseudo = ?, " + "nom = ?, " + "prenom = ?, " + "email = ?, " + "telephone = ?, " + "rue = ?, " + "code_postal = ?, " + "ville = ?, " + "mot_de_passe = ?, " + "credit = ?, " + "administrateur = ? " + "WHERE id_utilisateur = ?";
 
     @Override
     public void creerUtilisateur(Utilisateur utilisateur) {
@@ -44,20 +43,20 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 
     @Override
     public void modifierUtilisateur(Utilisateur utilisateur) {
-        jdbcTemplate.update
-                (UPDATE,utilisateur.getPseudo(),
-                        utilisateur.getNom(),
-                        utilisateur.getPrenom(),
-                        utilisateur.getEmail(),
-                        utilisateur.getTelephone(),
-                        utilisateur.getRue(),
-                        utilisateur.getCodePostal(),
-                        utilisateur.getVille(),
-                        utilisateur.getMotDePasse(),
-                        100,
-                        0 );
-
-
+        jdbcTemplate.update(UPDATE,
+                utilisateur.getPseudo(),
+                utilisateur.getNom(),
+                utilisateur.getPrenom(),
+                utilisateur.getEmail(),
+                utilisateur.getTelephone(),
+                utilisateur.getRue(),
+                utilisateur.getCodePostal(),
+                utilisateur.getVille(),
+                utilisateur.getMotDePasse(),
+                100,
+                0,
+                utilisateur.getId()
+        );
     }
 
     @Override

@@ -3,11 +3,11 @@
       xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:>
 
 <head>
-                                <meta charset="UTF-8">
-                            <title>Création de mon profil</title>
-                <!--    Nouveau profil dans le menu : s'inscrire ou se connecter -->
-                    <!--TODO modifier avec les bonnes valeurs dans l'énnoncé-->
-                <!--    Nouveau profil dans le menu : s'inscrire ou se connecter -->
+    <meta charset="UTF-8">
+    <title>Création de mon profil</title>
+    <!--    Nouveau profil dans le menu : s'inscrire ou se connecter -->
+    <!--TODO modifier avec les bonnes valeurs dans l'énnoncé-->
+    <!--    Nouveau profil dans le menu : s'inscrire ou se connecter -->
 
 </head>
 
@@ -16,7 +16,7 @@
 <main layout:fragment="content">
 
 
-    <form th:action="@{/profil/nouveauProfil}" method="post" th:object="${utilisateur}">
+    <form sec:authorize="isAnonymous()" th:action="@{/profil/nouveauProfil}" method="post" th:object="${utilisateur}">
 
         <label for="pseudo">Pseudo : </label>
         <input type="text" id="pseudo" th:field="*{pseudo}"
@@ -81,9 +81,6 @@
                required><br>
 
 
-                        <!-- Script Oeil pour voir/cacher le mot de passe
-            TODO AJOUTER LE CSS pour le mettre correctement à côté du champ Mot de passe-->
-
         <div class="password-icon" onclick="togglePassword()">
             <i id="eye-icon" data-feather="eye"></i>
             <i id="eye-off-icon" data-feather="eye-off" style="display:none"></i>
@@ -109,8 +106,6 @@
             }
         </script>
 
-                                    <!--TODO CREATION COMPTE  -->
-                <!--        TODO REDIRIGER SI ON A LE TEMPS VERS LA PAGE PRINCIPALE "ENCHERES"-->
         <button type="submit"
                 sec:authorize="isAnonymous()">Créer
         </button>
@@ -121,37 +116,59 @@
     </form>
 
 
-                            <!--    TODO : BOUTON ENREGISTER / SUPPRIMER COMPTE    -->
+                <!--    TODO : FORMULAIRE BOUTON ENREGISTER / SUPPRIMER COMPTE    -->
 
-<!--        <button type="submit"-->
-<!--                sec:authorize="isAuthenticated()">Modifier</button>-->
-<!--                th:onclick="|window.location.href='@{/ProfilUtilisateur}'|"sec:authorize="isAuthenticated()">Modifier</button>-->
-    <form class="inline-form" th:action="@{/profil/delete}" method="post">
-        <button class="delete-button" type="submit" name="idUtilisateurASupprimer" th:value="${utilisateur.id}">Supprimer mon compte</button>
+
+
+    <form sec:authorize="isAuthenticated()"
+          th:action="@{/profil/{pseudo}/modifier(pseudo=${utilisateur.pseudo})}"
+          method="post"
+          th:object="${utilisateur}">
+
+        <input type="hidden" th:field="*{id}"/>
+
+        <label for="pseudo2">Pseudo : </label>
+        <input type="text" id="pseudo2" th:field="*{pseudo}" ...><br>
+
+        <label for="nom2">Nom : </label>
+        <input type="text" id="nom2" th:field="*{nom}" ...><br>
+
+        <label for="prenom2">Prenom : </label>
+        <input type="text" id="prenom2" th:field="*{prenom}" ...><br>
+
+        <label for="email2">Email : </label>
+        <input type="email" id="email2" th:field="*{email}" ...><br>
+
+        <label for="telephone2">Télephone : </label>
+        <input type="tel" id="telephone2" th:field="*{telephone}" ...><br>
+
+        <label for="rue2">Rue : </label>
+        <input type="text" id="rue2" th:field="*{rue}" ...><br>
+
+        <label for="codePostal2">Code Postal : </label>
+        <input type="text" id="codePostal2" th:field="*{codePostal}" ...><br>
+
+        <label for="ville2">Ville : </label>
+        <input type="text" id="ville2" th:field="*{ville}" ...><br>
+
+        <label for="motDePasse2">Mot de passe : </label>
+        <input type="password" id="motDePasse2" th:field="*{motDePasse}" ...><br>
+
+        <button type="submit">Modifier mes informations</button>
+
     </form>
 
-<!--                th:if-->
 
-
-        <!--        <button th:if="${#authentication.principal != null}" type="button"-->
-<!--                th:href="@{/profil/profilUtilisateur}" sec:authorize="Authenticated()">Enregister</button>-->
-
-<!--        <button type="button"-->
-<!--                th:href="@{/encheres}" sec:authorize="Authenticated()">Supprimer le compte</button>-->
-
-<!--        <form class="inline-form" th:action="@{/categorie/supprimer}" method="post">-->
-<!--            <button class="delete-button" type="submit" name="idAsupprimer" th:value="${c.id}">✗</button>-->
-<!--        </form>-->
-
-        <!--TODO MODIFIER LES LIENS + BOUTON ENREGISTER ET SUPPRIMER COMPTE  -->
-
-
-
+    <form
+            class="inline-form" th:action="@{/profil/delete}" method="post">
+        <button class="delete-button" type="submit" name="idUtilisateurASupprimer" th:value="${utilisateur.id}" sec:authorize="isAuthenticated()">Supprimer mon compte</button>
     </form>
+
+
 </main>
 
 </body>
 </html>
 
 
-                <!--TODO MODIFIER LE FORMULAIRE DE CREATION DE COMPTE EN MODIFICATION DE COMPTE -->
+<!--TODO MODIFIER LE FORMULAIRE DE CREATION DE COMPTE EN MODIFICATION DE COMPTE -->

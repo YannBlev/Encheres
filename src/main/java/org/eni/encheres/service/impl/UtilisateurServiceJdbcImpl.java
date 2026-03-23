@@ -43,10 +43,16 @@ public class UtilisateurServiceJdbcImpl implements UtilisateurService {
     }
 
     @Override
-    public void modifierUtilisateur(Utilisateur idUtilisateur) {
-        utilisateurDao.modifierUtilisateur(idUtilisateur);
+    public void modifierUtilisateur(Utilisateur utilisateur) {
+        Utilisateur utilisateurExistant = utilisateurDao.consulterUtilisateurParId(utilisateur.getId());
 
+        if (utilisateur.getMotDePasse() == null || utilisateur.getMotDePasse().isEmpty()) {
+            utilisateur.setMotDePasse(utilisateurExistant.getMotDePasse());
+        } else {
+            utilisateur.setMotDePasse(passwordEncoder.encode(utilisateur.getMotDePasse()));
+        }
+
+        utilisateurDao.modifierUtilisateur(utilisateur);
     }
-
 
 }
