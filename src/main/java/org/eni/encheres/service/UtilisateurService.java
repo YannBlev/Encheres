@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface UtilisateurService {
      void creerUtilisateur (Utilisateur idUtilisateur);
-     void supprimerUtilisateur (Utilisateur idSupprimerUtilisateur);
+     void supprimerUtilisateur (int idSupprimerUtilisateur);
      List<Utilisateur> listerUtilisateurs();
      Utilisateur getUtilisateurById(int id);
      void modifierUtilisateur(Utilisateur idUtilisateur);
