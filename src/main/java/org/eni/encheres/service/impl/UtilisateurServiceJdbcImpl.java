@@ -49,10 +49,4 @@ public class UtilisateurServiceJdbcImpl implements UtilisateurService {
     }
 
 
-//    @Override
-//    public Utilisateur trouverParPseudo(String pseudo) {
-//        return utilisateurDao.findByPseudo(pseudo);
-//    }
-
-
 }
