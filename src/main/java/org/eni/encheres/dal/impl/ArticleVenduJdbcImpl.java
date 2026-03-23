@@ -22,12 +22,12 @@ public class ArticleVenduJdbcImpl implements ArticleVenduDao {
     private JdbcTemplate jdbcTemplate;
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    private static final String INSERT = "insert into article (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, id_vendeur, id_categorie ) values (:nom_article, :description,:date_debut_encheres,:date_fin_encheres, :prix_initial,:id_vendeur,:id_categorie )";
+    private static final String INSERT = "insert into article (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, imagePath, id_vendeur, id_categorie ) values (:nom_article, :description,:date_debut_encheres,:date_fin_encheres, :prix_initial, :imagePath,:id_vendeur,:id_categorie )";
     private static final String SELECT = "select * from article";
     private static final String DELETE = "delete from article where id_article = ?";
     private static final String SELECT_BY_ID = "select * from article where id_article = ?";
     private static final String SELECT_ALL= """
-        SELECT	a.id_article, a.nom_article, a.description, a.date_debut_encheres, a.date_fin_encheres, a.prix_initial, a.etat_vente, a.prix_vente,
+        SELECT	a.id_article, a.nom_article, a.description, a.date_debut_encheres, a.date_fin_encheres, a.prix_initial, a.etat_vente, a.prix_vente, a.imagePath,
                 c.id_categorie, c.libelle,
                 u.id_utilisateur, u.rue rueUtilisateur, u.code_postal code_postalUtilisateur, u.ville villeUtilisateur, u.pseudo,
                 r.rue rueRetrait, r.code_postal code_postalRetrait, r.ville villeRetrait
@@ -51,6 +51,7 @@ public class ArticleVenduJdbcImpl implements ArticleVenduDao {
                     .addValue("date_debut_encheres", articleVendu.getDateDebutEncheres())
                     .addValue("date_fin_encheres", articleVendu.getDateFinEncheres())
                     .addValue("prix_initial", articleVendu.getPrixInitial())
+                    .addValue("imagePath", articleVendu.getImagePath())
                     .addValue("id_vendeur", articleVendu.getVendeur().getId())
                     .addValue("id_categorie", articleVendu.getCategorie().getId());
 

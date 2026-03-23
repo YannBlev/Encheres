@@ -44,12 +44,6 @@ public class UtilisateurController {
 
     }
 
-    @PostMapping("/profil/inscription")// Création Utilisateur
-    public String creerUtilisateur(Utilisateur utilisateur) {
-        utilisateurService.creerUtilisateur(utilisateur);
-        return "redirect:/encheres";
-    }
-
     @PostMapping("/profil/delete") //Supprimer Utilisateur dans son menu utilisateur
     public String suppressionUtilisateur(Utilisateur idUtilisateurASupprimer) {
         utilisateurService.supprimerUtilisateur(idUtilisateurASupprimer);
@@ -67,7 +61,7 @@ public class UtilisateurController {
     @PostMapping("/profil/nouveauProfil")
     public String ajouterProfil(Utilisateur utilisateur) {
         utilisateurService.creerUtilisateur(utilisateur);
-        return "redirect:encheres";
+        return "redirect:../login";
     }
 
     @GetMapping("/profil")

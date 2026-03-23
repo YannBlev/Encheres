@@ -46,6 +46,7 @@ public class ArticleVenduServiceJdbcImpl implements ArticleVenduService {
                                 .vendeur(articleDto.getVendeur())
                                 .categorie(articleDto.getCategorie())
                                 .prixInitial(articleDto.getPrixInitial())
+                                .imagePath(articleDto.getImagePath())
                 .build();
 
         articleVenduDao.creerArticleVendu(article);

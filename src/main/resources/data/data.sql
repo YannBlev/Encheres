@@ -2,6 +2,9 @@
 /*
 	PENSER A SORTIR ET SUPPRIMER LA DATABASE POUR POUVOIR LA CREER
 */
+USE demo;
+DROP DATABASE ENCHERES_ORG;
+
 
 CREATE DATABASE ENCHERES_ORG;
 
@@ -60,6 +63,7 @@ CREATE TABLE ARTICLE (
                          prix_initial		INTEGER,
                          prix_vente			INTEGER,
                          etat_vente			BIT DEFAULT 0,
+                         imagePath			VARCHAR(300) NOT NULL,
                          id_vendeur			INTEGER NOT NULL,
                          id_categorie		INTEGER NOT NULL
 )
