@@ -1,6 +1,7 @@
 package org.eni.encheres.controller;
 
 import lombok.AllArgsConstructor;
+import org.eni.encheres.bo.Categorie;
 import org.eni.encheres.bo.dto.ArticleDto;
 import org.eni.encheres.service.ArticleVenduService;
 import org.eni.encheres.service.CategorieService;
@@ -17,6 +18,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 @Controller
 @AllArgsConstructor
@@ -28,10 +30,14 @@ public class ArticleVenduController {
     private UtilisateurService utilisateurService;
     private FileArticleService fileArticleService;
 
+    @ModelAttribute("categories")
+    public List<Categorie> getAttributeModelCategories() {
+        return categorieService.consulterCategorie();
+    }
+
     @GetMapping("/{pseudo}/nouvelleVente")
     public String getNouvelleVente(@PathVariable String pseudo, Model model){
         model.addAttribute("utilisateur", utilisateurService.listerUtilisateurs().stream().filter(u -> u.getPseudo().equals(pseudo)).findFirst().orElse(null));
-        model.addAttribute("categories", categorieService.consulterCategorie());
         model.addAttribute("articleDto",new ArticleDto());
 
         return "page/nouvelleVente";
@@ -62,7 +68,7 @@ public class ArticleVenduController {
         if (articleDto.getVille().isEmpty()) {articleDto.setVille(articleDto.getVendeur().getVille());}
 
         articleVenduService.creerArticleVendu(articleDto);
-        return "redirect:/encheres";
+        return "redirect:/";
     }
 
 }

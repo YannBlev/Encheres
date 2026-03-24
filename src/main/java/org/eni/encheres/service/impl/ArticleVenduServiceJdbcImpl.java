@@ -75,5 +75,7 @@ public class ArticleVenduServiceJdbcImpl implements ArticleVenduService {
     @Override
     public void supprimerArticleVendu(int noArticle) { articleVenduDao.supprimerArticleVendu(noArticle);}
 
+
+
 }
 
