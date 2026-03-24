@@ -35,16 +35,16 @@ public class ArticleVenduController {
         return categorieService.consulterCategorie();
     }
 
-    @GetMapping("/{pseudo}/nouvelleVente")
-    public String getNouvelleVente(@PathVariable String pseudo, Model model){
-        model.addAttribute("utilisateur", utilisateurService.listerUtilisateurs().stream().filter(u -> u.getPseudo().equals(pseudo)).findFirst().orElse(null));
+    @GetMapping("/{id}/nouvelleVente")
+    public String getNouvelleVente(@PathVariable int id, Model model){
+        model.addAttribute("utilisateur", utilisateurService.getUtilisateurById(id));
         model.addAttribute("articleDto",new ArticleDto());
 
         return "page/nouvelleVente";
     }
 
-    @PostMapping("/{pseudo}/nouvelleVente")
-    public String postNouvelleVente(@PathVariable String pseudo, @RequestParam("image") MultipartFile file, ArticleDto articleDto, BindingResult bindingResult) throws IOException {
+    @PostMapping("/{id}/nouvelleVente")
+    public String postNouvelleVente(@PathVariable int id, @RequestParam("image") MultipartFile file, ArticleDto articleDto, BindingResult bindingResult) throws IOException {
 //        if (bindingResult.hasErrors()) {
 //            return "index";
 //        }
@@ -60,7 +60,7 @@ public class ArticleVenduController {
         /**
          * Bien penser à modifier le vendeur avant de vérifier les champs vides du RETRAIT
          */
-        articleDto.setVendeur(utilisateurService.listerUtilisateurs().stream().filter(u -> u.getPseudo().equals(pseudo)).findFirst().orElse(null));
+        articleDto.setVendeur(utilisateurService.getUtilisateurById(id));
 
         // Si les champs rue/code_postal/ville sont vides, mettre l'adresse du vendeur
         if (articleDto.getRue().isEmpty()) {articleDto.setRue(articleDto.getVendeur().getRue());}
