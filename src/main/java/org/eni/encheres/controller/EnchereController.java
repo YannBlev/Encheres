@@ -45,6 +45,8 @@ public class EnchereController {
 
     @GetMapping("/{id}")
     public String detail(@PathVariable("id") int id, Model model){
+
+
         ArticleVendu article = articleVenduService.consulterArticleVendu(id);
         Retrait retrait = retraitService.consulterAdresseById(id);
         model.addAttribute("article", article);

@@ -54,7 +54,7 @@
                 sur le chemin "/categories/supprimer"
                 avec un parametre "idASupprimer" qui indique
                 l'id de la categorie à supprimer avec : th:value="${categorie.id}"-->
-                <form class="inline-form" th:action="@{/categorie/supprimer}" method="post">
+                <form class="inline-form" th:action="@{/encheres/categorie/supprimer}" method="post">
                     <button class="delete-button" type="submit" name="idAsupprimer" th:value="${c.id}">✗</button>
                 </form>
 

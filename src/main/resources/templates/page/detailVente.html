@@ -36,7 +36,7 @@
       <label>Vendeur : </label>
       <span th:text="${article.vendeur.pseudo}"></span><br>
 
-    <form sec:authorize="isAuthenticated()" th:action="@{|/${article.noArticle}/encherir|}" method="post">
+    <form sec:authorize="isAuthenticated()" th:action="@{|/encheres/${article.noArticle}/encherir|}" method="post">
 
       <label>Ma proposition : </label>
       <input type="number" name="proposition"><br>

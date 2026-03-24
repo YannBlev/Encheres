@@ -29,11 +29,10 @@ public class UtilisateurController {
         return "page/profils";
     }
 
-    @GetMapping("/profil/{pseudo}")
-    public String getUtilisateur(@PathVariable String pseudo, @AuthenticationPrincipal UtilisateurSpringSecurity utilisateurConnecte, Model model ) {
-        Utilisateur utilisateur = utilisateurService.listerUtilisateurs().stream().filter(u -> u.getPseudo().equals(pseudo)).findFirst().orElse(null);
-        String pseudo1 = utilisateurConnecte.getPseudo();
-        model.addAttribute("pseudo", pseudo);
+    @GetMapping("/profil/{id}")
+    public String getUtilisateur(@PathVariable int id, @AuthenticationPrincipal UtilisateurSpringSecurity utilisateurConnecte, Model model ) {
+        Utilisateur utilisateur = utilisateurService.getUtilisateurById(id);
+
 //        if (utilisateur == null || pseudo1 == null) {
 //            return "redirect:/encheres"; // Ou une page d'erreur 404 personnalisée
 //        }
@@ -76,9 +75,9 @@ public class UtilisateurController {
         return "page/profilUtilisateur";
     }
 
-    @GetMapping("/profil/{pseudo}/modifier")
-    public String afficherModification(@PathVariable String pseudo, @AuthenticationPrincipal UtilisateurSpringSecurity utilisateurConnecte, Model model ) {
-        Utilisateur utilisateur = utilisateurService.listerUtilisateurs().stream().filter(u -> u.getPseudo().equals(pseudo)).findFirst().orElse(null);
+    @GetMapping("/profil/{id}/modifier")
+    public String afficherModification(@PathVariable int id, @AuthenticationPrincipal UtilisateurSpringSecurity utilisateurConnecte, Model model ) {
+        Utilisateur utilisateur = utilisateurService.getUtilisateurById(id);
         String pseudo1 = utilisateurConnecte.getPseudo();
         model.addAttribute("pseudo1", pseudo1);
 //        if (utilisateur == null || pseudo1 == null) {
@@ -94,12 +93,8 @@ public class UtilisateurController {
     // TODO > Quand l'utilisateur modifie son profil, il est redirigé vers Login, ou il va remettre son mail et mot de passe
     // TODO > puis il peut effectuer des ventes et re-modifier son profil.
 
-    @PostMapping("/profil/{pseudo}/modifier")
-    public String modifierProfil(
-            @PathVariable String pseudo,
-            @AuthenticationPrincipal UtilisateurSpringSecurity utilisateurConnecte,
-            Utilisateur utilisateur,
-            Model model) {
+    @PostMapping("/profil/{id}/modifier")
+    public String modifierProfil(@AuthenticationPrincipal UtilisateurSpringSecurity utilisateurConnecte, Utilisateur utilisateur) {
 
         if (utilisateurConnecte == null) {
             return "redirect:/login";
@@ -109,7 +104,7 @@ public class UtilisateurController {
 
         SecurityContextHolder.clearContext();
 
-        return "redirect:/login";
+        return "redirect:/encheres/profil/" + utilisateur.getId();
     }
 }
 

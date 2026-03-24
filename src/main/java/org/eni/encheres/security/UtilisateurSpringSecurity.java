@@ -44,4 +44,6 @@ public class UtilisateurSpringSecurity implements UserDetails {
     public String getPseudo() {
         return utilisateur.getPseudo();
     }
+
+    public int getId() {return utilisateur.getId();}
 }

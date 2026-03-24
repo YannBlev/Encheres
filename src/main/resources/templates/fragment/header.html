@@ -4,8 +4,8 @@
     <nav>
 
     <a th:href="@{/}" sec:authorize="isAuthenticated()" th:text="#{menu.encheres}"></a>
-    <a th:href="@{|/${#authentication.principal.pseudo}/nouvelleVente|}"  th:text="#{menu.vendreunarticle}" sec:authorize="isAuthenticated()"></a> <!-- sec:authorize="hasRole('admin')" -->
-    <a th:href="@{|/profil/${#authentication.principal.pseudo}|}" sec:authorize="isAuthenticated()" th:text="#{menu.MonCompte}"></a>
+    <a th:href="@{|/encheres/${#authentication.principal.id}/nouvelleVente|}"  th:text="#{menu.vendreunarticle}" sec:authorize="isAuthenticated()"></a> <!-- sec:authorize="hasRole('admin')" -->
+    <a th:href="@{|/encheres/profil/${#authentication.principal.id}|}" sec:authorize="isAuthenticated()" th:text="#{menu.MonCompte}"></a>
 
         <section class="inline-display" sec:authorize="isAuthenticated()">
             <!-- on offre la possibilité de se déconnecter (${#authentication.name}" : recupère le username de l'utilisateur connecté) -->
@@ -15,7 +15,7 @@
         </section>
         <!-- on n'affiche cette section que pour les utilisateurs NON connectés -->
         <div class="inline-display" sec:authorize="!isAuthenticated()">
-            <a th:href="@{/login}">S'incrire - Se connecter</a>
+            <a th:href="@{/encheres/login}">S'incrire - Se connecter</a>
         </div>
     </nav>
 

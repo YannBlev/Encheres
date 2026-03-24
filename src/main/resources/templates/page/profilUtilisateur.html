@@ -42,7 +42,7 @@
         <label>Crédit :</label>
         <span th:text="*{utilisateur.credit}"></span><br>
 
-        <a th:href="@{|/profil/${pseudo}/modifier|}" sec:authorize="isAuthenticated()"> <!-- th:href="@{/profil/{pseudo}/modifier(pseudo=${#authentication.principal.pseudo})}" -->
+        <a th:href="@{|/encheres/profil/${id}/modifier|}" sec:authorize="isAuthenticated()"> <!-- th:href="@{/profil/{pseudo}/modifier(pseudo=${#authentication.principal.pseudo})}" -->
             <button type="button">Modifier mon profil</button>
         </a>
 
