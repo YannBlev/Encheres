@@ -17,6 +17,16 @@
         <div class="inline-display" sec:authorize="!isAuthenticated()">
             <a th:href="@{/login}">S'incrire - Se connecter</a>
         </div>
+
+
+                        <!--   TODO : Formulaire Français Anglais     -->
+
+        <!--        <form method="get" action="/i18n" class="inline-display">-->
+<!--            <select name="lang" onchange="this.form.submit()" >-->
+<!--                <option th:selected="${#locale.toString() == 'fr'}" value="fr">Français</option>-->
+<!--                <option th:selected="${#locale.toString() == 'en'}" value="en">Anglais</option>-->
+<!--            </select>-->
+<!--        </form>-->
     </nav>
 
 </header>
