@@ -6,7 +6,7 @@
     <fieldset class="table-container">
         <legend class="log"><h2>Nouvelle Vente</h2></legend>
 
-    <form class="vente" th:action="@{./nouvelleVente}" method="post" th:object="${articleDto}" enctype="multipart/form-data">
+    <form class="vente" th:action="@{|/${pseudo}/nouvelleVente|}" method="post" th:object="${articleDto}" enctype="multipart/form-data">
         <section>
             <label>Article :</label>
             <input type="text" th:field="*{nomArticle}">

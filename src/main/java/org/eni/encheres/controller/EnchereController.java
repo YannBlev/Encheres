@@ -3,6 +3,7 @@ package org.eni.encheres.controller;
 
 import lombok.AllArgsConstructor;
 import org.eni.encheres.bo.ArticleVendu;
+import org.eni.encheres.bo.Categorie;
 import org.eni.encheres.bo.Enchere;
 import org.eni.encheres.bo.Retrait;
 import org.eni.encheres.dal.ArticleVenduDao;
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -25,10 +27,16 @@ public class EnchereController {
 
     private ArticleVenduService articleVenduService;
     private RetraitService retraitService;
+    private CategorieService categorieService;
 
     @ModelAttribute("articles")
     public List<ArticleVendu> getAttributeModelArticles() {
         return articleVenduService.listArticlesVendu();
+    }
+
+    @ModelAttribute("categories")
+    public List<Categorie> getAttributeModelCategories() {
+        return categorieService.consulterCategorie();
     }
 
     @GetMapping
@@ -47,7 +55,7 @@ public class EnchereController {
     }
 
     @PostMapping("/{id}/encherir")
-    public String postEncherir(@PathVariable("id") int id){
+    public String postEncherir(@PathVariable("id") int id, @RequestParam("proposition") int proposition){
 
         return "redirect:/encheres" ;
     }
