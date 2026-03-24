@@ -3,6 +3,7 @@ package org.eni.encheres.controller;
 
 import lombok.AllArgsConstructor;
 import org.eni.encheres.bo.ArticleVendu;
+import org.eni.encheres.bo.Categorie;
 import org.eni.encheres.bo.Enchere;
 import org.eni.encheres.bo.Retrait;
 import org.eni.encheres.dal.ArticleVenduDao;
@@ -26,10 +27,16 @@ public class EnchereController {
 
     private ArticleVenduService articleVenduService;
     private RetraitService retraitService;
+    private CategorieService categorieService;
 
     @ModelAttribute("articles")
     public List<ArticleVendu> getAttributeModelArticles() {
         return articleVenduService.listArticlesVendu();
+    }
+
+    @ModelAttribute("categories")
+    public List<Categorie> getAttributeModelCategories() {
+        return categorieService.consulterCategorie();
     }
 
     @GetMapping

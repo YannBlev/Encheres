@@ -1,6 +1,7 @@
 package org.eni.encheres.controller;
 
 import lombok.AllArgsConstructor;
+import org.eni.encheres.bo.Categorie;
 import org.eni.encheres.bo.dto.ArticleDto;
 import org.eni.encheres.service.ArticleVenduService;
 import org.eni.encheres.service.CategorieService;
@@ -9,10 +10,7 @@ import org.eni.encheres.service.UtilisateurService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -20,6 +18,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 @Controller
 @AllArgsConstructor
@@ -30,10 +29,14 @@ public class ArticleVenduController {
     private UtilisateurService utilisateurService;
     private FileArticleService fileArticleService;
 
+    @ModelAttribute("categories")
+    public List<Categorie> getAttributeModelCategories() {
+        return categorieService.consulterCategorie();
+    }
+
     @GetMapping("/{pseudo}/nouvelleVente")
     public String getNouvelleVente(@PathVariable String pseudo, Model model){
         model.addAttribute("utilisateur", utilisateurService.listerUtilisateurs().stream().filter(u -> u.getPseudo().equals(pseudo)).findFirst().orElse(null));
-        model.addAttribute("categories", categorieService.consulterCategorie());
         model.addAttribute("articleDto",new ArticleDto());
 
         return "page/nouvelleVente";
