@@ -35,7 +35,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
                         utilisateur.getCodePostal(),
                         utilisateur.getVille(),
                         utilisateur.getMotDePasse(),
-                        100,
+                        0,
                         0 );
 
 
@@ -53,7 +53,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
                 utilisateur.getCodePostal(),
                 utilisateur.getVille(),
                 utilisateur.getMotDePasse(),
-                100,
+                0,
                 0,
                 utilisateur.getId()
         );
@@ -68,7 +68,6 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
     public List<Utilisateur> listerUtilisateurs() {
         return jdbcTemplate.query(SELECT, new UtilisateurRowMapper());
     }
-                        // TODO A FAIRE
 
     @Override
     public void updateUtilisateur(Utilisateur idUtilisateur) {

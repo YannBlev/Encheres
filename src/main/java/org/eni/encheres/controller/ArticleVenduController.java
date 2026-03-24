@@ -22,6 +22,7 @@ import java.util.List;
 
 @Controller
 @AllArgsConstructor
+@RequestMapping("/encheres")
 public class ArticleVenduController {
 
     private CategorieService categorieService;
