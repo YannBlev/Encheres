@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/categorie")
+@RequestMapping("/encheres/categorie")
 public class CategorieController {
 
     @Autowired
