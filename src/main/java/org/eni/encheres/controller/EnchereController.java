@@ -20,7 +20,7 @@ import java.util.List;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/encheres")
+@RequestMapping()
 public class EnchereController {
 
     private ArticleVenduService articleVenduService;

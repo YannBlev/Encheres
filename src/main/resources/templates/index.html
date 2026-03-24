@@ -46,7 +46,7 @@
                  th:class="'filterDiv ' + ${article.categorie.libelle}">
 
             <div class="card" style="width: 15rem; " >
-                <img th:src="${article.imagePath}" style="width:100%">
+                <img th:src="@{|${article.imagePath}|}" style="width:100%">
                 <div class="container">
                     <a sec:authorize="isAuthenticated()" th:href="@{|/encheres/${article.noArticle}|}" th:text="${article.nomArticle}"></a>
                     <span sec:authorize="!isAuthenticated()" th:text="${article.nomArticle}"></span>
