@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class EnchereController {
     }
 
     @PostMapping("/{id}/encherir")
-    public String postEncherir(@PathVariable("id") int id){
+    public String postEncherir(@PathVariable("id") int id, @RequestParam("proposition") int proposition){
 
         return "redirect:/encheres" ;
     }
