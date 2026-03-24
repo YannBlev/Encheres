@@ -46,5 +46,6 @@ public class EnchereJdbcImpl implements EnchereDao {
 
     public int consulterIdEnchereurParIdArticle(int id) {
 //        return jdbcTemplate.query(SELECT_LAST_ENCHEREUR_BY_ARTICLE, new BeanPropertyRowMapper<>(Enchere.class), id);
+    return  0;
     }
 }
