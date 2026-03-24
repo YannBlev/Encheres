@@ -1,5 +1,3 @@
-
-
 function nextCategory() {
 index = (index + 1) % categories.length;
 filterSelection(categories[index]);
