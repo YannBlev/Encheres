@@ -64,7 +64,7 @@ public class ArticleVenduController {
         if (articleDto.getVille().isEmpty()) {articleDto.setVille(articleDto.getVendeur().getVille());}
 
         articleVenduService.creerArticleVendu(articleDto);
-        return "redirect:/encheres";
+        return "redirect:/";
     }
 
 }
