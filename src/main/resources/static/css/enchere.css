@@ -1,3 +1,4 @@
+
 .card {
     /* Add shadows to create the "card" effect */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -54,4 +55,154 @@
 .btn.active {
     background-color: #666;
     color: white;
+}
+
+
+
+
+
+
+/*!* Conteneur principal : Grille responsive *!*/
+/*.articles-grid {*/
+/*    display: grid;*/
+/*    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));*/
+/*    gap: 20px;*/
+/*    padding: 20px;*/
+/*    justify-items: center;*/
+/*}*/
+
+/* Style de la Carte */
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; /* Pour que l'image respecte les bords arrondis */
+    width: 100%;
+    max-width: 280px; /* Largeur max pour garder un bel aspect */
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #eee;
+}
+
+/*!* Effet au survol *!*/
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/*!* Style de l'image *!*/
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Important : empêche la déformation de la photo */
+    border-bottom: 1px solid #eee;
+}
+
+/* Conteneur de texte (Padding et espacement) */
+.container {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Titre de l'article / Lien */
+.container a, .container span:first-child {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #2c3e50;
+    text-decoration: none;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.container a:hover {
+    color: #3498db;
+}
+
+/* Labels et informations */
+.container label {
+    font-weight: 600;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.container span {
+    color: #34495e;
+    font-size: 0.9rem;
+}
+
+/* Mise en avant du prix */
+.container span[th*="prixInitial"] {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+/* Style du Select (Filtre) */
+select {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/*!* CSS pour la recherche *!*/
+/** {*/
+/*    box-sizing: border-box;*/
+/*}*/
+
+/*#myInput {*/
+/*    background-position: 10px 12px;*/
+/*    background-repeat: no-repeat;*/
+/*    width: 20%;*/
+/*    font-size: 16px;*/
+/*    padding: 12px 20px 12px 40px;*/
+/*    border: 1px solid #ddd;*/
+/*    margin-bottom: 12px;*/
+/*}*/
+
+/*#myUL {*/
+/*    list-style-type: none;*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*}*/
+
+/*#myUL li a {*/
+/*    justify-content: center;*/
+/*    border: 1px solid #ddd;*/
+/*    margin-top: -1px; !* Prevent double borders *!*/
+/*    background-color: #f6f6f6;*/
+/*    padding: 12px;*/
+/*    text-decoration: none;*/
+/*    font-size: 18px;*/
+/*    color: black;*/
+/*    display: block*/
+/*}*/
+
+/*#myUL li a:hover:not(.header) {*/
+/*    background-color: #eee;*/
+/*}*/
+
+
+ #myUL {
+     list-style-type: none;
+     padding: 0;
+     margin: 10px 0;
+ }
+
+#myUL li a {
+    margin-top: -1px; /* Évite les doubles bordures */
+    background-color: transparent;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    display: block;
+}
+
+#myUL li a:hover:not(.header) {
+    background-color: #eee;
 }

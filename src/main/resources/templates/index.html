@@ -7,12 +7,16 @@
 <section>
     <h1>Listes des enchères</h1>
     <h2>Filtres :</h2>
-
-    <div class="input-box">
-        <form class="search-form">
-        <input name="recherche" placeholder="Le nom de l'article contient" th:value="${recherche}">
-        <button>Rechercher</button>
-        </form>
+    <script th:src="@{js/search.js}"></script>
+    <div>
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Le nom de l'article contient" autocomplete="off" th:value="${recherche}">
+        <button th:action="${categories}">Rechercher</button>
+        <ul id="myUL">
+            <li data-category="Sport&Loisirs"><a href="#Sport&Loisirs">Sport&Loisirs</a></li>
+            <li data-category="Informatique"><a href="#Informatique">Informatique</a></li>
+            <li data-category="Vêtement"><a href="#Vêtement">Vêtement</a></li>
+            <li data-category="Ameublement"><a href="#Ameublement">Ameublement</a></li>
+        </ul>
     </div>
 
     <br>
@@ -24,11 +28,12 @@
         <option th:each="categorie : ${categories}" th:value="${categorie.id}" th:text="${categorie.libelle}"></option>
     </select>
 
-    <div class="container">
+    <div>
         <article th:each="article : ${articles}"
-                 th:class="'filterDiv ' + ${article.categorie.libelle}">
+                 th:class="'filterDiv ' + ${article.categorie}">
 
-            <div class="card" style="width: 15rem; " >
+
+            <div class="card" style="width: 10rem; " >
                 <img th:src="@{|${article.imagePath}|}" style="width:100%">
                 <div class="container">
                     <a sec:authorize="isAuthenticated()" th:href="@{|/${article.noArticle}|}" th:text="${article.nomArticle}"></a>
