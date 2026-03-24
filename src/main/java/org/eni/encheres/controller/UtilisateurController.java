@@ -101,11 +101,11 @@ public class UtilisateurController {
             return "redirect:/login";
         }
 
-        if (!utilisateurConnecte.getPseudo().equals(pseudo)) {
-            return "redirect:/encheres";
-        }
+//        if (!utilisateurConnecte.getPseudo().equals(pseudo)) {
+//            return "redirect:/encheres";
+//        }
 
         utilisateurService.modifierUtilisateur(utilisateur);
-        return "redirect:/profil/" + pseudo + "/modifier";
+        return "redirect:/profil/" + utilisateur.getPseudo();
     }
 }
