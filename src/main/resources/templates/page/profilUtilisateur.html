@@ -52,7 +52,7 @@
        <label>Ville : </label>
        <span th:text="${utilisateur.ville }"></span><br>
 
-        <a th:href="@{/profil/{pseudo}/modifier(pseudo=${#authentication.principal.pseudo})}" sec:authorize="isAuthenticated()">
+        <a th:href="@{|/profil/${pseudo}/modifier|}" sec:authorize="isAuthenticated()"> <!-- th:href="@{/profil/{pseudo}/modifier(pseudo=${#authentication.principal.pseudo})}" -->
             <button type="button">Modifier mon profil</button>
         </a>
 
