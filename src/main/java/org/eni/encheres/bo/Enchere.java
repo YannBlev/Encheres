@@ -11,12 +11,10 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class Enchere {
 
-    private LocalDate dateEnchere;
-
     @NotNull
     private int montantEnchere;
-
-        private Utilisateur utilisateur;
-        private ArticleVendu article;
+    private LocalDate dateEnchere;
+    private Utilisateur utilisateur;
+    private ArticleVendu article;
 
 }
