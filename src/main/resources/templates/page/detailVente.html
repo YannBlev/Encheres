@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en"layout:decorate="~{layout/base}" xmlns:layout="http://www.w3.org/1999/xhtml">
+<html lang="en" layout:decorate="~{layout/base}" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Détail Vente</title>
@@ -7,9 +8,7 @@
 <body>
   <main layout:fragment="content">
 
-    <form th:action="|@{/${article.noArticle}/encherir}|" method="post">
-
-      <img th:src="${article.imagePath}" style="width:200px" alt="Image de l'article">
+      <img th:src="@{|${article.imagePath}|}" style="width:200px" alt="Image de l'article">
 
       <label>Intitulé : </label>
       <span th:text="${article.nomArticle}"></span><br>
@@ -37,11 +36,12 @@
       <label>Vendeur : </label>
       <span th:text="${article.vendeur.pseudo}"></span><br>
 
+    <form sec:authorize="isAuthenticated()" th:action="|@{/${article.noArticle}/encherir}|" method="post">
+
       <label>Ma proposition : </label>
       <input type="number"><br>
 
-      <label></label>
-      <button type="submit">Enchérir</button>
+      <input type="submit" value="Encherir"></input>
 
     </form>
 

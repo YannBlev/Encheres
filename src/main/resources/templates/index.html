@@ -48,7 +48,7 @@
             <div class="card" style="width: 15rem; " >
                 <img th:src="@{|${article.imagePath}|}" style="width:100%">
                 <div class="container">
-                    <a sec:authorize="isAuthenticated()" th:href="@{|/encheres/${article.noArticle}|}" th:text="${article.nomArticle}"></a>
+                    <a sec:authorize="isAuthenticated()" th:href="@{|/${article.noArticle}|}" th:text="${article.nomArticle}"></a>
                     <span sec:authorize="!isAuthenticated()" th:text="${article.nomArticle}"></span>
 
                     <label>Prix: </label>
@@ -116,25 +116,25 @@
         }
     </script>
 
-    <article th:each="article : ${articles}">
-        <div class="card" style="width: 18rem;">
-            <img th:src="${article.imagePath}" alt="Avatar" style="width:100%">
-            <div class="container">
-                <h4 th:text="${article.nomArticle}"></h4><br>
+<!--    <article th:each="article : ${articles}">-->
+<!--        <div class="card" style="width: 18rem;">-->
+<!--            <img th:src="${article.imagePath}" alt="Avatar" style="width:100%">-->
+<!--            <div class="container">-->
+<!--                <h4 th:text="${article.nomArticle}"></h4><br>-->
 
-                <label>Prix: </label>
-                <span th:text="|${article.prixInitial} points|"></span>
-                <br>
+<!--                <label>Prix: </label>-->
+<!--                <span th:text="|${article.prixInitial} points|"></span>-->
+<!--                <br>-->
 
-                <label>Fin de l'enchère :</label>
-                <span th:text="${article.dateFinEncheres}"></span>
-                <br>
+<!--                <label>Fin de l'enchère :</label>-->
+<!--                <span th:text="${article.dateFinEncheres}"></span>-->
+<!--                <br>-->
 
-                <label>Vendeur :</label>
-                <span th:text="${article.vendeur.pseudo}"></span>
-            </div>
-        </div>
-    </article>
+<!--                <label>Vendeur :</label>-->
+<!--                <span th:text="${article.vendeur.pseudo}"></span>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </article>-->
 </section>
 </main>
 
