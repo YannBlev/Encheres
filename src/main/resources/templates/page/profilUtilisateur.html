@@ -7,26 +7,13 @@
     <meta charset="UTF-8">
 
                                     <title>Mon profil</title>
-                <!-- TODO vérifier au niveau du bouton "Modifier" par la suite -->
 
-
-                <!--TODO : CE PROFIL PERMET D'AVOIR LE BOUTON ENREGISTER ET SUPPRIMER LE COMPTE
-                                    ET DE VOIR LES CREDITS DE SON COMPTE-->
 </head>
 
 
 <body>
     <main layout:fragment="content">
 
-
-    <!--
-    TODO Ici, pas de form car on ne renvoie rien au controleur
-    -->
-
-
-       <!--
-       TODO Plutôt que des inputs avec th:field -> <p> ou <span> avec th:text
-       -->
 
        <label>Profil : </label>
        <span th:text="${utilisateur.pseudo}"></span><br>
@@ -55,35 +42,6 @@
         <a th:href="@{|/profil/${pseudo}/modifier|}" sec:authorize="isAuthenticated()"> <!-- th:href="@{/profil/{pseudo}/modifier(pseudo=${#authentication.principal.pseudo})}" -->
             <button type="button">Modifier mon profil</button>
         </a>
-
-
-
-        <!--
-
-            **** pas besoin d'afficher les psw dans le profil (ce sera plutot dans nouveauProfil) ****
-
-         <label>Mot de passe actuel : </label>
-         <input type="hidden" th:text="${utilisateur.motDePasse}" required><br>
-
-         <label>Nouveau mot de passe : </label>
-         <input type="hidden" th:field="*{motDePasse}" required><br>
-
-         <label>Confirmation : </label>
-         <input type="password"
-                title="Les mots de passe doivent correspondre"
-                required><br>
-       -->
-
-
-       <!--
-        TODO  idem, pas besoin de valider un formulaire ici
-       -->
-
-
-    <!--
-    TODO inserer un lien <a> qui redirigera vers le controller pour arriver sur le template nouveauProfil
-    -->
-
 
 
 </main>
