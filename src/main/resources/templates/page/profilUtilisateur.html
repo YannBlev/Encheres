@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="en" layout:decorate="~{layout/base}" xmlns:layout="http://www.w3.org/1999/xhtml"
-      xmlns:sec="http://www.w3.org/1999/xhtml">
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="UTF-8">
@@ -38,6 +38,9 @@
 
        <label>Ville : </label>
        <span th:text="${utilisateur.ville }"></span><br>
+
+        <label>Crédit :</label>
+        <span th:text="*{utilisateur.credit}"></span><br>
 
         <a th:href="@{|/profil/${pseudo}/modifier|}" sec:authorize="isAuthenticated()"> <!-- th:href="@{/profil/{pseudo}/modifier(pseudo=${#authentication.principal.pseudo})}" -->
             <button type="button">Modifier mon profil</button>

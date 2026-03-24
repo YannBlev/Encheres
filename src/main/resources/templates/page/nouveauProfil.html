@@ -117,45 +117,67 @@
     </form>
 
 
-                <!--    TODO : FORMULAIRE BOUTON ENREGISTER / SUPPRIMER COMPTE    -->
-                            <!--    TODO MODIFIER LIGNE 126-->
-
-
-    <!--          th:action="@{/profil/{pseudo}/modifier(pseudo=${utilisateur.pseudo})}"-->
 
     <form sec:authorize="isAuthenticated()"
           th:action="@{|/profil/${pseudo}/modifier|}"
           method="post"
+
           th:object="${utilisateur}">
 
         <input type="hidden" th:field="*{id}"/>
 
         <label for="pseudo2">Pseudo : </label>
-        <input type="text" id="pseudo2" th:field="*{pseudo}"><br>
+        <input type="text" id="pseudo2" th:field="*{pseudo}"
+               pattern="[a-zA-ZÀ-ÿ\-\s]{3,30}"
+               title="Le nom ne doit contenir que des lettres entre 3 et 30 caractères"
+               maxlength="30"><br>
 
         <label for="nom2">Nom : </label>
-        <input type="text" id="nom2" th:field="*{nom}"><br>
+        <input type="text" id="nom2" th:field="*{nom}"
+               pattern="[a-zA-ZÀ-ÿ\-\s]{3,30}"
+               title="Le nom ne doit contenir que des lettres entre 3 et 30 caractères"
+               maxlength="30"><br>
 
         <label for="prenom2">Prenom : </label>
-        <input type="text" id="prenom2" th:field="*{prenom}"><br>
+        <input type="text" id="prenom2" th:field="*{prenom}"
+               pattern="[a-zA-ZÀ-ÿ\-\s]{3,30}"
+               title="Le prénom ne doit contenir que des lettres entre 3 et 30 caractères"
+               maxlength="30"><br>
 
         <label for="email2">Email : </label>
-        <input type="email" id="email2" th:field="*{email}"><br>
+        <input type="email" id="email2" th:field="*{email}"
+               title="Veuillez entrer une retrait email valide"
+               maxlength="50"><br>
 
         <label for="telephone2">Télephone : </label>
-        <input type="tel" id="telephone2" th:field="*{telephone}"><br>
+        <input type="tel" id="telephone2" th:field="*{telephone}"
+               pattern="[0-9\+\s\-]{10,15}"
+               title="Le téléphone ne doit contenir que des chiffres entre 10 et 15 chiffres"
+               minlength="10"
+               maxlength="15"><br>
 
         <label for="rue2">Rue : </label>
-        <input type="text" id="rue2" th:field="*{rue}"><br>
+        <input type="text" id="rue2" th:field="*{rue}"
+               pattern="[a-zA-ZÀ-ÿ0-9\s\-\,\.]{5,100}"
+               title="Adresse invalide"
+               maxlength="100"><br>
 
         <label for="codePostal2">Code Postal : </label>
-        <input type="text" id="codePostal2" th:field="*{codePostal}"><br>
+        <input type="text" id="codePostal2" th:field="*{codePostal}"
+               pattern="[0-9]{5}"
+               title="Le code postal doit contenir 5 chiffres"><br>
 
         <label for="ville2">Ville : </label>
-        <input type="text" id="ville2" th:field="*{ville}"><br>
+        <input type="text" id="ville2" th:field="*{ville}"
+               pattern="[a-zA-ZÀ-ÿ\s\-]{2,50}"
+               title="La ville ne doit contenir que des lettres"
+               maxlength="50"><br>
 
         <label for="motDePasse2">Mot de passe : </label>
-        <input type="password" id="motDePasse2" th:field="*{motDePasse}"><br>
+        <input type="password" id="motDePasse2" th:field="*{motDePasse}"
+               pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}"
+               title="Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule et un chiffre"><br>
+
 
         <button type="submit">Modifier mes informations</button>
 
