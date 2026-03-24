@@ -2,6 +2,7 @@ package org.eni.encheres.controller;
 
 
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import org.eni.encheres.bo.Utilisateur;
 import org.eni.encheres.security.UtilisateurSpringSecurity;
 import org.eni.encheres.service.UtilisateurService;
