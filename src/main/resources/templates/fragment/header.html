@@ -1,11 +1,11 @@
 <header xmlns:sec="http://www.w3.org/1999/xhtml">
-    <a><h2>ENI-Enchères</h2></a>
+    <a th:href="@{/encheres}"><h2>ENI-Enchères</h2></a>
 
     <nav>
 
-    <a href="/Encheres" sec:authorize="isAuthenticated()" th:text="#{menu.encheres}"></a>
-    <a href="/encheres/nouvelleVente"  th:text="#{menu.vendreunarticle}"></a> <!-- sec:authorize="hasRole('admin')" -->
-        <a th:href="@{/profil/{pseudo}(pseudo=${#authentication.principal.pseudo})}" sec:authorize="isAuthenticated()" th:text="#{menu.MonCompte}"></a>
+    <a href="/encheres" sec:authorize="isAuthenticated()" th:text="#{menu.encheres}"></a>
+    <a href="/encheres/nouvelleVente"  th:text="#{menu.vendreunarticle}" sec:authorize="isAuthenticated()"></a> <!-- sec:authorize="hasRole('admin')" -->
+    <a th:href="@{/profil/{pseudo}(pseudo=${#authentication.principal.pseudo})}" sec:authorize="isAuthenticated()" th:text="#{menu.MonCompte}"></a>
 
         <section class="inline-display" sec:authorize="isAuthenticated()">
             <!-- on offre la possibilité de se déconnecter (${#authentication.name}" : recupère le username de l'utilisateur connecté) -->

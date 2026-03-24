@@ -9,6 +9,8 @@
 
     <form th:action="|@{/${article.noArticle}/encherir}|" method="post">
 
+      <img th:src="${article.imagePath}" style="width:200px" alt="Image de l'article">
+
       <label>Intitulé : </label>
       <span th:text="${article.nomArticle}"></span><br>
 

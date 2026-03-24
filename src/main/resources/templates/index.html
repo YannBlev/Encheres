@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" layout:decorate="~{layout/base}" xmlns:layout="http://www.w3.org/1999/xhtml">
+<html lang="en" layout:decorate="~{layout/base}" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <body>
 
 <main layout:fragment="content">
@@ -47,7 +48,8 @@
             <div class="card" style="width: 15rem; " >
                 <img th:src="${article.imagePath}" style="width:100%">
                 <div class="container">
-                    <h4 th:text="${article.nomArticle}"></h4>
+                    <a sec:authorize="isAuthenticated()" th:href="@{|/encheres/${article.noArticle}|}" th:text="${article.nomArticle}"></a>
+                    <span sec:authorize="!isAuthenticated()" th:text="${article.nomArticle}"></span>
 
                     <label>Prix: </label>
                     <span th:text="|${article.prixInitial} points|"></span>
