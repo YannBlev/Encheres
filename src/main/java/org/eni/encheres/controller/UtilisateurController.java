@@ -33,7 +33,7 @@ public class UtilisateurController {
     public String getUtilisateur(@PathVariable String pseudo, @AuthenticationPrincipal UtilisateurSpringSecurity utilisateurConnecte, Model model ) {
         Utilisateur utilisateur = utilisateurService.listerUtilisateurs().stream().filter(u -> u.getPseudo().equals(pseudo)).findFirst().orElse(null);
         String pseudo1 = utilisateurConnecte.getPseudo();
-        model.addAttribute("pseudo1", pseudo1);
+        model.addAttribute("pseudo", pseudo);
 //        if (utilisateur == null || pseudo1 == null) {
 //            return "redirect:/encheres"; // Ou une page d'erreur 404 personnalisée
 //        }
@@ -90,6 +90,10 @@ public class UtilisateurController {
 
 
     }
+
+    // TODO > Quand l'utilisateur modifie son profil, il est redirigé vers Login, ou il va remettre son mail et mot de passe
+    // TODO > puis il peut effectuer des ventes et re-modifier son profil.
+
     @PostMapping("/profil/{pseudo}/modifier")
     public String modifierProfil(
             @PathVariable String pseudo,
@@ -101,11 +105,32 @@ public class UtilisateurController {
             return "redirect:/login";
         }
 
-//        if (!utilisateurConnecte.getPseudo().equals(pseudo)) {
-//            return "redirect:/encheres";
-//        }
-
         utilisateurService.modifierUtilisateur(utilisateur);
-        return "redirect:/profil/" + utilisateur.getPseudo();
+
+        SecurityContextHolder.clearContext();
+
+        return "redirect:/login";
     }
 }
+
+
+// TODO A GARDER AU CAS OU
+    //    @PostMapping("/profil/{pseudo}/modifier")
+//    public String modifierProfil(
+//            @PathVariable String pseudo,
+//            @AuthenticationPrincipal UtilisateurSpringSecurity utilisateurConnecte,
+//            Utilisateur utilisateur,
+//            Model model) {
+//
+//        if (utilisateurConnecte == null) {
+//            return "redirect:/login";
+//        }
+//
+////        if (!utilisateurConnecte.getPseudo().equals(pseudo)) {
+////            return "redirect:/encheres";
+////        }
+//
+//        utilisateurService.modifierUtilisateur(utilisateur);
+//        return "redirect:/profil/" + utilisateur.getPseudo();
+//    }
+//}
