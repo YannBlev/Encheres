@@ -24,6 +24,7 @@ public class UtilisateurRowMapper implements RowMapper<Utilisateur> {
         utilisateur.setVille(rs.getString("ville"));
         utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
         utilisateur.setCredit(rs.getInt("credit"));
+        utilisateur.setAdministrateur(rs.getByte("administrateur"));
 
         return utilisateur;
 

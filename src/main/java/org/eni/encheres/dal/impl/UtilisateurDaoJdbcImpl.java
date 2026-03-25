@@ -54,7 +54,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
                 utilisateur.getVille(),
                 utilisateur.getMotDePasse(),
                 utilisateur.getCredit(),
-                0,
+                utilisateur.getAdministrateur(),
                 utilisateur.getId()
         );
     }
