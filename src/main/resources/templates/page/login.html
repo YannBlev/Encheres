@@ -2,23 +2,21 @@
 <main layout:fragment="content">
 
     <section>
-    <h1>Please Log In</h1>
-    <div class="input-box" th:if="${param.error}">
-        Invalid username and password.</div>
-    <div class="input-box" th:if="${param.logout}">
-        You have been logged out.</div>
-    <form class="form" th:action="@{/login}" method="post">
-        <div class="input-box">
-            <input type="text" name="username" placeholder="Username"/>
-        </div>
-        <br>
-        <div class="input-box">
-            <input type="password" name="password" placeholder="Password"/>
-        </div>
-        <br>
-        <button class="login-btn"> Log in </button>
-        <a th:href="@{/encheres/profil/nouveauProfil}"> Inscription</a>
-
-    </form>
+        <h1 th:text="#{login.titre}">Please Log In</h1>
+        <div class="input-box" th:if="${param.error}" th:text="#{login.error}"></div>
+        <div class="input-box" th:if="${param.logout}" th:text="#{login.logout}"></div>
+        <form class="form" th:action="@{/login}" method="post">
+            <div class="input-box">
+                <input type="text" name="username" th:placeholder="#{login.username}"/>
+            </div>
+            <br>
+            <div class="input-box">
+                <input type="password" name="password" th:placeholder="#{login.password}"/>
+            </div>
+            <br>
+            <button class="login-btn" th:text="#{login.btn}"></button>
+            <a th:href="@{/encheres/profil/nouveauProfil}" th:text="#{login.inscription}"></a>
+            <a href="/image/la-classe-americaine-fairefoutre.gif" class="forgot-password-link" th:text="#{login.motDePasseOublie}"></a>
+        </form>
     </section>
 </main>

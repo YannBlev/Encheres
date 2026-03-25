@@ -5,82 +5,77 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Création de mon profil</title>
-    <!--    Nouveau profil dans le menu : s'inscrire ou se connecter -->
-    <!--TODO modifier avec les bonnes valeurs dans l'énnoncé-->
-    <!--    Nouveau profil dans le menu : s'inscrire ou se connecter -->
-
+    <title th:text="#{profil.titre}">Création de mon profil</title>
 </head>
 
 <body>
 
 <main layout:fragment="content">
 
-
+    <!-- Formulaire création de profil (anonyme) -->
     <form sec:authorize="isAnonymous()" th:action="@{/encheres/profil/nouveauProfil}" method="post" th:object="${utilisateur}">
 
-        <label for="pseudo">Pseudo : </label>
+        <label for="pseudo" th:text="#{profil.pseudo}"></label>
         <input type="text" id="pseudo" th:field="*{pseudo}"
                pattern="[a-zA-Z0-9]{3,20}"
-               title="Le pseudo doit contenir entre 3 et 20 caractères alphanumériques"
+               th:title="#{profil.pseudo.title}"
                minlength="3"
                maxlength="20"
                required><br>
 
-        <label for="nom">Nom : </label>
+        <label for="nom" th:text="#{profil.nom}"></label>
         <input type="text" id="nom" th:field="*{nom}"
                pattern="[a-zA-ZÀ-ÿ\-\s]{3,30}"
-               title="Le nom ne doit contenir que des lettres entre 3 et 30 caractères"
+               th:title="#{profil.nom.title}"
                maxlength="30"
                required><br>
 
-        <label for="prenom">Prenom : </label>
+        <label for="prenom" th:text="#{profil.prenom}"></label>
         <input type="text" id="prenom" th:field="*{prenom}"
                pattern="[a-zA-ZÀ-ÿ\-\s]{3,30}"
-               title="Le prénom ne doit contenir que des lettres entre 3 et 30 caractères"
+               th:title="#{profil.prenom.title}"
                maxlength="30"
                required><br>
 
-        <label for="email">Email : </label>
+        <label for="email" th:text="#{profil.email}"></label>
         <input type="email" id="email" th:field="*{email}"
-               title="Veuillez entrer une retrait email valide"
+               th:title="#{profil.email.title}"
                maxlength="50"
                required><br>
 
-        <label for="telephone">Télephone : </label>
+        <label for="telephone" th:text="#{profil.telephone}"></label>
         <input type="tel" id="telephone" th:field="*{telephone}"
                pattern="[0-9\+\s\-]{10,15}"
-               title="Le téléphone ne doit contenir que des chiffres entre 10 et 15 chiffres"
+               th:title="#{profil.telephone.title}"
                minlength="10"
                maxlength="15"
                required><br>
 
-        <label for="rue">Rue : </label>
+        <label for="rue" th:text="#{profil.rue}"></label>
         <input type="text" id="rue" th:field="*{rue}"
                pattern="[a-zA-ZÀ-ÿ0-9\s\-\,\.]{5,100}"
-               title="Adresse invalide"
+               th:title="#{profil.rue.title}"
                maxlength="100"
                required><br>
 
-        <label for="codePostal">Code Postal : </label>
+        <label for="codePostal" th:text="#{profil.codePostal}"></label>
         <input type="text" id="codePostal" th:field="*{codePostal}"
                pattern="[0-9]{5}"
-               title="Le code postal doit contenir 5 chiffres"
+               th:title="#{profil.codePostal.title}"
                required><br>
 
-        <label for="ville">Ville : </label>
+        <label for="ville" th:text="#{profil.ville}"></label>
         <input type="text" id="ville" th:field="*{ville}"
                pattern="[a-zA-ZÀ-ÿ\s\-]{2,50}"
-               title="La ville ne doit contenir que des lettres"
+               th:title="#{profil.ville.title}"
                maxlength="50"
                required><br>
 
-        <label for="motDePasse">Mot de passe : </label>
+        <label for="motDePasse" th:text="#{profil.motDePasse}"></label>
         <input type="password" id="motDePasse" th:field="*{motDePasse}"
                pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}"
-               title="Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule et un chiffre"
+               th:title="#{profil.motDePasse.title}"
                required><br>
-
 
         <div class="password-icon" onclick="togglePassword()">
             <i id="eye-icon" data-feather="eye"></i>
@@ -107,93 +102,91 @@
             }
         </script>
 
-        <button type="submit"
-                sec:authorize="isAnonymous()">Créer
-        </button>
+        <button type="submit" sec:authorize="isAnonymous()" th:text="#{profil.btn.creer}"></button>
 
         <button type="button"
-                th:onclick="|window.location.href='@{/login}'|" sec:authorize="isAnonymous()">Annuler</button>
+                th:onclick="|window.location.href='@{/login}'|"
+                sec:authorize="isAnonymous()"
+                th:text="#{profil.btn.annuler}"></button>
 
     </form>
 
 
-
+    <!-- Formulaire modification de profil (authentifié) -->
     <form sec:authorize="isAuthenticated()"
           th:action="@{|/encheres/profil/${id}/modifier|}"
           method="post"
-
           th:object="${utilisateur}">
 
         <input type="hidden" th:field="*{id}"/>
 
-        <label for="pseudo2">Pseudo : </label>
+        <label for="pseudo2" th:text="#{profil.pseudo}"></label>
         <input type="text" id="pseudo2" th:field="*{pseudo}"
                pattern="[a-zA-ZÀ-ÿ\-\s]{3,30}"
-               title="Le nom ne doit contenir que des lettres entre 3 et 30 caractères"
+               th:title="#{profil.pseudo.title}"
                maxlength="30"><br>
 
-        <label for="nom2">Nom : </label>
+        <label for="nom2" th:text="#{profil.nom}"></label>
         <input type="text" id="nom2" th:field="*{nom}"
                pattern="[a-zA-ZÀ-ÿ\-\s]{3,30}"
-               title="Le nom ne doit contenir que des lettres entre 3 et 30 caractères"
+               th:title="#{profil.nom.title}"
                maxlength="30"><br>
 
-        <label for="prenom2">Prenom : </label>
+        <label for="prenom2" th:text="#{profil.prenom}"></label>
         <input type="text" id="prenom2" th:field="*{prenom}"
                pattern="[a-zA-ZÀ-ÿ\-\s]{3,30}"
-               title="Le prénom ne doit contenir que des lettres entre 3 et 30 caractères"
+               th:title="#{profil.prenom.title}"
                maxlength="30"><br>
 
-        <label for="email2">Email : </label>
+        <label for="email2" th:text="#{profil.email}"></label>
         <input type="email" id="email2" th:field="*{email}"
-               title="Veuillez entrer une retrait email valide"
+               th:title="#{profil.email.title}"
                maxlength="50"><br>
 
-        <label for="telephone2">Télephone : </label>
+        <label for="telephone2" th:text="#{profil.telephone}"></label>
         <input type="tel" id="telephone2" th:field="*{telephone}"
                pattern="[0-9\+\s\-]{10,15}"
-               title="Le téléphone ne doit contenir que des chiffres entre 10 et 15 chiffres"
+               th:title="#{profil.telephone.title}"
                minlength="10"
                maxlength="15"><br>
 
-        <label for="rue2">Rue : </label>
+        <label for="rue2" th:text="#{profil.rue}"></label>
         <input type="text" id="rue2" th:field="*{rue}"
                pattern="[a-zA-ZÀ-ÿ0-9\s\-\,\.]{5,100}"
-               title="Adresse invalide"
+               th:title="#{profil.rue.title}"
                maxlength="100"><br>
 
-        <label for="codePostal2">Code Postal : </label>
+        <label for="codePostal2" th:text="#{profil.codePostal}"></label>
         <input type="text" id="codePostal2" th:field="*{codePostal}"
                pattern="[0-9]{5}"
-               title="Le code postal doit contenir 5 chiffres"><br>
+               th:title="#{profil.codePostal.title}"><br>
 
-        <label for="ville2">Ville : </label>
+        <label for="ville2" th:text="#{profil.ville}"></label>
         <input type="text" id="ville2" th:field="*{ville}"
                pattern="[a-zA-ZÀ-ÿ\s\-]{2,50}"
-               title="La ville ne doit contenir que des lettres"
+               th:title="#{profil.ville.title}"
                maxlength="50"><br>
 
-        <label for="motDePasse2">Mot de passe : </label>
+        <label for="motDePasse2" th:text="#{profil.motDePasse}"></label>
         <input type="password" id="motDePasse2" th:field="*{motDePasse}"
                pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}"
-               title="Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule et un chiffre"><br>
+               th:title="#{profil.motDePasse.title}"><br>
 
-
-        <button type="submit">Modifier mes informations</button>
+        <button type="submit" th:text="#{profil.btn.modifier}"></button>
 
     </form>
 
 
-    <form
-            class="inline-form" th:action="@{/encheres/profil/delete}" method="post">
-        <button class="delete-button" type="submit" name="idUtilisateurASupprimer" th:value="${utilisateur.id}" sec:authorize="isAuthenticated()">Supprimer mon compte</button>
+    <!-- Suppression du compte -->
+    <form class="inline-form" th:action="@{/encheres/profil/delete}" method="post">
+        <button class="delete-button" type="submit"
+                name="idUtilisateurASupprimer"
+                th:value="${utilisateur.id}"
+                sec:authorize="isAuthenticated()"
+                th:text="#{profil.btn.supprimer}"></button>
     </form>
-
 
 </main>
 
 </body>
 </html>
-
-
-<!--TODO MODIFIER LE FORMULAIRE DE CREATION DE COMPTE EN MODIFICATION DE COMPTE -->

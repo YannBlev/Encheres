@@ -4,58 +4,59 @@
 <body>
 <main layout:fragment="content">
     <fieldset class="table-container">
-        <legend class="log"><h2>Nouvelle Vente</h2></legend>
+        <legend class="log"><h2 th:text="#{vente.titre}">Nouvelle Vente</h2></legend>
 
-    <form class="vente" th:action="@{|/${pseudo}/nouvelleVente|}" method="post" th:object="${articleDto}" enctype="multipart/form-data">
-        <section>
-            <label>Article :</label>
-            <input type="text" th:field="*{nomArticle}">
-            <br><br>
+        <form class="vente" th:action="@{|/${pseudo}/nouvelleVente|}" method="post" th:object="${articleDto}" enctype="multipart/form-data">
+            <section>
+                <label th:text="#{vente.article}">Article :</label>
+                <input type="text" th:field="*{nomArticle}">
+                <br><br>
 
-            <label>Description :</label><br>
-            <textarea cols="40" rows="6" th:field="*{description}"></textarea>
-            <br><br>
+                <label th:text="#{vente.description}">Description :</label><br>
+                <textarea cols="40" rows="6" th:field="*{description}"></textarea>
+                <br><br>
 
-            <label>Catégorie :</label>
+                <label th:text="#{vente.categorie}">Catégorie :</label>
                 <select th:field="*{categorie}">
                     <option th:each="categorie : ${categories}" th:value="${categorie.id}" th:text="${categorie.libelle}"></option>
                 </select>
-            <br><br>
+                <br><br>
 
-            <label>Photo de l'article :</label>
-            <input type="file" name="image" accept=".jpg">
-            <br><br>
+                <label th:text="#{vente.photo}">Photo de l'article :</label>
+                <input type="file" name="image" accept=".jpg">
+                <br><br>
 
-            <label>Prix initial :</label>
-            <input type="number" th:field="*{prixInitial}">
-            <br><br>
+                <label th:text="#{vente.prixInitial}">Prix initial :</label>
+                <input type="number" th:field="*{prixInitial}">
+                <br><br>
 
-            <label>Début de l'enchère:</label>
-            <input type="date" th:field="*{dateDebutEncheres}">
-            <br><br>
-            <label>Fin de l'enchère:</label>
-            <input type="date" th:field="*{dateFinEncheres}">
-            <br><br>
-        </section>
+                <label th:text="#{vente.dateDebut}">Début de l'enchère :</label>
+                <input type="date" th:field="*{dateDebutEncheres}">
+                <br><br>
 
+                <label th:text="#{vente.dateFin}">Fin de l'enchère :</label>
+                <input type="date" th:field="*{dateFinEncheres}">
+                <br><br>
+            </section>
 
-            <legend><h2>Retrait</h2></legend>
-            <label>Rue :</label>
+            <legend><h2 th:text="#{vente.retrait}">Retrait</h2></legend>
+
+            <label th:text="#{profil.rue}">Rue :</label>
             <input type="text" th:field="*{rue}" th:placeholder="${utilisateur.rue}">
             <br><br>
-            <label>Code postal :</label>
+
+            <label th:text="#{profil.codePostal}">Code postal :</label>
             <input type="text" th:field="*{code_postal}" th:placeholder="${utilisateur.codePostal}">
             <br><br>
-            <label>Ville :</label>
+
+            <label th:text="#{profil.ville}">Ville :</label>
             <input type="text" th:field="*{ville}" th:placeholder="${utilisateur.ville}">
             <br><br>
 
-        <section>
-            <button class="favorite styled" type="submit">Enregistré</button>
-<!--            <button class="favorite styled" type="submit">Annuler</button>-->
-<!--            <button class="favorite styled" type="submit">Annuler la vente</button>-->
-        </section>
-    </form>
+            <section>
+                <button class="favorite styled" type="submit" th:text="#{vente.btn.enregistrer}">Enregistrer</button>
+            </section>
+        </form>
     </fieldset>
 </main>
 </body>

@@ -2,67 +2,43 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Catégorie</title>
+    <title th:text="#{categorie.titre}">Catégorie</title>
 </head>
 <body>
-<main >
+<main>
 
-    <h2>Ajouter une catégorie</h2>
+    <h2 th:text="#{categorie.ajouter}">Ajouter une catégorie</h2>
 
-    <!-- ***** FORMULAIRE DE CREATION DE CATEGORIE *****
-    Utilise : th:object pour envoyer au controller (méthode annotée @PostMapping)
-    directement un objet Catégorie
-    -->
     <form th:action="@{/categorie}" method="post" th:object="${categorie}">
-        <label>Categorie : </label>
-        <!-- à la place de name="titre" j'utilise : th:field="*{titre}" afin de remplir l'attribut "titre" de mon objet genre -->
-        <input type="text" th:field="*{libelle}" required> <!-- required : rend obligatoire la saisi de ce champs -->
+        <label th:text="#{categorie.label}">Categorie : </label>
+        <input type="text" th:field="*{libelle}" required>
         <br>
-        <button type="submit">Valider</button>
+        <button type="submit" th:text="#{categorie.btn.valider}">Valider</button>
     </form>
 
-    <h2>Liste des categories</h2>
+    <h2 th:text="#{categorie.liste}">Liste des categories</h2>
 
-    <!-- balise de base : table -->
     <table>
-        <!--entete de la table (première ligne) : thead-->
         <thead>
-        <!--ligne :tr (table row)-->
         <tr>
-            <!-- th (table header) : un colonne de titre de ma table -->
-            <th>N° catégorie</th>
-            <th>Catégorie</th>
-            <th>Action</th>
+            <th th:text="#{categorie.table.numero}">N° catégorie</th>
+            <th th:text="#{categorie.table.categorie}">Catégorie</th>
+            <th th:text="#{categorie.table.action}">Action</th>
         </tr>
         </thead>
-        <!--donnees de la table : tbody-->
         <tbody>
-        <!-- je vais générer une ligne  <tr> par genre stocké dans mon application
-            pour cela, on va utilser l'attribut : th:each
-            qui va itérer sur la liste contenue dans mon attribut de model : categorie c
-
-            th:each="c : ${categories}"
-          -->
         <tr th:each="c : ${categories}">
-            <!-- td (table data) : une donnée de cellule d'un ligne de ma table -->
             <td th:text="${c.id}"></td>
             <td th:text="${c.libelle}"></td>
-
             <td>
-                <!-- pour chaque ctaegorie j'affiche un bouton de suppression
-                dans un formulaire qui va envoyer une requête POST
-                sur le chemin "/categories/supprimer"
-                avec un parametre "idASupprimer" qui indique
-                l'id de la categorie à supprimer avec : th:value="${categorie.id}"-->
                 <form class="inline-form" th:action="@{/encheres/categorie/supprimer}" method="post">
                     <button class="delete-button" type="submit" name="idAsupprimer" th:value="${c.id}">✗</button>
                 </form>
-
             </td>
         </tr>
         </tbody>
     </table>
-</main>
 
+</main>
 </body>
 </html>

@@ -2,71 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Adresse Retrait</title>
+    <title th:text="#{retrait.titre}">Adresse Retrait</title>
 </head>
 <body>
 
-<h2>Ajouter un retrait</h2>
+<h2 th:text="#{retrait.ajouter}">Ajouter un retrait</h2>
 
-<!-- ***** FORMULAIRE DE CREATION DE ADRESSE *****
-Utilise : th:object pour envoyer au controller (méthode annotée @PostMapping)
-directement un objet Adresse
--->
 <form th:action="@{/retrait}" method="post" th:object="${retrait}">
-  <label>Retrait : </label>
-  <!-- à la place de name="rue" j'utilise : th:field="*{rue}" afin de remplir l'attribut "rue" de mon objet retrait -->
-  <input type="number" th:field="*{id}" required> <!-- required : rend obligatoire la saisi de ce champs -->
-  <br>
 
-  <input type="text" th:field="*{rue}" required> <!-- required : rend obligatoire la saisi de ce champs -->
-  <br>
-  <input type="text" th:field="*{code_postal}" required> <!-- required : rend obligatoire la saisi de ce champs -->
-  <br>
-  <input type="text" th:field="*{ville}" required> <!-- required : rend obligatoire la saisi de ce champs -->
-  <br>
+    <label th:text="#{retrait.label}">Retrait : </label>
+    <input type="number" th:field="*{id}" required>
+    <br>
+    <input type="text" th:field="*{rue}" required>
+    <br>
+    <input type="text" th:field="*{code_postal}" required>
+    <br>
+    <input type="text" th:field="*{ville}" required>
+    <br>
 
-
-  <button type="submit">Valider</button>
+    <button type="submit" th:text="#{categorie.btn.valider}">Valider</button>
 </form>
 
-<h2>Liste des adresses de retrait</h2>
+<h2 th:text="#{retrait.liste}">Liste des adresses de retrait</h2>
 
-<!-- balise de base : table -->
 <table>
-  <!--entete de la table (première ligne) : thead-->
-  <thead>
-  <!--ligne :tr (table row)-->
-  <tr>
-    <!-- th (table header) : un colonne de titre de ma table -->
-    <th>Id retrait</th>
-    <th>Adresse</th>
-    <th>Action</th>
-
-  </tr>
-  </thead>
-  <!--donnees de la table : tbody-->
-  <tbody>
-  <!-- je vais générer une ligne  <tr> par genre stocké dans mon application
-      pour cela, on va utilser l'attribut : th:each
-      qui va itérer sur la liste contenue dans mon attribut de model : retrait a
-
-      th:each="a : ${adresses}"
-    -->
-    <tr th:each="r : ${retraits}">
-      <!-- td (table data) : une donnée de cellule d'un ligne de ma table -->
-      <td th:text="${r.id}"></td>
-      <td th:text="|${r.rue} ${r.code_postal} ${r.ville}|"></td>
-      <td>
-        <form class="inline-form" th:action="@{retrait/supprimer}" method="post">
-        <button class="delete-button" type="submit" name="IdAdresseASupprimer" th:value="${r.id}">✗</button>
-        </form>
-      </td>
-
-
-
+    <thead>
+    <tr>
+        <th th:text="#{retrait.table.id}">Id retrait</th>
+        <th th:text="#{retrait.table.adresse}">Adresse</th>
+        <th th:text="#{categorie.table.action}">Action</th>
     </tr>
-
-  </tbody>
+    </thead>
+    <tbody>
+    <tr th:each="r : ${retraits}">
+        <td th:text="${r.id}"></td>
+        <td th:text="|${r.rue} ${r.code_postal} ${r.ville}|"></td>
+        <td>
+            <form class="inline-form" th:action="@{retrait/supprimer}" method="post">
+                <button class="delete-button" type="submit" name="IdAdresseASupprimer" th:value="${r.id}">✗</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
 </table>
 
 </body>
