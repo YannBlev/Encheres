@@ -24,7 +24,7 @@ public class UtilisateurSpringSecurity implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if (utilisateur.isAdministrateur()) {
+        if (utilisateur.getAdministrateur() == 1) {
             return List.of(new SimpleGrantedAuthority("ROLE_admin"));
         }
         return List.of(new SimpleGrantedAuthority("ROLE_user"));
