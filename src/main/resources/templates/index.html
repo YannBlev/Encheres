@@ -64,11 +64,33 @@
 <!--                <span th:text="${article.dateFinEncheres}"></span>-->
 <!--                <br>-->
 
-<!--                <label>Vendeur :</label>-->
-<!--                <span th:text="${article.vendeur.pseudo}"></span>-->
+<!--                    <label>Vendeur :</label>-->
+<!--                    <span th:text="${article.vendeur.pseudo}"></span>-->
+<!--                </div>-->
 <!--            </div>-->
-<!--        </div>-->
-<!--    </article>-->
+
+<!--        </article>-->
+<!--    </div>-->
+    <div class="articles-grid">
+        <article th:each="article : ${articles}"
+                 th:class="'filterDiv ' + ${article.categorie}">
+            <div class="card">
+                <img th:src="@{|${article.imagePath}|}">
+                <div class="container">
+                    <a sec:authorize="isAuthenticated()"
+                       th:href="@{|/encheres/article/${article.noArticle}|}"
+                       th:text="${article.nomArticle}"></a>
+
+                    <span sec:authorize="!isAuthenticated()"
+                          th:text="${article.nomArticle}"></span>
+
+                    <p><strong>Prix :</strong> <span th:text="${article.prixInitial}"></span></p>
+                    <p><strong>Fin :</strong> <span th:text="${article.dateFinEncheres}"></span></p>
+                    <p><strong>Vendeur :</strong> <span th:text="${article.vendeur.pseudo}"></span></p>
+                </div>
+            </div>
+        </article>
+    </div>
 </section>
 <script th:src="@{js/script.js}"></script>
 </main>

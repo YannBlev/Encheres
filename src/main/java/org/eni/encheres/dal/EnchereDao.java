@@ -11,5 +11,7 @@ public interface EnchereDao {
     void creerEnchere (Enchere enchere);
     void supprimerEnchere (int noUtilisateur, int noArticle);
     Enchere consulterEncheresParId (int id);
+    Integer consulterIdEnchereurParIdArticle(int id);
+    Integer consulterMeilleurOffreParIdEnchereurEtIdArticle(int idEnchereur, int idArticle);
 
 }

@@ -39,6 +39,11 @@ public class ArticleVenduBouchon implements ArticleVenduService {
     }
 
     @Override
+    public void modifierArticleVendu(ArticleVendu article) {
+
+    }
+
+    @Override
     public void supprimerArticleVendu(int noArticle) {
 
     }
