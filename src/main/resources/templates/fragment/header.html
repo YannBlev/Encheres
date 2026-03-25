@@ -1,5 +1,5 @@
 <header xmlns:sec="http://www.w3.org/1999/xhtml">
-    <a th:href="@{/}"><h2>Enchères de l'ENI</h2></a>
+    <a th:href="@{/}"><h2 th:text="#{header.titre}"></h2></a>
 
     <nav>
 
@@ -25,14 +25,8 @@
             </select>
         </form>
 
-                        <!--   TODO : Formulaire Français Anglais     -->
 
-        <!--        <form method="get" action="/i18n" class="inline-display">-->
-<!--            <select name="lang" onchange="this.form.submit()" >-->
-<!--                <option th:selected="${#locale.toString() == 'fr'}" value="fr">Français</option>-->
-<!--                <option th:selected="${#locale.toString() == 'en'}" value="en">Anglais</option>-->
-<!--            </select>-->
-<!--        </form>-->
+
     </nav>
 
 </header>

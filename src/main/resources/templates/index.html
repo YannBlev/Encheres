@@ -5,15 +5,15 @@
 
 <main layout:fragment="content">
 <section>
-    <h1>Listes des enchères</h1>
-    <h2>Filtres :</h2>
+    <h1 th:text="#{encheres.liste.titre}">Liste des enchères</h1>
+    <h2 th:text="#{encheres.filtres}">Filtres :</h2>
     <script th:src="@{js/search.js}"></script>
 
 <div>
-    <input type="text" id="myInput" onkeyup="filterCards()" placeholder="RECHERCHER ICI">
-</div>
-
-        <br>
+    <input type="text" id="myInput" onkeyup="filterCards()"
+           th:placeholder="#{encheres.recherche.placeholder}"
+           placeholder="Rechercher ici"></div>
+    <br>
 
         <label th:text="#{encheres.categorie}">Catégorie :</label>
         <select onchange="filterSelection(this.value)">
@@ -50,8 +50,27 @@
             </article>
         </div>
 
-    </section>
-    <script th:src="@{js/script.js}"></script>
+<!--    <article th:each="article : ${articles}">-->
+<!--        <div class="card" style="width: 18rem;">-->
+<!--            <img th:src="${article.imagePath}" alt="Avatar" style="width:100%">-->
+<!--            <div class="container">-->
+<!--                <h4 th:text="${article.nomArticle}"></h4><br>-->
+
+<!--                <label>Prix: </label>-->
+<!--                <span th:text="|${article.prixInitial} points|"></span>-->
+<!--                <br>-->
+
+<!--                <label>Fin de l'enchère :</label>-->
+<!--                <span th:text="${article.dateFinEncheres}"></span>-->
+<!--                <br>-->
+
+<!--                <label>Vendeur :</label>-->
+<!--                <span th:text="${article.vendeur.pseudo}"></span>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </article>-->
+</section>
+<script th:src="@{js/script.js}"></script>
 </main>
 
 </body>
