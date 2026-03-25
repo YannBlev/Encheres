@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{layout/base}" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<body>
+
+<main layout:fragment="content">
+<section>
+    <h1>Listes des enchères</h1>
+    <h2>Filtres :</h2>
+    <script th:src="@{js/search.js}"></script>
+
+    <div>
+        <input type="text" id="myInput" onkeyup="filterCards()" placeholder="RECHERCHER ICI">
+    </div>
+    <br>
+    <div>
+        <label>Catégorie :</label>
+        <select onchange="filterSelection(this.value)">
+            <option value="all">Toutes</option>
+            <option th:each="categorie : ${categories}" th:value="${categorie.id}" th:text="${categorie.libelle}"></option>
+        </select>
+    </div>
+
+    <div class="articles-grid">
+        <article th:each="article : ${articles}"
+                 th:class="'filterDiv ' + ${article.categorie}">
+            <div class="card">
+                <img th:src="@{|${article.imagePath}|}">
+                <div class="container">
+                    <a sec:authorize="isAuthenticated()"
+                       th:href="@{|/encheres/article/${article.noArticle}|}"
+                       th:text="${article.nomArticle}"></a>
+
+                    <span sec:authorize="!isAuthenticated()"
+                          th:text="${article.nomArticle}"></span>
+
+                    <p><strong>Prix :</strong> <span th:text="${article.prixInitial}"></span></p>
+                    <p><strong>Date de Fin :</strong> <span th:text="${article.dateFinEncheres}"></span></p>
+                    <p><strong>Vendeur :</strong> <span th:text="${article.vendeur.pseudo}"></span></p>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+<script th:src="@{js/script.js}"></script>
+</main>
+
+</body>
+</html>
