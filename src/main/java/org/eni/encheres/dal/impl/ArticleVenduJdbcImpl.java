@@ -30,7 +30,7 @@ public class ArticleVenduJdbcImpl implements ArticleVenduDao {
     private static final String SELECT_ALL= """
             SELECT	a.id_article, a.nom_article, a.description, a.date_debut_encheres, a.date_fin_encheres, a.prix_initial, a.etat_vente, a.prix_vente, a.imagePath,
                     c.id_categorie, c.libelle,
-                    u.id_utilisateur, u.rue rueUtilisateur, u.code_postal code_postalUtilisateur, u.ville villeUtilisateur, u.pseudo,
+                    u.id_utilisateur, u.telephone, u.rue rueUtilisateur, u.code_postal code_postalUtilisateur, u.ville villeUtilisateur, u.pseudo,
                     r.rue rueRetrait, r.code_postal code_postalRetrait, r.ville villeRetrait,
                     e.montant_enchere, e.id_enchereur,
                     enchereur.rue rueEnchereur, enchereur.code_postal code_postalEnchereur, enchereur.ville villeEnchereur, enchereur.pseudo pseudoEnchereur

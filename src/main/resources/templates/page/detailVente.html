@@ -29,7 +29,7 @@
       <span th:text="${article.nomArticle}"></span><br>
 
       <label>Description : </label>
-      <textarea cols="20" rows="4" type= "text" th:text="${article.description}"></textarea><br>
+      <textarea cols="20" rows="4" disabled th:text="${article.description}"></textarea><br>
 
       <label>Catégorie : </label>
       <span th:text="${article.categorie.libelle}"></span><br>
@@ -46,10 +46,11 @@
       <label>Retrait : </label>
       <span th:text="${retrait.rue}"></span><br>
       <span th:text="${retrait.code_postal}"></span><br>
-      <span th:text="${retrait.ville}"></span><br>
+      <span th:text="${retrait.ville}"></span><br><br>
 
-      <label>Vendeur : </label>
-      <span th:text="${article.vendeur.pseudo}"></span><br>
+
+      <span th:text="|Vendeur : ${article.vendeur.pseudo}|"></span><br>
+      <span th:text="|Tel : ${article.vendeur.telephone}|"></span><br>
 
     <form th:if="${article.etatVente == 0 and #authentication.principal.id != article.vendeur.id}" sec:authorize="isAuthenticated()" th:action="@{|/encheres/article/${article.noArticle}/encherir|}" method="post">
 
@@ -59,6 +60,14 @@
       <input type="submit" value="Encherir">
 
     </form>
+
+      <div th:if="${article.etatVente == 1 and article.acheteur != null and #authentication.principal.id == article.vendeur.id}">
+          <a th:text="|Retrait effectué|"></a>
+      </div>
+
+      <div th:if="${article.etatVente == 1 and #authentication.principal.id != article.vendeur.id}">
+          <a th:href="@{/encheres}" th:text="|Retour|"></a>
+      </div>
 
   </main>
 

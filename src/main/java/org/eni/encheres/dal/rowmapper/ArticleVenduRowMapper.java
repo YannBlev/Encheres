@@ -15,7 +15,7 @@ public class ArticleVenduRowMapper implements RowMapper<ArticleVendu> {
 
         ArticleVendu article = new ArticleVendu();
         Utilisateur vendeur = new Utilisateur();
-        Utilisateur acheteur = new Utilisateur();
+
         Categorie categorie = new Categorie();
 
 
@@ -24,15 +24,25 @@ public class ArticleVenduRowMapper implements RowMapper<ArticleVendu> {
 
         vendeur.setId(rs.getInt("id_utilisateur"));
         vendeur.setPseudo(rs.getString("pseudo"));
+        vendeur.setTelephone(rs.getString("telephone"));
         vendeur.setRue(rs.getString("rueUtilisateur"));
         vendeur.setCodePostal(rs.getString("code_postalUtilisateur"));
         vendeur.setVille(rs.getString("villeUtilisateur"));
 
-        acheteur.setId(rs.getInt("id_enchereur"));
-        acheteur.setPseudo(rs.getString("pseudoEnchereur"));
-        acheteur.setRue(rs.getString("rueEnchereur"));
-        acheteur.setCodePostal(rs.getString("code_postalEnchereur"));
-        acheteur.setVille(rs.getString("villeEnchereur"));
+        Integer idEnchereur = rs.getObject("id_enchereur", Integer.class);
+
+        if (idEnchereur != null) {
+            Utilisateur acheteur = new Utilisateur();
+            acheteur.setId(idEnchereur);
+            acheteur.setPseudo(rs.getString("pseudoEnchereur"));
+            acheteur.setRue(rs.getString("rueEnchereur"));
+            acheteur.setCodePostal(rs.getString("code_postalEnchereur"));
+            acheteur.setVille(rs.getString("villeEnchereur"));
+
+            article.setAcheteur(acheteur);
+        } else {
+            article.setAcheteur(null);
+        }
 
         article.setNoArticle(rs.getInt("id_article"));
         article.setNomArticle(rs.getString("nom_article"));
@@ -46,7 +56,7 @@ public class ArticleVenduRowMapper implements RowMapper<ArticleVendu> {
 
         article.setCategorie(categorie);
         article.setVendeur(vendeur);
-        article.setAcheteur(acheteur);
+
 
         return article;
 
