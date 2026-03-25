@@ -8,12 +8,18 @@
             <tr>
                 <th>ID</th>
                 <th>PSEUDO</th>
+                <th>Supprimer</th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="u:${utilisateurs}">
                 <td th:text="${u.id}"></td>
                 <td th:text="${u.pseudo}"></td>
+                <td>
+                    <form class="inline-form" th:action="@{/encheres/profils/supprimer}" method="post">
+                        <button class="delete-button" type="submit" name="idProfilAsupprimer" th:value="${u.id}">✗</button>
+                    </form>
+                </td>
             </tr>
         </tbody>
         <tfoot>
