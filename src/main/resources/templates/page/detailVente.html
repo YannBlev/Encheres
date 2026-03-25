@@ -8,7 +8,20 @@
 <body>
   <main layout:fragment="content">
 
-      <h2 th:if="${article.etatVente == 0 and #authentication.principal.id != article.vendeur.id}" th:text="|${article.acheteur.pseudo} a remporté l\'enchere|"></h2>
+      <h2
+              th:if="${article.etatVente == 1 and article.acheteur != null and #authentication.principal.id != article.acheteur.id}"
+              th:text="|${article.acheteur.pseudo} a remporté l enchere|">
+      </h2>
+
+      <h2
+              th:if="${article.etatVente == 1 and article.acheteur != null and #authentication.principal.id == article.acheteur.id}"
+              th:text="|Vous avez remporté l enchere|">
+      </h2>
+
+      <h2
+              th:if="${article.etatVente == 1 and article.acheteur == null}"
+              th:text="|Personne n a remporté l enchere|">
+      </h2>
 
       <img th:src="@{|${article.imagePath}|}" style="width:200px" alt="Image de l'article">
 
