@@ -43,7 +43,7 @@ public class EnchereController {
         return "index";
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/article/{id}")
     public String detail(@PathVariable("id") int id, Model model){
 
 
@@ -54,7 +54,7 @@ public class EnchereController {
         return "page/detailVente";
     }
 
-    @PostMapping("/{id}/encherir")
+    @PostMapping("/article/{id}/encherir")
     public String postEncherir(@PathVariable("id") int id, @AuthenticationPrincipal UtilisateurSpringSecurity utilisateurConnecte, @RequestParam("proposition") int proposition){
 
         Utilisateur utilisateur = utilisateurConnecte.getUtilisateur();

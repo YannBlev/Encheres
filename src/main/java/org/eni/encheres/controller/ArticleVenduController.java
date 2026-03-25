@@ -35,7 +35,7 @@ public class ArticleVenduController {
         return categorieService.consulterCategorie();
     }
 
-    @GetMapping("/{id}/nouvelleVente")
+    @GetMapping("/profil/{id}/nouvelleVente")
     public String getNouvelleVente(@PathVariable int id, Model model){
         model.addAttribute("utilisateur", utilisateurService.getUtilisateurById(id));
         model.addAttribute("articleDto",new ArticleDto());
@@ -43,7 +43,7 @@ public class ArticleVenduController {
         return "page/nouvelleVente";
     }
 
-    @PostMapping("/{id}/nouvelleVente")
+    @PostMapping("/profil/{id}/nouvelleVente")
     public String postNouvelleVente(@PathVariable int id, @RequestParam("image") MultipartFile file, ArticleDto articleDto, BindingResult bindingResult) throws IOException {
 //        if (bindingResult.hasErrors()) {
 //            return "index";
