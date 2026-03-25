@@ -6,6 +6,7 @@
     <a th:href="@{/}" sec:authorize="isAuthenticated()" th:text="#{menu.encheres}"></a>
     <a th:href="@{|/encheres/${#authentication.principal.id}/nouvelleVente|}"  th:text="#{menu.vendreunarticle}" sec:authorize="isAuthenticated()"></a> <!-- sec:authorize="hasRole('admin')" -->
     <a th:href="@{|/encheres/profil/${#authentication.principal.id}|}" sec:authorize="isAuthenticated()" th:text="#{menu.MonCompte}"></a>
+    <a th:href="@{/encheres/profils}">Profils</a>
 
         <section class="inline-display" sec:authorize="isAuthenticated()">
             <!-- on offre la possibilité de se déconnecter (${#authentication.name}" : recupère le username de l'utilisateur connecté) -->

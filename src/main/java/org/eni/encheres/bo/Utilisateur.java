@@ -34,6 +34,6 @@ public class Utilisateur {
     @NotNull
     private int credit;
     @NotNull
-    private boolean administrateur;
+    private byte administrateur;
 }
 

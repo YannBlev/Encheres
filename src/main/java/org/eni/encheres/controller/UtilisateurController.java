@@ -30,6 +30,12 @@ public class UtilisateurController {
         return "page/profils";
     }
 
+    @PostMapping("/profils/supprimer")
+    public String suppressionprofil(@RequestParam("idProfilAsupprimer")int idProfilAsupprimer) {
+        utilisateurService.supprimerUtilisateur(idProfilAsupprimer);
+        return "redirect:/encheres/profils";
+    }
+
     @GetMapping("/profil/{id}")
     public String getUtilisateur(@PathVariable int id, @AuthenticationPrincipal UtilisateurSpringSecurity utilisateurConnecte, Model model ) {
         Utilisateur utilisateur = utilisateurService.getUtilisateurById(id);
