@@ -67,11 +67,6 @@ public class EnchereServiceImpl implements EnchereService {
         enchereDao.creerEnchere(enchere);
     }
 
-    @Override
-    public void supprimerEnchere(int noUtilisateur, int noArticle) {
-        enchereDao.supprimerEnchere(noUtilisateur, noArticle);
-
-    }
 
     @Override
     public Enchere consulterEncheresParId(int id) {
@@ -88,4 +83,7 @@ public class EnchereServiceImpl implements EnchereService {
         return proposition < utilisateur.getCredit() && proposition > article.getPrixVente() && proposition > article.getPrixInitial();
     }
 
+    @Override
+    public void supprimerEnchereParId(int id) {enchereDao.supprimerEnchereParId(id);
+    }
 }

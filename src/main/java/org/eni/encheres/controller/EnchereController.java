@@ -70,6 +70,14 @@ public class EnchereController {
         }
         return "redirect:/" ;
     }
+    @PostMapping("/article/supprimer")
+    public String supprimerEnchereParId(int idArticleASupprimer){
+        // 1 : je délègue au service la suppression du genre
+        articleVenduService.supprimerArticleVendu(idArticleASupprimer);
+
+        // 2 : je redirige sur la page qui liste les genres (redirect:/genres)
+        return "redirect:/encheres";
+    }
 
 
 }
