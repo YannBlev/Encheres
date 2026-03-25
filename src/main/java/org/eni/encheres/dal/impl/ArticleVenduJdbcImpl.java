@@ -32,7 +32,7 @@ public class ArticleVenduJdbcImpl implements ArticleVenduDao {
                 c.id_categorie, c.libelle,
                 u.id_utilisateur, u.rue rueUtilisateur, u.code_postal code_postalUtilisateur, u.ville villeUtilisateur, u.pseudo,
                 r.rue rueRetrait, r.code_postal code_postalRetrait, r.ville villeRetrait,
-                e.montant_enchere
+                e.montant_enchere, e.id_enchereur
         FROM ARTICLE a
         INNER JOIN UTILISATEUR u ON a.id_vendeur = u.id_utilisateur
         LEFT JOIN RETRAIT r ON r.id_article = a.id_article

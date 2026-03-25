@@ -8,6 +8,8 @@
 <body>
   <main layout:fragment="content">
 
+      <h2 th:if="${article.etatVente == 0 and #authentication.principal.id != article.vendeur.id}" th:text="|${article.acheteur.pseudo} a remporté l\'enchere|"></h2>
+
       <img th:src="@{|${article.imagePath}|}" style="width:200px" alt="Image de l'article">
 
       <label>Intitulé : </label>
@@ -36,7 +38,7 @@
       <label>Vendeur : </label>
       <span th:text="${article.vendeur.pseudo}"></span><br>
 
-    <form sec:authorize="isAuthenticated()" th:action="@{|/encheres/article/${article.noArticle}/encherir|}" method="post">
+    <form th:if="${article.etatVente == 0 and #authentication.principal.id != article.vendeur.id}" sec:authorize="isAuthenticated()" th:action="@{|/encheres/article/${article.noArticle}/encherir|}" method="post">
 
       <label>Ma proposition : </label>
       <input type="number" name="proposition"><br>
