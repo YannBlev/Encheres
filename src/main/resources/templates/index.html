@@ -37,7 +37,7 @@
             <div class="card" style="width: 10rem; " >
                 <img th:src="@{|${article.imagePath}|}" style="width:100%">
                 <div class="container">
-                    <a sec:authorize="isAuthenticated()" th:href="@{|/${article.noArticle}|}" th:text="${article.nomArticle}"></a>
+                    <a sec:authorize="isAuthenticated()" th:href="@{|/encheres/article/${article.noArticle}|}" th:text="${article.nomArticle}"></a>
                     <span sec:authorize="!isAuthenticated()" th:text="${article.nomArticle}"></span>
 
                     <label>Prix: </label>
