@@ -19,6 +19,7 @@ public class CategorieController {
 
 
 
+
     @GetMapping
     public String getCategorie(Model model){
         // 1 - j'ajoute dans mon modèle l'attribut "categorie" qui va servir à générer les lignes de la table HTML de mon template
@@ -43,8 +44,8 @@ public class CategorieController {
         // 1 : je délègue au service la création du genre
         categorieService.creerCategorie(categorie);
 
-        // 2 : je redirige sur la page qui liste les genres (redirect:/genres)
-        return "redirect:/categorie";
+        // 2 : je redirige sur la page qui liste les categories (redirect:/categorie)
+        return "redirect:/encheres/categorie";
     }
 
     /**
@@ -55,12 +56,12 @@ public class CategorieController {
      * - 2 : je redirige sur la page qui liste les categories (redirect:/categorie)
      */
     @PostMapping("/supprimer")
-    public String supprimerCategorie(int idAsupprimer){
+    public String supprimerCategorie(int idAsupprimer) {
         // 1 : je délègue au service la suppression du genre
         categorieService.supprimerCategorie(idAsupprimer);
 
         // 2 : je redirige sur la page qui liste les genres (redirect:/genres)
-        return "redirect:/categorie";
+        return "redirect:/encheres/categorie";
     }
 
 
