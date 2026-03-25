@@ -45,7 +45,7 @@
 
         <label for="telephone" th:text="#{profil.telephone}"></label>
         <input type="tel" id="telephone" th:field="*{telephone}"
-               pattern="[0-9\+\s\-]{10,15}"
+               pattern="[0-9\+\s\-]{10-15}"
                th:title="#{profil.telephone.title}"
                minlength="10"
                maxlength="15"
@@ -145,7 +145,7 @@
 
         <label for="telephone2" th:text="#{profil.telephone}"></label>
         <input type="tel" id="telephone2" th:field="*{telephone}"
-               pattern="[0-9\+\s\-]{10,15}"
+               pattern="[0-9\+\s\-]{10-15}"
                th:title="#{profil.telephone.title}"
                minlength="10"
                maxlength="15"><br>

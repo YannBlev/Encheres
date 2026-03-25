@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="fr"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout/base}">
+
+<main layout:fragment="content">
+
+    <form th:action="@{/encheres/forgotPassword}" method="post">
+        <input type="email" name="email" placeholder="Email"/>
+        <button type="submit">Valider</button>
+    </form>
+
+</main>
+
+</html>
