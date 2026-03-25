@@ -13,8 +13,6 @@
     <input type="text" id="myInput" onkeyup="filterCards()" placeholder="RECHERCHER ICI">
 </div>
 
-    <br>
-
     <label>Catégorie :</label>
 
     <select onchange="filterSelection(this.value)">
@@ -22,54 +20,54 @@
         <option th:each="categorie : ${categories}" th:value="${categorie.id}" th:text="${categorie.libelle}"></option>
     </select>
 
-    <div>
+<!--    <div>-->
+<!--        <article th:each="article : ${articles}"-->
+<!--                 th:class="'filterDiv ' + ${article.categorie}">-->
+
+
+<!--            <div class="card" style="width: 10rem; " >-->
+<!--                <img th:src="@{|${article.imagePath}|}" style="width:100%">-->
+<!--                <div class="container">-->
+<!--                    <a sec:authorize="isAuthenticated()" th:href="@{|/encheres/article/${article.noArticle}|}" th:text="${article.nomArticle}"></a>-->
+<!--                    <span sec:authorize="!isAuthenticated()" th:text="${article.nomArticle}"></span>-->
+
+<!--                    <label>Prix: </label>-->
+<!--                    <span th:text="|${article.prixInitial} points|"></span>-->
+
+<!--                    <br>-->
+
+<!--                    <label>Fin :</label>-->
+<!--                    <span th:text="${article.dateFinEncheres}"></span>-->
+
+<!--                    <br>-->
+
+<!--                    <label>Vendeur :</label>-->
+<!--                    <span th:text="${article.vendeur.pseudo}"></span>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--        </article>-->
+<!--    </div>-->
+    <div class="articles-grid">
         <article th:each="article : ${articles}"
                  th:class="'filterDiv ' + ${article.categorie}">
-
-
-            <div class="card" style="width: 10rem; " >
-                <img th:src="@{|${article.imagePath}|}" style="width:100%">
+            <div class="card">
+                <img th:src="@{|${article.imagePath}|}">
                 <div class="container">
-                    <a sec:authorize="isAuthenticated()" th:href="@{|/encheres/article/${article.noArticle}|}" th:text="${article.nomArticle}"></a>
-                    <span sec:authorize="!isAuthenticated()" th:text="${article.nomArticle}"></span>
+                    <a sec:authorize="isAuthenticated()"
+                       th:href="@{|/encheres/article/${article.noArticle}|}"
+                       th:text="${article.nomArticle}"></a>
 
-                    <label>Prix: </label>
-                    <span th:text="|${article.prixInitial} points|"></span>
+                    <span sec:authorize="!isAuthenticated()"
+                          th:text="${article.nomArticle}"></span>
 
-                    <br>
-
-                    <label>Fin :</label>
-                    <span th:text="${article.dateFinEncheres}"></span>
-
-                    <br>
-
-                    <label>Vendeur :</label>
-                    <span th:text="${article.vendeur.pseudo}"></span>
+                    <p><strong>Prix :</strong> <span th:text="${article.prixInitial}"></span></p>
+                    <p><strong>Fin :</strong> <span th:text="${article.dateFinEncheres}"></span></p>
+                    <p><strong>Vendeur :</strong> <span th:text="${article.vendeur.pseudo}"></span></p>
                 </div>
             </div>
-
         </article>
     </div>
-
-<!--    <article th:each="article : ${articles}">-->
-<!--        <div class="card" style="width: 18rem;">-->
-<!--            <img th:src="${article.imagePath}" alt="Avatar" style="width:100%">-->
-<!--            <div class="container">-->
-<!--                <h4 th:text="${article.nomArticle}"></h4><br>-->
-
-<!--                <label>Prix: </label>-->
-<!--                <span th:text="|${article.prixInitial} points|"></span>-->
-<!--                <br>-->
-
-<!--                <label>Fin de l'enchère :</label>-->
-<!--                <span th:text="${article.dateFinEncheres}"></span>-->
-<!--                <br>-->
-
-<!--                <label>Vendeur :</label>-->
-<!--                <span th:text="${article.vendeur.pseudo}"></span>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </article>-->
 </section>
 <script th:src="@{js/script.js}"></script>
 </main>
