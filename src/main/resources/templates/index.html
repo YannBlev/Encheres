@@ -9,16 +9,9 @@
     <h2>Filtres :</h2>
     <script th:src="@{js/search.js}"></script>
 
-    <div>
-        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Le nom de l'article contient" th:value="${recherche}">
-        <button th:action="${categories}">Rechercher</button>
-        <ul id="myUL">
-            <li><a href="#Sport&Loisirs">Sport&Loisirs</a></li>
-            <li><a href="#Informatique">Informatique</a></li>
-            <li><a href="#Vêtement">Vêtement</a></li>
-            <li><a href="#Ameublement">Ameublement</a></li>
-        </ul>
-    </div>
+<div>
+    <input type="text" id="myInput" onkeyup="filterCards()" placeholder="RECHERCHER ICI">
+</div>
 
     <br>
 
