@@ -26,19 +26,44 @@ public class ArticleVenduJdbcImpl implements ArticleVenduDao {
         VALUES (:nom_article, :description,:date_debut_encheres,:date_fin_encheres, :prix_initial, :imagePath,:id_vendeur,:id_categorie );
         """;
     private static final String DELETE = "delete from article where id_article = ?";
+    //La sous-requete est là pour ne récupérer qu'une seule ligne
     private static final String SELECT_ALL= """
         SELECT	a.id_article, a.nom_article, a.description, a.date_debut_encheres, a.date_fin_encheres, a.prix_initial, a.etat_vente, a.prix_vente, a.imagePath,
                 c.id_categorie, c.libelle,
                 u.id_utilisateur, u.rue rueUtilisateur, u.code_postal code_postalUtilisateur, u.ville villeUtilisateur, u.pseudo,
-                r.rue rueRetrait, r.code_postal code_postalRetrait, r.ville villeRetrait
+                r.rue rueRetrait, r.code_postal code_postalRetrait, r.ville villeRetrait,
+                e.montant_enchere
         FROM ARTICLE a
         INNER JOIN UTILISATEUR u ON a.id_vendeur = u.id_utilisateur
         LEFT JOIN RETRAIT r ON r.id_article = a.id_article
         INNER JOIN CATEGORIE c ON  c.id_categorie = a.id_categorie
+        LEFT JOIN ENCHERE e
+            ON e.id_article = a.id_article
+            AND e.montant_enchere = (
+                SELECT MAX(montant_enchere)
+                FROM ENCHERE
+                WHERE id_article = a.id_article
+            )
             """;
     private static final String SELECT_BY_ID = SELECT_ALL + """
         WHERE a.id_article = ?
         """;
+
+    private static final String UPDATE = """
+        UPDATE ARTICLE SET
+        nom_article = ?,
+        description = ?,
+        date_debut_encheres = ?,
+        date_fin_encheres = ?,
+        prix_initial = ?,
+        prix_vente = ?,
+        etat_vente = ?,
+        imagePath = ?,
+        id_vendeur = ?,
+        id_categorie = ?
+        WHERE id_article = ?
+        """;
+
 
     @Override
     public List<ArticleVendu> listArticlesVendu() {
@@ -70,5 +95,22 @@ public class ArticleVenduJdbcImpl implements ArticleVenduDao {
     @Override
     public ArticleVendu consulterArticleByNumero(int noArticle) {
         return jdbcTemplate.queryForObject(SELECT_BY_ID, new ArticleVenduRowMapper(), noArticle);
+    }
+
+    @Override
+    public void modifierArticleVendu(ArticleVendu article) {
+        jdbcTemplate.update(UPDATE,
+                article.getNomArticle(),
+                article.getDescription(),
+                article.getDateDebutEncheres(),
+                article.getDateFinEncheres(),
+                article.getPrixInitial(),
+                article.getPrixVente(),
+                article.getEtatVente(),
+                article.getImagePath(),
+                article.getVendeur().getId(),
+                article.getCategorie().getId(),
+                article.getNoArticle()
+        );
     }
 }

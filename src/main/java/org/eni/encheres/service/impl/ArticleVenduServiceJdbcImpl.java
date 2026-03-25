@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -25,7 +26,19 @@ public class ArticleVenduServiceJdbcImpl implements ArticleVenduService {
 
     @Override
     public List<ArticleVendu> listArticlesVendu() {
-        return articleVenduDao.listArticlesVendu();
+        List<ArticleVendu> articles = articleVenduDao.listArticlesVendu();
+
+
+        articles.forEach(a -> {
+            if (a.getDateFinEncheres().isBefore(LocalDate.now())) {
+
+                a.setEtatVente((byte) 1);
+                articleVenduDao.modifierArticleVendu(a);
+
+            }
+        });
+
+        return articles;
     }
 
     /**
@@ -51,7 +64,6 @@ public class ArticleVenduServiceJdbcImpl implements ArticleVenduService {
 
         articleVenduDao.creerArticleVendu(article);
 
-
         int index = articleVenduDao.listArticlesVendu().size();
 
         int idArticle = articleVenduDao.listArticlesVendu().get(index-1).getNoArticle();
@@ -75,7 +87,10 @@ public class ArticleVenduServiceJdbcImpl implements ArticleVenduService {
     @Override
     public void supprimerArticleVendu(int noArticle) { articleVenduDao.supprimerArticleVendu(noArticle);}
 
-
+    @Override
+    public void modifierArticleVendu(ArticleVendu article) {
+        articleVenduDao.modifierArticleVendu(article);
+    }
 
 }
 

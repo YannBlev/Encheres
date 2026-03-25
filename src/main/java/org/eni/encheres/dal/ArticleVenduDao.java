@@ -9,4 +9,6 @@ public interface ArticleVenduDao{
     void creerArticleVendu(ArticleVendu articleVendu);
     void supprimerArticleVendu (int noArticle);
     ArticleVendu consulterArticleByNumero(int noArticle);
+    void modifierArticleVendu(ArticleVendu article);
+
 }

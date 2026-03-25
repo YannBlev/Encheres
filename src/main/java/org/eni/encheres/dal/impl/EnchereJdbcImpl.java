@@ -32,13 +32,7 @@ public class EnchereJdbcImpl implements EnchereDao {
 
     @Override
     public void creerEnchere(Enchere enchere) {
-        int idArticle = enchere.getArticle().getNoArticle();
-        int idDernierEnchereur = consulterIdEnchereurParIdArticle(idArticle);
-        int derniereProposition = consulterMeilleurOffreParIdEnchereurEtIdArticle(idDernierEnchereur, idArticle);
-
-
         jdbcTemplate.update(INSERT, enchere.getUtilisateur().getId(), enchere.getArticle().getNoArticle(), enchere.getDateEnchere(), enchere.getMontantEnchere());
-
     }
 
     @Override
@@ -54,12 +48,24 @@ public class EnchereJdbcImpl implements EnchereDao {
 
     /**
      * Methode permettant de récupérer l'ID du dernier enchereur selon l'id de l'Article
+     *  -> RETURN INTEGER pour gerer les null
      */
-    public int consulterIdEnchereurParIdArticle(int id) {
-        return jdbcTemplate.update(SELECT_LAST_ENCHEREUR_BY_ARTICLE, new BeanPropertyRowMapper<>(Enchere.class), id);
+    @Override
+    public Integer consulterIdEnchereurParIdArticle(int id) {
+        return jdbcTemplate.queryForObject(
+                SELECT_LAST_ENCHEREUR_BY_ARTICLE,
+                Integer.class,
+                id
+        );
     }
 
-    public int consulterMeilleurOffreParIdEnchereurEtIdArticle(int idEnchereur, int idArticle) {
-        return jdbcTemplate.update(SELECT_LAST_ENCHEREUR_BY_ARTICLE, new BeanPropertyRowMapper<>(Enchere.class), idEnchereur, idArticle);
+    @Override
+    public Integer consulterMeilleurOffreParIdEnchereurEtIdArticle(int idEnchereur, int idArticle) {
+        return jdbcTemplate.queryForObject(
+                SELECT_MOST_PRICE_BY_ID_ENCHEREUR,
+                Integer.class,
+                idArticle,
+                idEnchereur
+        );
     }
 }

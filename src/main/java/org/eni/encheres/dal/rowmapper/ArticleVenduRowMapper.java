@@ -32,7 +32,7 @@ public class ArticleVenduRowMapper implements RowMapper<ArticleVendu> {
         article.setDateDebutEncheres(rs.getObject("date_debut_encheres", LocalDate.class));
         article.setDateFinEncheres(rs.getObject("date_fin_encheres", LocalDate.class));
         article.setPrixInitial(rs.getInt("prix_initial"));
-        article.setPrixVente(rs.getInt("prix_vente"));
+        article.setPrixVente(rs.getInt("montant_enchere"));
         article.setEtatVente(rs.getByte("etat_vente"));
         article.setImagePath(rs.getString("imagePath"));
 

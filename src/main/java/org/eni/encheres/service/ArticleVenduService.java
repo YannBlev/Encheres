@@ -10,4 +10,6 @@ public interface ArticleVenduService{
     void creerArticleVendu(ArticleDto articleDto);
     void supprimerArticleVendu(int noArticle);
     ArticleVendu consulterArticleVendu(int noArticle);
+    void modifierArticleVendu(ArticleVendu article);
+
 }
