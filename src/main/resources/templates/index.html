@@ -4,22 +4,14 @@
 <body>
 
 <main layout:fragment="content">
-    <section>
-        <h1 th:text="#{encheres.liste.titre}">Listes des enchères</h1>
-        <h2 th:text="#{encheres.filtres}">Filtres :</h2>
-        <script th:src="@{js/search.js}"></script>
-        <div>
-            <input type="text" id="myInput" onkeyup="myFunction()"
-                   th:placeholder="#{encheres.recherche.placeholder}"
-                   autocomplete="off" th:value="${recherche}">
-            <button th:action="${categories}" th:text="#{encheres.btn.rechercher}">Rechercher</button>
-            <ul id="myUL">
-                <li data-category="Sport&Loisirs"><a href="#Sport&Loisirs">Sport&Loisirs</a></li>
-                <li data-category="Informatique"><a href="#Informatique">Informatique</a></li>
-                <li data-category="Vêtement"><a href="#Vêtement">Vêtement</a></li>
-                <li data-category="Ameublement"><a href="#Ameublement">Ameublement</a></li>
-            </ul>
-        </div>
+<section>
+    <h1>Listes des enchères</h1>
+    <h2>Filtres :</h2>
+    <script th:src="@{js/search.js}"></script>
+
+<div>
+    <input type="text" id="myInput" onkeyup="filterCards()" placeholder="RECHERCHER ICI">
+</div>
 
         <br>
 
@@ -33,11 +25,12 @@
             <article th:each="article : ${articles}"
                      th:class="'filterDiv ' + ${article.categorie}">
 
-                <div class="card" style="width: 10rem;">
-                    <img th:src="@{|${article.imagePath}|}" style="width:100%">
-                    <div class="container">
-                        <a sec:authorize="isAuthenticated()" th:href="@{|/${article.noArticle}|}" th:text="${article.nomArticle}"></a>
-                        <span sec:authorize="!isAuthenticated()" th:text="${article.nomArticle}"></span>
+
+            <div class="card" style="width: 10rem; " >
+                <img th:src="@{|${article.imagePath}|}" style="width:100%">
+                <div class="container">
+                    <a sec:authorize="isAuthenticated()" th:href="@{|/${article.noArticle}|}" th:text="${article.nomArticle}"></a>
+                    <span sec:authorize="!isAuthenticated()" th:text="${article.nomArticle}"></span>
 
                         <label th:text="#{encheres.prix}">Prix: </label>
                         <span th:text="|${article.prixInitial} #{encheres.points}|"></span>

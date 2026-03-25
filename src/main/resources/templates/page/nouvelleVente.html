@@ -11,6 +11,11 @@
                 <label th:text="#{vente.article}">Article :</label>
                 <input type="text" th:field="*{nomArticle}">
                 <br><br>
+    <form class="vente" th:action="@{|/encheres/profil/${id}/nouvelleVente|}" method="post" th:object="${articleDto}" enctype="multipart/form-data">
+        <section>
+            <label>Article :</label>
+            <input type="text" th:field="*{nomArticle}">
+            <br><br>
 
                 <label th:text="#{vente.description}">Description :</label><br>
                 <textarea cols="40" rows="6" th:field="*{description}"></textarea>
