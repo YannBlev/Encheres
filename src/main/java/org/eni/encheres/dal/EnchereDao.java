@@ -9,7 +9,7 @@ public interface EnchereDao {
 
     List<Enchere> ListEncheres ();
     void creerEnchere (Enchere enchere);
-    void supprimerEnchere (int noUtilisateur, int noArticle);
+    void supprimerEnchereParId (int id);
     Enchere consulterEncheresParId (int id);
     Integer consulterIdEnchereurParIdArticle(int id);
     Integer consulterMeilleurOffreParIdEnchereurEtIdArticle(int idEnchereur, int idArticle);

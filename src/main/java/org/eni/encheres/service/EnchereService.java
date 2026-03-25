@@ -10,9 +10,7 @@ public interface EnchereService {
 
     List<Enchere> ListEncheres ();
     void creerEnchere (Enchere enchere);
-    void supprimerEnchere (int noUtilisateur, int noArticle);
+    void supprimerEnchereParId (int id);
     Enchere consulterEncheresParId (int id);
     boolean peutEncherir(Utilisateur utilisateur, ArticleVendu article, int proposition);
-
-
 }

@@ -36,8 +36,8 @@ public class EnchereJdbcImpl implements EnchereDao {
     }
 
     @Override
-    public void supprimerEnchere(int noUtilisateur, int noArticle) {
-        jdbcTemplate.update(DELETE, noUtilisateur, noArticle);
+    public void supprimerEnchereParId(int id) {
+        jdbcTemplate.update(DELETE, id);
 
     }
 
