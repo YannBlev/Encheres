@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/encheres")
 public class MotDePasseController {
 
-    @GetMapping("/forgotPassword")
+    @GetMapping("/motDePasse")
     public String showForgotPasswordForm() {
-        return "encheres/motDePasse";
+        return "page/motDePasse";
     }
 
-    @PostMapping("/forgotPassword")
+    @PostMapping("/motDePasse")
     public String handleForgotPassword() {
-        return "/login";
+        return "redirect:/encheres/login";
     }
 }
