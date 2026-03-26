@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -63,11 +64,14 @@ public class CategorieController {
      * - 2 : je redirige sur la page qui liste les categories (redirect:/categorie)
      */
     @PostMapping("/supprimer")
-    public String supprimerCategorie(int idAsupprimer) {
+    public String supprimerCategorie(int idAsupprimer, RedirectAttributes redirectAttributes) {
         List<ArticleVendu> articles = articleVenduService.listArticlesVenduParCategorie(idAsupprimer);
         if (articles.isEmpty()) {
             // 1 : je délègue au service la suppression du genre
             categorieService.supprimerCategorie(idAsupprimer);
+            redirectAttributes.addFlashAttribute("messageSuccess", "Catégorie supprimée avec succès.");
+        }else{
+            redirectAttributes.addFlashAttribute("messageErreur", "Impossible de supprimer la catégorie : articles en vente.");
         }
         // 2 : je redirige sur la page qui liste les genres (redirect:/genres)
             return "redirect:/encheres/categorie";
