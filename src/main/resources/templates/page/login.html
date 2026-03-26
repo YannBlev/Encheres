@@ -4,7 +4,7 @@
 <!--        <span th:text="${messageErreur}"></span>-->
 <!--    </div>-->
     <section>
-        <form th:action="@{/encheres/login}" method="post">
+        <form th:action="@{/encheres/login}" method="post" class="form">
             <h1 th:text="#{login.titre}">Please Log In</h1>
 
             <div class="input-box" th:if="${param.error}" th:text="#{login.error}"></div>
