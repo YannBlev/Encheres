@@ -22,10 +22,11 @@ public class SecurityConfiguration {
                         .requestMatchers("/**").permitAll())
 
                 .httpBasic(Customizer.withDefaults())
-//                .formLogin(Customizer.withDefaults())
                 .formLogin((formLogin) -> formLogin
-                        .loginPage("/login")
-                        .loginProcessingUrl("/login")
+                        .loginPage("/encheres/login")              // ✅ la vraie URL
+                        .loginProcessingUrl("/encheres/login")     // ✅ pareil
+                        .failureUrl("/encheres/login?error=true")  // ✅ super important
+                        .defaultSuccessUrl("/encheres", true)      // ✅ propre
                         .permitAll()
                 )
                 .logout((logout) -> logout.logoutSuccessUrl("/")

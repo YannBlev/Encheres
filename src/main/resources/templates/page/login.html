@@ -4,29 +4,29 @@
 <!--        <span th:text="${messageErreur}"></span>-->
 <!--    </div>-->
     <section>
-        <h1 th:text="#{login.titre}">Please Log In</h1>
-        <div class="input-box" th:if="${param.error}" th:text="#{login.error}"></div>
-        <div class="input-box" th:if="${param.logout}" th:text="#{login.logout}"></div>
-        <form class="form" th:action="@{/login}" method="post">
+        <form th:action="@{/encheres/login}" method="post">
+            <h1 th:text="#{login.titre}">Please Log In</h1>
+
+            <div class="input-box" th:if="${param.error}" th:text="#{login.error}"></div>
+            <div class="input-box" th:if="${param.logout}" th:text="#{login.logout}"></div>
+
             <div class="input-box">
-                <input type="text" name="username" th:placeholder="#{login.username}"
-                       title="Veuillez renseigner ce champ."
-                       required/>
+                <input type="text" name="username"
+                       th:placeholder="#{login.username}" required/>
             </div>
+
             <br>
+
             <div class="input-box">
-                <input type="password" name="password" th:placeholder="#{login.password}"
-                       pattern="[a-zA-ZÀ-ÿ\-\s]{3,30}"
-                       minlength="3"
-                       maxlength="30"
-                       title="Veuillez renseigner ce champ."
-                       required/>
+                <input type="password" name="password"
+                       th:placeholder="#{login.password}" required/>
             </div>
+
             <br>
+
             <button class="login-btn" th:text="#{login.btn}"></button>
+
             <a th:href="@{/encheres/profil/nouveauProfil}" th:text="#{login.inscription}"></a>
-
-
             <a th:href="@{/encheres/motDePasse}" th:text="#{login.motDePasseOublie}"></a>
         </form>
     </section>
