@@ -129,6 +129,11 @@ public class UtilisateurController {
             return "redirect:/encheres/login";
         }
 
+        /**
+         * Permet de récupérer les crédits de l'utilisateur dans BDD car ceux-ci ne sont pas récupérer via le template
+         */
+        int creditUtilisateur = utilisateurService.getUtilisateurById(utilisateur.getId()).getCredit();
+        utilisateur.setCredit(creditUtilisateur);
         utilisateurService.modifierUtilisateur(utilisateur);
 
         SecurityContextHolder.clearContext();
