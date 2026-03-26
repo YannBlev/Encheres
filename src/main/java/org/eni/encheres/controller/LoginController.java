@@ -13,7 +13,7 @@ class LoginController {
 
 
 
-        return "redirect:/encheres/login";
+        return "page/login";
     }
 
 }

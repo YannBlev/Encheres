@@ -1,8 +1,8 @@
 <html lang="en" layout:decorate="~{layout/base}" xmlns:layout="http://www.w3.org/1999/xhtml">
 <main layout:fragment="content">
-    <div th:if="${messageErreur}" style="color: red" th:text="${messageErreur}">
-        <span th:text="${messageErreur}"></span>
-    </div>
+<!--    <div th:if="${messageErreur}" style="color: red" th:text="${messageErreur}">-->
+<!--        <span th:text="${messageErreur}"></span>-->
+<!--    </div>-->
     <section>
         <h1 th:text="#{login.titre}">Please Log In</h1>
         <div class="input-box" th:if="${param.error}" th:text="#{login.error}"></div>
