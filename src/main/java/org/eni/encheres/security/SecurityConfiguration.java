@@ -23,10 +23,10 @@ public class SecurityConfiguration {
 
                 .httpBasic(Customizer.withDefaults())
                 .formLogin((formLogin) -> formLogin
-                        .loginPage("/encheres/login")              // ✅ la vraie URL
-                        .loginProcessingUrl("/encheres/login")     // ✅ pareil
-                        .failureUrl("/encheres/login?error=true")  // ✅ super important
-                        .defaultSuccessUrl("/encheres", true)      // ✅ propre
+                        .loginPage("/encheres/login")
+                        .loginProcessingUrl("/encheres/login")
+                        .failureUrl("/encheres/login?error=true")
+                        .defaultSuccessUrl("/encheres", true)
                         .permitAll()
                 )
                 .logout((logout) -> logout.logoutSuccessUrl("/")
