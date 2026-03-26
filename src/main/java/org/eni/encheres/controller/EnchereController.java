@@ -80,6 +80,18 @@ public class EnchereController {
 
     @PostMapping("/article/supprimer")
     public String supprimerEnchereParId(int idArticleASupprimer){
+
+        /**
+         * Permet de donner les crédits au VENDEUR si l'enchere est finie avec un acheteur
+         */
+        ArticleVendu article = articleVenduService.consulterArticleVendu(idArticleASupprimer);
+        if (article.getPrixVente() > 0 && article.getEtatVente() == 1) {
+            Utilisateur utilisateur = utilisateurService.getUtilisateurById(article.getVendeur().getId());
+            int ancienCredit = utilisateur.getCredit();
+            int nouveauCredit = ancienCredit + article.getPrixVente();
+            utilisateur.setCredit(nouveauCredit);
+        }
+
         // 1 : je délègue au service la suppression du genre
         articleVenduService.supprimerArticleVendu(idArticleASupprimer);
 

@@ -28,22 +28,28 @@ public class ArticleVenduServiceJdbcImpl implements ArticleVenduService {
     public List<ArticleVendu> listArticlesVendu() {
         List<ArticleVendu> articles = articleVenduDao.listArticlesVendu();
 
-
+        /**
+         * A chaque chargement des articles dans la BDD, on met à jour l'état de la vente et on supprime l'article s'il aucun enchereur
+         */
         articles.forEach(a -> {
             if (a.getDateFinEncheres().isBefore(LocalDate.now())) {
 
                 a.setEtatVente((byte) 1);
                 articleVenduDao.modifierArticleVendu(a);
 
+                if (a.getPrixVente()<a.getPrixInitial()) {
+                    articleVenduDao.supprimerArticleVendu(a.getNoArticle());
+                }
+
             }
         });
 
+        articles = articleVenduDao.listArticlesVendu();
         return articles;
     }
 
     @Override
     public List<ArticleVendu> listArticlesVenduParCategorie(int id) {
-
 
         return articleVenduDao.listArticlesVenduParCategorie(id);
     }
