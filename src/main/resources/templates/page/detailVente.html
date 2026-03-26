@@ -62,9 +62,15 @@
     </form>
 
       <div th:if="${article.etatVente == 1 and article.acheteur != null and #authentication.principal.id == article.vendeur.id}">
-              <form class="inline-form" action="/article/supprimer" method="post">
-              <button class="delete-button" type="submit" name="idArticleASupprimer" th:value="${article.noArticle}">✗</button>
+              <form class="inline-form" th:action="@{/encheres/article/supprimer}" method="post">
+              <button class="delete-button" type="submit" name="idArticleASupprimer" th:value="${article.noArticle}">Retrait effectué</button>
               </form>
+      </div>
+
+      <div th:if="${article.etatVente == 0 and article.acheteur == null and #authentication.principal.id == article.vendeur.id}">
+          <form class="inline-form" th:action="@{/encheres/article/supprimer}" method="post">
+              <button class="delete-button" type="submit" name="idArticleASupprimer" th:value="${article.noArticle}">Annuler la vente</button>
+          </form>
       </div>
 
       <div th:if="${article.etatVente == 1 and #authentication.principal.id != article.vendeur.id}">

@@ -4,7 +4,7 @@
     <nav>
 
     <a th:href="@{/}" sec:authorize="isAuthenticated()" th:text="#{menu.encheres}"></a>
-    <a th:href="@{|/encheres/${#authentication.principal.id}/nouvelleVente|}"  th:text="#{menu.vendreunarticle}" sec:authorize="isAuthenticated()"></a> <!-- sec:authorize="hasRole('admin')" -->
+    <a th:href="@{|/encheres/profil/${#authentication.principal.id}/nouvelleVente|}"  th:text="#{menu.vendreunarticle}" sec:authorize="isAuthenticated()"></a> <!-- sec:authorize="hasRole('admin')" -->
     <a th:href="@{|/encheres/profil/${#authentication.principal.id}|}" sec:authorize="isAuthenticated()" th:text="#{menu.MonCompte}"></a>
     <a th:href="@{/encheres/profils}" sec:authorize="hasRole('admin')">Profils</a>
     <a th:href="@{/encheres/categorie}" sec:authorize="hasRole('admin')">Catégories</a>
