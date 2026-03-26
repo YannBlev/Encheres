@@ -111,6 +111,13 @@
 
     </form>
 
+    <div th:if="${messageErreur}" style="color: red" th:text="${messageErreur}">
+        <span th:text="${messageErreur}"></span>
+    </div>
+
+    <div th:if="${messageSuccess}" style="color: green;">
+        <span th:text="${messageSuccess}"></span>
+    </div>
 
     <!-- Formulaire modification de profil (authentifié) -->
     <form sec:authorize="isAuthenticated()"

@@ -57,7 +57,7 @@ public class EnchereController {
     @PostMapping("/article/{id}/encherir")
     public String postEncherir(@PathVariable("id") int id, @AuthenticationPrincipal UtilisateurSpringSecurity utilisateurConnecte, @RequestParam("proposition") int proposition){
 
-        Utilisateur utilisateur = utilisateurConnecte.getUtilisateur();
+        Utilisateur utilisateur = utilisateurService.getUtilisateurById(utilisateurConnecte.getUtilisateur().getId());
         ArticleVendu article = articleVenduService.consulterArticleVendu(id);
 
         if (enchereService.peutEncherir(utilisateur, article, proposition)) {

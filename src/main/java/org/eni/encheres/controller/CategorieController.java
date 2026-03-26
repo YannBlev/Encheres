@@ -67,13 +67,13 @@ public class CategorieController {
     public String supprimerCategorie(int idAsupprimer, RedirectAttributes redirectAttributes) {
         List<ArticleVendu> articles = articleVenduService.listArticlesVenduParCategorie(idAsupprimer);
         if (articles.isEmpty()) {
-            // 1 : je délègue au service la suppression du genre
+            // 1 : je délègue au service la suppression de la categorie
             categorieService.supprimerCategorie(idAsupprimer);
             redirectAttributes.addFlashAttribute("messageSuccess", "Catégorie supprimée avec succès.");
         }else{
             redirectAttributes.addFlashAttribute("messageErreur", "Impossible de supprimer la catégorie : articles en vente.");
         }
-        // 2 : je redirige sur la page qui liste les genres (redirect:/genres)
+        // 2 : je redirige sur la page qui liste les categories (redirect:/encheres/categorie)
             return "redirect:/encheres/categorie";
 
     }

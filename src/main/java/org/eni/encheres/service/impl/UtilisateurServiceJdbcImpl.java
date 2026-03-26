@@ -37,6 +37,7 @@ public class UtilisateurServiceJdbcImpl implements UtilisateurService {
         return utilisateurDao.listerUtilisateurs();
     }
 
+
     @Override
     public Utilisateur getUtilisateurById (int id) {
         return utilisateurDao.consulterUtilisateurParId(id);

@@ -3,8 +3,10 @@ package org.eni.encheres.controller;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.eni.encheres.bo.Enchere;
 import org.eni.encheres.bo.Utilisateur;
 import org.eni.encheres.security.UtilisateurSpringSecurity;
+import org.eni.encheres.service.EnchereService;
 import org.eni.encheres.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -13,6 +15,9 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 
 // TODO mettre correctement les bonnes adresses de redirection :
@@ -23,6 +28,9 @@ public class UtilisateurController {
 
     @Autowired
     private UtilisateurService utilisateurService;
+
+    @Autowired
+    private EnchereService enchereService;
 
     @GetMapping("/profils")
     public String getUtilisateurs(Model model) {
@@ -51,14 +59,28 @@ public class UtilisateurController {
     }
 
     @PostMapping("/profil/delete") //Supprimer Utilisateur dans son menu utilisateur
-    public String suppressionUtilisateur(@RequestParam("idUtilisateurASupprimer")int idUtilisateurASupprimer, HttpSession session) {
+    public String suppressionUtilisateur(@RequestParam("idUtilisateurASupprimer")int idUtilisateurASupprimer, RedirectAttributes redirectAttributes, HttpSession session) {
+        List<Enchere>encheres = enchereService.lastEnchereByEnchereur(idUtilisateurASupprimer);
+
+        if (encheres.isEmpty()){
+
+            // 1 : je délègue au service la suppression du profil
         utilisateurService.supprimerUtilisateur(idUtilisateurASupprimer);
-
-
+        redirectAttributes.addFlashAttribute("messageSuccess", "Profil supprimé avec succès.");
+            // 2 : je redirige sur la page d'acceuil "enchères" avec "redirect:/" avec un logout :
         session.invalidate();                    // invalide la session
         SecurityContextHolder.clearContext();
+            return "redirect:/";
 
-        return "redirect:/";
+    }else{
+        redirectAttributes.addFlashAttribute("messageErreur", "Impossible de supprimer le profil : dernière enchère en cours.");
+            return "redirect:/encheres/profil/"+idUtilisateurASupprimer;
+    }
+
+
+
+
+
     }
 
     // TODO UtilisateurDTO
