@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface ArticleVenduService{
     List<ArticleVendu> listArticlesVendu();
+    List<ArticleVendu> listArticlesVenduParCategorie(int id);
     void creerArticleVendu(ArticleDto articleDto);
     void supprimerArticleVendu(int noArticle);
     ArticleVendu consulterArticleVendu(int noArticle);

@@ -3,82 +3,82 @@
       xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Détail Vente</title>
+    <title th:text="#{detail.titre}">Détail Vente</title>
 </head>
 <body>
-  <main layout:fragment="content">
+<main layout:fragment="content">
 
-      <h2
-              th:if="${article.etatVente == 1 and article.acheteur != null and #authentication.principal.id != article.acheteur.id}"
-              th:text="|${article.acheteur.pseudo} a remporté l enchere|">
-      </h2>
+    <h2
+            th:if="${article.etatVente == 1 and article.acheteur != null and #authentication.principal.id != article.acheteur.id}"
+            th:text="|${article.acheteur.pseudo} #{detail.enchere.gagnant.autre}|">
+    </h2>
 
-      <h2
-              th:if="${article.etatVente == 1 and article.acheteur != null and #authentication.principal.id == article.acheteur.id}"
-              th:text="|Vous avez remporté l enchere|">
-      </h2>
+    <h2
+            th:if="${article.etatVente == 1 and article.acheteur != null and #authentication.principal.id == article.acheteur.id}"
+            th:text="#{detail.enchere.gagnant.moi}">
+    </h2>
 
-      <h2
-              th:if="${article.etatVente == 1 and article.acheteur == null}"
-              th:text="|Personne n a remporté l enchere|">
-      </h2>
+    <h2
+            th:if="${article.etatVente == 1 and article.acheteur == null}"
+            th:text="#{detail.enchere.personne}">
+    </h2>
 
-      <img th:src="@{|${article.imagePath}|}" style="width:200px" alt="Image de l'article">
+    <img th:src="@{|${article.imagePath}|}" style="width:200px" th:alt="#{detail.img.alt}">
 
-      <label>Intitulé : </label>
-      <span th:text="${article.nomArticle}"></span><br>
+    <label th:text="#{detail.intitule}"></label>
+    <span th:text="${article.nomArticle}"></span><br>
 
-      <label>Description : </label>
-      <textarea cols="20" rows="4" disabled th:text="${article.description}"></textarea><br>
+    <label th:text="#{detail.description}"></label>
+    <textarea cols="20" rows="4" disabled th:text="${article.description}"></textarea><br>
 
-      <label>Catégorie : </label>
-      <span th:text="${article.categorie.libelle}"></span><br>
+    <label th:text="#{detail.categorie}"></label>
+    <span th:text="${article.categorie.libelle}"></span><br>
 
-      <label>Meilleure offre : </label>
-      <span  th:text="${article.prixVente}"></span><br>
+    <label th:text="#{detail.meilleureOffre}"></label>
+    <span th:text="${article.prixVente}"></span><br>
 
-      <label>Mise à prix : </label>
-      <span th:text="${article.prixInitial}"></span><br>
+    <label th:text="#{detail.miseAPrix}"></label>
+    <span th:text="${article.prixInitial}"></span><br>
 
-      <label>Fin de l'enchère : </label>
-      <span th:text="${article.dateFinEncheres }"></span><br>
+    <label th:text="#{detail.finEnchere}"></label>
+    <span th:text="${article.dateFinEncheres}"></span><br>
 
-      <label>Retrait : </label>
-      <span th:text="${retrait.rue}"></span><br>
-      <span th:text="${retrait.code_postal}"></span><br>
-      <span th:text="${retrait.ville}"></span><br><br>
+    <label th:text="#{detail.retrait}"></label>
+    <span th:text="${retrait.rue}"></span><br>
+    <label th:text="#{detail.code_postal}"></label>
+    <span th:text="${retrait.code_postal}"></span><br>
+    <label th:text="#{detail.ville}"></label>
+    <span th:text="${retrait.ville}"></span><br><br>
 
-
-      <span th:text="|Vendeur : ${article.vendeur.pseudo}|"></span><br>
-      <span th:text="|Tel : ${article.vendeur.telephone}|"></span><br>
+    <span th:text="|#{detail.vendeur} ${article.vendeur.pseudo}|"></span><br>
+    <span th:text="|#{detail.tel} ${article.vendeur.telephone}|"></span><br>
 
     <form th:if="${article.etatVente == 0 and #authentication.principal.id != article.vendeur.id}" sec:authorize="isAuthenticated()" th:action="@{|/encheres/article/${article.noArticle}/encherir|}" method="post">
 
-      <label>Ma proposition : </label>
-      <input type="number" name="proposition"><br>
+        <label th:text="#{detail.maProposition}"></label>
+        <input type="number" name="proposition"><br>
 
-      <input type="submit" value="Encherir">
+        <input type="submit" th:value="#{detail.btn.encherir}">
 
     </form>
 
-      <div th:if="${article.etatVente == 1 and article.acheteur != null and #authentication.principal.id == article.vendeur.id}">
-              <form class="inline-form" th:action="@{/encheres/article/supprimer}" method="post">
-              <button class="delete-button" type="submit" name="idArticleASupprimer" th:value="${article.noArticle}">Retrait effectué</button>
-              </form>
-      </div>
+    <div th:if="${article.etatVente == 1 and article.acheteur != null and #authentication.principal.id == article.vendeur.id}">
+        <form class="inline-form" th:action="@{/encheres/article/supprimer}" method="post">
+            <button class="delete-button" type="submit" name="idArticleASupprimer" th:value="${article.noArticle}" th:text="#{detail.btn.retraitEffectue}"></button>
+        </form>
+    </div>
 
-      <div th:if="${article.etatVente == 0 and article.acheteur == null and #authentication.principal.id == article.vendeur.id}">
-          <form class="inline-form" th:action="@{/encheres/article/supprimer}" method="post">
-              <button class="delete-button" type="submit" name="idArticleASupprimer" th:value="${article.noArticle}">Annuler la vente</button>
-          </form>
-      </div>
+    <div th:if="${article.etatVente == 0 and article.acheteur == null and #authentication.principal.id == article.vendeur.id}">
+        <form class="inline-form" th:action="@{/encheres/article/supprimer}" method="post">
+            <button class="delete-button" type="submit" name="idArticleASupprimer" th:value="${article.noArticle}" th:text="#{detail.btn.annulerVente}"></button>
+        </form>
+    </div>
 
-      <div th:if="${article.etatVente == 1 and #authentication.principal.id != article.vendeur.id}">
-          <a th:href="@{/encheres}" th:text="|Retour|"></a>
-      </div>
+    <div th:if="${article.etatVente == 1 and #authentication.principal.id != article.vendeur.id}">
+        <a th:href="@{/encheres}" th:text="#{detail.btn.retour}"></a>
+    </div>
 
-  </main>
+</main>
 
 </body>
-
 </html>
