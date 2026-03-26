@@ -9,7 +9,8 @@
         <div class="input-box" th:if="${param.logout}" th:text="#{login.logout}"></div>
         <form class="form" th:action="@{/login}" method="post">
             <div class="input-box">
-                <input type="text" name="username" th:placeholder="#{login.username}"
+                <input type="email" name="username" th:placeholder="#{login.username}"
+                       pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
                        title="Veuillez renseigner ce champ."
                        required/>
             </div>
