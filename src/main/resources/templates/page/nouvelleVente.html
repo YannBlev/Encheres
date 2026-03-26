@@ -3,72 +3,62 @@
 
 <body>
 <main layout:fragment="content">
+    <section>
     <fieldset class="table-container">
         <legend class="log"><h2 th:text="#{vente.titre}">Nouvelle Vente</h2></legend>
-
     <form class="vente" th:action="@{|/encheres/profil/${id}/nouvelleVente|}" method="post" th:object="${articleDto}" enctype="multipart/form-data">
-        <section>
+
             <label>Article :</label>
             <input type="text" th:field="*{nomArticle}"
                    pattern="[a-zA-Z0-9]{2,20}"
                    minlength="3"
                    maxlength="20"
                    required>
-            <br><br>
 
-                <label th:text="#{vente.description}">Description :</label><br>
-                <textarea cols="40" rows="6" th:field="*{description}"
-                    minlength="10"
-                    maxlength="300" required>
-                </textarea>
-                <br><br>
+            <label th:text="#{vente.description}">Description :</label><br>
+            <textarea cols="40" rows="6" th:field="*{description}"
+                minlength="10"
+                maxlength="300" required>
+            </textarea>
 
-                <label th:text="#{vente.categorie}">Catégorie :</label>
-                <select th:field="*{categorie}">
-                    <option th:each="categorie : ${categories}" th:value="${categorie.id}" th:text="${categorie.libelle}"></option>
-                </select>
-                <br><br>
+            <label th:text="#{vente.categorie}">Catégorie :</label>
+            <select th:field="*{categorie}">
+                <option th:each="categorie : ${categories}" th:value="${categorie.id}" th:text="${categorie.libelle}"></option>
+            </select>
 
-                <label th:text="#{vente.photo}">Photo de l'article :</label>
-                <input type="file" name="image" accept=".jpg" required>
-                <br><br>
+            <label th:text="#{vente.photo}">Photo de l'article :</label>
+            <input type="file" name="image" accept=".jpg" required>
 
-                <label th:text="#{vente.prixInitial}">Prix initial :</label>
-                <input type="number" th:field="*{prixInitial}"
-                       min="10"
-                       max="1000"
-                       title ="Minimum de 10 crédit, et maximum 1000 crédit"
-                       required>
-                <br><br>
+            <label th:text="#{vente.prixInitial}">Prix initial :</label>
+            <input type="number" th:field="*{prixInitial}"
+                   min="10"
+                   max="1000"
+                   title ="Minimum de 10 crédit, et maximum 1000 crédit"
+                   required>
 
-                <label th:text="#{vente.dateDebut}">Début de l'enchère :</label>
-                <input type="date" th:field="*{dateDebutEncheres}" required>
-                <br><br>
+            <label th:text="#{vente.dateDebut}">Début de l'enchère :</label>
+            <input type="date" th:field="*{dateDebutEncheres}" required>
 
-                <label th:text="#{vente.dateFin}">Fin de l'enchère :</label>
-                <input type="date" th:field="*{dateFinEncheres}" required>
-                <br><br>
-            </section>
+            <label th:text="#{vente.dateFin}">Fin de l'enchère :</label>
+            <input type="date" th:field="*{dateFinEncheres}" required>
 
-            <legend><h2 th:text="#{vente.retrait}">Retrait</h2></legend>
+            <h2 th:text="#{vente.retrait}">Retrait</h2>
 
             <label th:text="#{profil.rue}">Rue :</label>
             <input type="text" th:field="*{rue}" th:placeholder="${utilisateur.rue}" required>
-            <br><br>
 
             <label th:text="#{profil.codePostal}">Code postal :</label>
             <input type="text" th:field="*{code_postal}" th:placeholder="${utilisateur.codePostal}" required>
-            <br><br>
 
             <label th:text="#{profil.ville}">Ville :</label>
             <input type="text" th:field="*{ville}" th:placeholder="${utilisateur.ville}" required>
-            <br><br>
 
-            <section>
-                <button class="favorite styled" type="submit" th:text="#{vente.btn.enregistrer}">Enregistrer</button>
-            </section>
+
+            <button class="favorite styled" type="submit" th:text="#{vente.btn.enregistrer}">Enregistrer</button>
+
         </form>
     </fieldset>
+    </section>
 </main>
 </body>
 </html>
