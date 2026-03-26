@@ -84,6 +84,11 @@ public class EnchereServiceImpl implements EnchereService {
     }
 
     @Override
+    public List<Enchere> lastEnchereByEnchereur(int id) {
+        return enchereDao.lastEnchereByEnchereur(id);
+    }
+
+    @Override
     public void supprimerEnchereParId(int id) {enchereDao.supprimerEnchereParId(id);
     }
 }

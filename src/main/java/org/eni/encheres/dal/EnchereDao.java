@@ -13,5 +13,5 @@ public interface EnchereDao {
     Enchere consulterEncheresParId (int id);
     Integer consulterIdEnchereurParIdArticle(int id);
     Integer consulterMeilleurOffreParIdEnchereurEtIdArticle(int idEnchereur, int idArticle);
-
+    List<Enchere> lastEnchereByEnchereur(int id);
 }

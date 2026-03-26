@@ -13,4 +13,5 @@ public interface EnchereService {
     void supprimerEnchereParId (int id);
     Enchere consulterEncheresParId (int id);
     boolean peutEncherir(Utilisateur utilisateur, ArticleVendu article, int proposition);
+    List<Enchere> lastEnchereByEnchereur(int id);
 }
