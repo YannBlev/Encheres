@@ -61,7 +61,12 @@
     <form th:if="${article.etatVente == 0 and #authentication.principal.id != article.vendeur.id}" sec:authorize="isAuthenticated()" th:action="@{|/encheres/article/${article.noArticle}/encherir|}" method="post">
 
         <label th:text="#{detail.maProposition}"></label>
-        <input type="number" name="proposition"><br>
+        <input type="text" name="proposition"
+               pattern="[0-9]{2,4}"
+               title ="Minimum de 10 crédit, et maximum 1000 crédit"
+               th:title="#{detail.enchere.encherir}"
+               th:placeholder="#{detail.enchere.placeholder}"
+               required><br>
 
         <input type="submit" th:value="#{detail.btn.encherir}">
 

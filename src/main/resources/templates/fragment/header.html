@@ -22,8 +22,8 @@
 
         <form method="get" action="/i18n" class="inline-display">
             <select name="lang" onchange="this.form.submit()">
-                <option th:selected="${#locale.toString() == 'fr'}" value="fr" th:text="#{header.lang.fr}">Français</option>
-                <option th:selected="${#locale.toString() == 'en'}" value="en" th:text="#{header.lang.en}">Anglais</option>
+                <option th:selected="${#locale.toString() == 'fr'}" value="fr" >🇫🇷</option>
+                <option th:selected="${#locale.toString() == 'en'}" value="en" >🇬🇧</option>
             </select>
         </form>
 
