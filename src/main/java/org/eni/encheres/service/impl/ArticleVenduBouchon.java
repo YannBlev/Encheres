@@ -29,6 +29,11 @@ public class ArticleVenduBouchon implements ArticleVenduService {
     }
 
     @Override
+    public List<ArticleVendu> listArticlesVenduParCategorie(int id) {
+        return List.of();
+    }
+
+    @Override
     public void creerArticleVendu(ArticleDto articleDto) {
 
     }

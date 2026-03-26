@@ -41,6 +41,13 @@ public class ArticleVenduServiceJdbcImpl implements ArticleVenduService {
         return articles;
     }
 
+    @Override
+    public List<ArticleVendu> listArticlesVenduParCategorie(int id) {
+
+
+        return articleVenduDao.listArticlesVenduParCategorie(id);
+    }
+
     /**
      * @Transactionnal est important pour l'atomicité de l'ACID !
      */

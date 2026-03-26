@@ -1,6 +1,8 @@
 package org.eni.encheres.service.impl;
 
+import org.eni.encheres.bo.ArticleVendu;
 import org.eni.encheres.bo.Categorie;
+import org.eni.encheres.dal.ArticleVenduDao;
 import org.eni.encheres.dal.CategorieDao;
 import org.eni.encheres.service.CategorieService;
 import org.eni.encheres.service.EnchereService;
@@ -19,7 +21,10 @@ public class CategorieServiceJdbcimpl implements CategorieService {
     private CategorieDao categorieDao;
 
     @Autowired
-    EnchereService enchereService;
+    private ArticleVenduDao articleVenduDao;
+
+    @Autowired
+    private ArticleVenduServiceJdbcImpl articleVenduServiceJdbcImpl;
 
     @Override
     public List<Categorie> consulterCategorie() {
@@ -40,17 +45,31 @@ public class CategorieServiceJdbcimpl implements CategorieService {
 
     @Override
     public void supprimerCategorie(int idAsupprimer) {
-        // Vérifier s'il y a des enchères en cours pour cette catégorie
-//        long nbEncheresEnCours = enchereService."countByCategorieIdByDateDebutEnchere"(id,localDateTime)
-////                TODO dans EnchereServiceImpl "countEnchereByIdCategorieByDateDebutEnchere"
-//
-//        if (nbEncheresEnCours > 0) {
-//            // On lance une exception personnalisée ou une erreur explicite
-//            throw new Exception("Interdit : cette catégorie possède des enchères en cours.");
-//        }
-//
-//
-//        categorieDao.deleteCategorie(idAsupprimer);
+
+             categorieDao.deleteCategorie(idAsupprimer);
 
     }
 }
+
+
+
+
+
+
+
+
+
+//try {
+//// 1. Vérifier si la catégorie contient des articles
+//// On suppose que vous avez une méthode dans votre DAO pour compter les articles
+//int nombreArticles = articleDao.countArticlesByCategorie(idAsupprimer);
+//
+//        if (nombreArticles > 0) {
+//        // On lance une exception personnalisée ou une RuntimeException
+//        throw new IllegalStateException("Impossible de supprimer la catégorie : elle contient des articles.");
+//        }
+//
+//                // 2. Si aucun article, on procède à la suppression
+//                categorieDao.deleteCategorie(idAsupprimer);
+//        System.out.println("Catégorie supprimée avec succès.");
+

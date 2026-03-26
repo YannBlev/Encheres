@@ -66,10 +66,20 @@ public class ArticleVenduJdbcImpl implements ArticleVenduDao {
         WHERE id_article = ?
         """;
 
+    private static final String SELECT_ALL_BY_CATEGORIE = SELECT_ALL + "where c.id_categorie = ?";
+
+
+
+
 
     @Override
     public List<ArticleVendu> listArticlesVendu() {
         return jdbcTemplate.query(SELECT_ALL, new ArticleVenduRowMapper());
+    }
+
+    @Override
+    public List<ArticleVendu> listArticlesVenduParCategorie(int id) {
+        return jdbcTemplate.query(SELECT_ALL_BY_CATEGORIE, new ArticleVenduRowMapper(), id);
     }
 
     @Override
