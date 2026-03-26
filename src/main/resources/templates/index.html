@@ -4,25 +4,22 @@
 <body>
 
 <main layout:fragment="content">
-<section>
+    <div>
+
     <h1 th:text="#{encheres.liste.titre}">Liste des enchères</h1>
-    <h2 th:text="#{encheres.filtres}">Filtres :</h2>
-
-
-    <div>
-        <input type="text" id="myInput" onkeyup="filterCards()" th:placeholder="#{encheres.recherche.placeholder}" placeholder="Rechercher ici">
-    </div>
-    <br>
-
-    <div>
-    <label th:text="#{encheres.categorie}">Catégorie :</label>
-    <select onchange="filterSelection(this.value)">
-        <option value="all" th:text="#{encheres.categorie.toutes}">Toutes</option>
-        <option th:each="categorie : ${categories}" th:value="${categorie.id}" th:text="${categorie.libelle}"></option>
-    </select>
-    </div>
-
-<br>
+        <section>
+            <article>
+                <label th:text="#{encheres.filtres}">Filtres :</label>
+                <input type="text" id="myInput" onkeyup="filterCards()" th:placeholder="#{encheres.recherche.placeholder}" placeholder="Rechercher ici">
+            </article>
+            <article>
+                <label th:text="#{encheres.categorie}">Catégorie :</label>
+                <select onchange="filterSelection(this.value)">
+                    <option value="all" th:text="#{encheres.categorie.toutes}">Toutes</option>
+                    <option th:each="categorie : ${categories}" th:value="${categorie.id}" th:text="${categorie.libelle}"></option>
+                </select>
+            </article>
+        </section>
     <div class="articles-grid">
         <article th:each="article : ${articles}" th:class="'filterDiv ' + ${article.categorie}">
 
@@ -40,7 +37,8 @@
             </div>
         </article>
     </div>
-</section>
+
+    </div>
 <script th:src="@{js/search.js}"></script>
 <script th:src="@{js/script.js}"></script>
 </main>

@@ -11,22 +11,50 @@
             <div class="input-box" th:if="${param.logout}" th:text="#{login.logout}"></div>
 
             <div class="input-box">
-                <input type="text" name="username"
-                       th:placeholder="#{login.username}" required/>
+                <input type="email" name="username" th:placeholder="#{login.username}"
+                       pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
+                       title="Veuillez renseigner ce champ."
+                       required/>
             </div>
-
             <br>
-
             <div class="input-box">
-                <input type="password" name="password"
-                       th:placeholder="#{login.password}" required/>
+                <input type="password" id="password" name="password"
+                       th:placeholder="#{login.password}"
+                       pattern="[a-zA-ZÀ-ÿ\-\s]{3,30}"
+                       minlength="3"
+                       maxlength="30"
+                       title="Veuillez renseigner ce champ."
+                       required/>
+            <div class="password-icon" onclick="togglePassword()">
+                <i id="eye-icon" data-feather="eye"></i>
+                <i id="eye-off-icon" data-feather="eye-off" style="display:none"></i>
             </div>
+            <script src="https://unpkg.com/feather-icons"></script>
+            <script>
+                feather.replace();
+
+                function togglePassword() {
+                    const input = document.getElementById('password');
+                    const eyeIcon = document.getElementById('eye-icon');
+                    const eyeOffIcon = document.getElementById('eye-off-icon');
+
+                    if (input.type === 'password') {
+                        input.type = 'text';
+                        eyeIcon.style.display = 'none';
+                        eyeOffIcon.style.display = 'inline';
+                    } else {
+                        input.type = 'password';
+                        eyeIcon.style.display = 'inline';
+                        eyeOffIcon.style.display = 'none';
+                    }
+                }
+            </script>
 
             <br>
-
             <button class="login-btn" th:text="#{login.btn}"></button>
-
             <a th:href="@{/encheres/profil/nouveauProfil}" th:text="#{login.inscription}"></a>
+
+
             <a th:href="@{/encheres/motDePasse}" th:text="#{login.motDePasseOublie}"></a>
         </form>
     </section>

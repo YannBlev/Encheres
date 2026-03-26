@@ -10,37 +10,38 @@
 <body>
 <main layout:fragment="content">
 
-    <label th:text="#{monprofil.profil}">Profil : </label>
-    <span th:text="${utilisateur.pseudo}"></span><br>
+    <section>
+        <label th:text="#{monprofil.profil}">Profil : </label>
+        <span th:text="${utilisateur.pseudo}"></span><br>
 
-    <label th:text="#{profil.nom}">Nom : </label>
-    <span th:text="${utilisateur.nom}"></span><br>
+        <label th:text="#{profil.nom}">Nom : </label>
+        <span th:text="${utilisateur.nom}"></span><br>
 
-    <label th:text="#{profil.prenom}">Prenom : </label>
-    <span th:text="${utilisateur.prenom}"></span><br>
+        <label th:text="#{profil.prenom}">Prenom : </label>
+        <span th:text="${utilisateur.prenom}"></span><br>
 
-    <label th:text="#{profil.email}">Email : </label>
-    <span th:text="${utilisateur.email}"></span><br>
+        <label th:text="#{profil.email}">Email : </label>
+        <span th:text="${utilisateur.email}"></span><br>
 
-    <label th:text="#{profil.telephone}">Telephone : </label>
-    <span th:text="${utilisateur.telephone}"></span><br>
+        <label th:text="#{profil.telephone}">Telephone : </label>
+        <span th:text="${utilisateur.telephone}"></span><br>
 
-    <label th:text="#{profil.rue}">Rue : </label>
-    <span th:text="${utilisateur.rue}"></span><br>
+        <label th:text="#{profil.rue}">Rue : </label>
+        <span th:text="${utilisateur.rue}"></span><br>
 
-    <label th:text="#{profil.codePostal}">Code postal : </label>
-    <span th:text="${utilisateur.codePostal}"></span><br>
+        <label th:text="#{profil.codePostal}">Code postal : </label>
+        <span th:text="${utilisateur.codePostal}"></span><br>
 
-    <label th:text="#{profil.ville}">Ville : </label>
-    <span th:text="${utilisateur.ville}"></span><br>
+        <label th:text="#{profil.ville}">Ville : </label>
+        <span th:text="${utilisateur.ville}"></span><br>
 
-    <label th:text="#{monprofil.credit}">Crédit :</label>
-    <span th:text="*{utilisateur.credit}"></span><br>
+        <label th:text="#{monprofil.credit}">Crédit :</label>
+        <span th:text="*{utilisateur.credit}"></span><br>
 
-    <a th:href="@{|/encheres/profil/${id}/modifier|}" sec:authorize="isAuthenticated()">
-        <button type="button" th:text="#{monprofil.btn.modifier}">Modifier mon profil</button>
-    </a>
-
+        <a th:href="@{|/encheres/profil/${id}/modifier|}" sec:authorize="isAuthenticated()">
+            <button type="button" th:text="#{monprofil.btn.modifier}">Modifier mon profil</button>
+        </a>
+    </section>
 </main>
 </body>
 

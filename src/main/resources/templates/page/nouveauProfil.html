@@ -12,7 +12,7 @@
 
 <main layout:fragment="content">
 
-
+<section>
     <!-- Formulaire création de profil (anonyme) -->
     <form sec:authorize="isAnonymous()" th:action="@{/encheres/profil/nouveauProfil}" method="post" th:object="${utilisateur}">
 
@@ -118,6 +118,7 @@
           method="post"
           th:object="${utilisateur}">
 
+
         <input type="hidden" th:field="*{id}"/>
 
         <label for="pseudo2" th:text="#{profil.pseudo}"></label>
@@ -185,10 +186,11 @@
                 sec:authorize="isAuthenticated()"
                 th:text="#{profil.btn.supprimer}"></button>
     </form>
+
     <div th:if="${messageErreur}" style="color: red" th:text="${messageErreur}">
         <span th:text="${messageErreur}"></span>
     </div>
-
+</section>
 </main>
 
 </body>
