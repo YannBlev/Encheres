@@ -104,7 +104,7 @@ public class UtilisateurController {
     public String modifierProfil(@AuthenticationPrincipal UtilisateurSpringSecurity utilisateurConnecte, Utilisateur utilisateur) {
 
         if (utilisateurConnecte == null) {
-            return "redirect:/login";
+            return "redirect:/encheres/login";
         }
 
         utilisateurService.modifierUtilisateur(utilisateur);
