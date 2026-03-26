@@ -12,6 +12,7 @@
 
 <main layout:fragment="content">
 
+
     <!-- Formulaire création de profil (anonyme) -->
     <form sec:authorize="isAnonymous()" th:action="@{/encheres/profil/nouveauProfil}" method="post" th:object="${utilisateur}">
 
@@ -111,14 +112,6 @@
 
     </form>
 
-    <div th:if="${messageErreur}" style="color: red" th:text="${messageErreur}">
-        <span th:text="${messageErreur}"></span>
-    </div>
-
-    <div th:if="${messageSuccess}" style="color: green;">
-        <span th:text="${messageSuccess}"></span>
-    </div>
-
     <!-- Formulaire modification de profil (authentifié) -->
     <form sec:authorize="isAuthenticated()"
           th:action="@{|/encheres/profil/${id}/modifier|}"
@@ -192,6 +185,9 @@
                 sec:authorize="isAuthenticated()"
                 th:text="#{profil.btn.supprimer}"></button>
     </form>
+    <div th:if="${messageErreur}" style="color: red" th:text="${messageErreur}">
+        <span th:text="${messageErreur}"></span>
+    </div>
 
 </main>
 

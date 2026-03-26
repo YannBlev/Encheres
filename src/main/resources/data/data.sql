@@ -110,8 +110,3 @@ SET
     administrateur = ''
 WHERE id_utilisateur = 0;
 
-ALTER TABLE RETRAIT
-DROP CONSTRAINT retrait_article_fk
-ALTER TABLE RETRAIT
-    ADD CONSTRAINT retrait_article_fk FOREIGN KEY ( id_article )
-        REFERENCES ARTICLE ( id_article ) ON DELETE CASCADE
