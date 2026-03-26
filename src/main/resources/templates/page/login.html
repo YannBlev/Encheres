@@ -7,11 +7,15 @@
         <div class="input-box" th:if="${param.logout}" th:text="#{login.logout}"></div>
         <form class="form" th:action="@{/login}" method="post">
             <div class="input-box">
-                <input type="text" name="username" th:placeholder="#{login.username}"/>
+                <input type="text" name="username" th:placeholder="#{login.username}"
+                       title="Veuillez renseigner ce champ."
+                       required/>
             </div>
             <br>
             <div class="input-box">
-                <input type="password" name="password" th:placeholder="#{login.password}"/>
+                <input type="password" name="password" th:placeholder="#{login.password}"
+                       title="Veuillez renseigner ce champ."
+                       required/>
             </div>
             <br>
             <button class="login-btn" th:text="#{login.btn}"></button>

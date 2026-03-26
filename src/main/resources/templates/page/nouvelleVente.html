@@ -17,7 +17,10 @@
             <br><br>
 
                 <label th:text="#{vente.description}">Description :</label><br>
-                <textarea cols="40" rows="6" th:field="*{description}" ></textarea>
+                <textarea cols="40" rows="6" th:field="*{description}"
+                    minlength="10"
+                    maxlength="300" required>
+                </textarea>
                 <br><br>
 
                 <label th:text="#{vente.categorie}">Catégorie :</label>
@@ -31,7 +34,11 @@
                 <br><br>
 
                 <label th:text="#{vente.prixInitial}">Prix initial :</label>
-                <input type="number" th:field="*{prixInitial}" required>
+                <input type="number" th:field="*{prixInitial}"
+                       min="10"
+                       max="1000"
+                       title ="Minimum de 10 crédit, et maximum 1000 crédit"
+                       required>
                 <br><br>
 
                 <label th:text="#{vente.dateDebut}">Début de l'enchère :</label>
