@@ -204,6 +204,11 @@ header select {
     gap: 10px;
 }
 
+.form div svg {
+    margin-left: -30px;
+    cursor: pointer;
+}
+
 /* centre uniquement la page login */
 main:has(.form) {
     display: flex;

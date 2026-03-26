@@ -4,7 +4,7 @@
 <!--        <span th:text="${messageErreur}"></span>-->
 <!--    </div>-->
     <section>
-        <form th:action="@{/encheres/login}" method="post">
+        <form th:action="@{/encheres/login}" method="post" class="form">
             <h1 th:text="#{login.titre}">Please Log In</h1>
 
             <div class="input-box" th:if="${param.error}" th:text="#{login.error}"></div>
@@ -22,9 +22,8 @@
                        th:placeholder="#{login.password}"
                        title="Veuillez renseigner ce champ."
                        required/>
-            <div class="password-icon" onclick="togglePassword()">
-                <i id="eye-icon" data-feather="eye"></i>
-                <i id="eye-off-icon" data-feather="eye-off" style="display:none"></i>
+                <i class="password-icon" onclick="togglePassword()" id="eye-icon" data-feather="eye"></i>
+                <i id="eye-off-icon" data-feather="eye-off" style="display:none" onclick="togglePassword()"></i>
             </div>
             <script src="https://unpkg.com/feather-icons"></script>
             <script>
@@ -53,6 +52,6 @@
 
 
             <a th:href="@{/encheres/motDePasse}" th:text="#{login.motDePasseOublie}"></a>
-        </div></form>
+        </form>
     </section>
 </main>
