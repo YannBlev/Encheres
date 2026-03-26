@@ -20,6 +20,14 @@
 
     <h2 th:text="#{categorie.liste}">Liste des categories</h2>
 
+    <div th:if="${messageErreur}" style="color: red" th:text="${messageErreur}">
+        <span th:text="${messageErreur}"></span>
+    </div>
+
+    <div th:if="${messageSuccess}" style="color: green;">
+        <span th:text="${messageSuccess}"></span>
+    </div>
+
     <table>
         <thead>
         <tr>
@@ -38,8 +46,9 @@
                 </form>
             </td>
         </tr>
-        </tbody>
     </table>
+</tbody>
+
 
 </main>
 </body>

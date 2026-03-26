@@ -2,12 +2,9 @@ package org.eni.encheres.dal.impl;
 
 import lombok.AllArgsConstructor;
 import org.eni.encheres.bo.Enchere;
-import org.eni.encheres.bo.Utilisateur;
 import org.eni.encheres.dal.EnchereDao;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -24,6 +21,16 @@ public class EnchereJdbcImpl implements EnchereDao {
     private static final String SELECT = "select * from enchere";
     private static final String SELECT_LAST_ENCHEREUR_BY_ARTICLE = "SELECT MAX(id_enchereur) FROM ENCHERE WHERE id_article = ?;";
     private static final String SELECT_MOST_PRICE_BY_ID_ENCHEREUR = "SELECT MAX(montant_enchere) FROM ENCHERE WHERE id_article = ? AND id_enchereur = ?;";
+    private static final String SELECT_LAST_ENCHERE_BY_ID_ENCHEREUR = """
+            SELECT e.*
+            FROM ENCHERE e
+            INNER JOIN (SELECT id_article, MAX(montant_enchere) montant_max
+            			FROM enchere
+            			GROUP BY id_article) max_e
+            ON e.id_article = max_e.id_article
+            AND e.montant_enchere = max_e.montant_max
+            WHERE e.id_enchereur = ?;
+            """;
 
     @Override
     public List<Enchere> ListEncheres() {
@@ -48,7 +55,7 @@ public class EnchereJdbcImpl implements EnchereDao {
 
     /**
      * Methode permettant de récupérer l'ID du dernier enchereur selon l'id de l'Article
-     *  -> RETURN INTEGER pour gerer les null
+     * -> RETURN INTEGER pour gerer les null
      */
     @Override
     public Integer consulterIdEnchereurParIdArticle(int id) {
@@ -67,5 +74,10 @@ public class EnchereJdbcImpl implements EnchereDao {
                 idArticle,
                 idEnchereur
         );
+    }
+
+    @Override
+    public List<Enchere> lastEnchereByEnchereur(int id){
+        return jdbcTemplate.query(SELECT_LAST_ENCHERE_BY_ID_ENCHEREUR, new BeanPropertyRowMapper<>(Enchere.class), id);
     }
 }
