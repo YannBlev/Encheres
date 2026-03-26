@@ -16,6 +16,9 @@
             <br>
             <div class="input-box">
                 <input type="password" name="password" th:placeholder="#{login.password}"
+                       pattern="[a-zA-ZÀ-ÿ\-\s]{3,30}"
+                       minlength="3"
+                       maxlength="30"
                        title="Veuillez renseigner ce champ."
                        required/>
             </div>
