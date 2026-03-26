@@ -8,6 +8,11 @@
 <body>
 <main layout:fragment="content">
 
+    <div th:if="${messageErreur}" style="color: red" th:text="${messageErreur}">
+        <span th:text="${messageErreur}"></span>
+    </div>
+
+
     <h2
             th:if="${article.etatVente == 1 and article.acheteur != null and #authentication.principal.id != article.acheteur.id}"
             th:text="|${article.acheteur.pseudo} #{detail.enchere.gagnant.autre}|">

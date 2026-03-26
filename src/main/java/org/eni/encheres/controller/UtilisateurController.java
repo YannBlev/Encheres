@@ -66,7 +66,7 @@ public class UtilisateurController {
 
             // 1 : je délègue au service la suppression du profil
         utilisateurService.supprimerUtilisateur(idUtilisateurASupprimer);
-        redirectAttributes.addFlashAttribute("messageSuccess", "Profil supprimé avec succès.");
+
             // 2 : je redirige sur la page d'acceuil "enchères" avec "redirect:/" avec un logout :
         session.invalidate();                    // invalide la session
         SecurityContextHolder.clearContext();
@@ -74,7 +74,7 @@ public class UtilisateurController {
 
     }else{
         redirectAttributes.addFlashAttribute("messageErreur", "Impossible de supprimer le profil : dernière enchère en cours.");
-            return "redirect:/encheres/profil/"+idUtilisateurASupprimer;
+            return "redirect:/encheres/profil/"+idUtilisateurASupprimer + "/modifier";
     }
 
 

@@ -31,7 +31,9 @@
                 <div class="container">
                     <a sec:authorize="isAuthenticated()" th:href="@{|/encheres/article/${article.noArticle}|}" th:text="${article.nomArticle}"></a>
                     <span sec:authorize="!isAuthenticated()" th:text="${article.nomArticle}"></span>
-                    <p><strong th:text="#{encheres.prix}"> Prix :</strong><span th:text="|${article.prixInitial} #{encheres.points}|"></span></p>
+                    <p><strong th:text="#{encheres.prix}"> Prix :</strong>
+                        <span th:if="${article.prixInitial > article.prixVente}" th:text="|${article.prixInitial} #{encheres.points}|"></span></p>
+                        <span th:if="${article.prixInitial < article.prixVente}" th:text="|${article.prixVente} #{encheres.points}|"></span></p>
                     <p><strong th:text="#{encheres.fin}"> Fin :</strong><span th:text="${article.dateFinEncheres}"></span></p>
                     <p><strong th:text="#{detail.vendeur}"> Vendeur :</strong><span th:text="${article.vendeur.pseudo}"></span></p>
                 </div>

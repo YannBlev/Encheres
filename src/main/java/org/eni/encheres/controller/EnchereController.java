@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -55,7 +56,7 @@ public class EnchereController {
     }
 
     @PostMapping("/article/{id}/encherir")
-    public String postEncherir(@PathVariable("id") int id, @AuthenticationPrincipal UtilisateurSpringSecurity utilisateurConnecte, @RequestParam("proposition") int proposition){
+    public String postEncherir(@PathVariable("id") int id, @AuthenticationPrincipal UtilisateurSpringSecurity utilisateurConnecte, @RequestParam("proposition") int proposition, RedirectAttributes redirectAttributes) {
 
         Utilisateur utilisateur = utilisateurService.getUtilisateurById(utilisateurConnecte.getUtilisateur().getId());
         ArticleVendu article = articleVenduService.consulterArticleVendu(id);
@@ -67,9 +68,16 @@ public class EnchereController {
             enchere.setMontantEnchere(proposition);
             enchere.setDateEnchere(LocalDate.now());
             enchereService.creerEnchere(enchere);
+
+            return "redirect:/";
+
+        } else {
+            redirectAttributes.addFlashAttribute("messageErreur", "Votre enchère doit être supérieure à la meilleure offre en cours");
+            return "redirect:/encheres/article/"+ id;
         }
-        return "redirect:/" ;
     }
+
+
     @PostMapping("/article/supprimer")
     public String supprimerEnchereParId(int idArticleASupprimer){
         // 1 : je délègue au service la suppression du genre
