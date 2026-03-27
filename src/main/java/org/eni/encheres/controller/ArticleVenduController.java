@@ -79,7 +79,7 @@ public class ArticleVenduController {
         }
 
         if (articleDto.getPrixInitial()<10) {
-            redirectAttributes.addFlashAttribute("messageErreur", "Le prix initial doit être supérieur à 10 crédits.");
+            redirectAttributes.addFlashAttribute("messageErreur", "Le prix initial doit être à 10 crédits minimum.");
             return "redirect:/encheres/profil/" + id + "/nouvelleVente";
         }
 
