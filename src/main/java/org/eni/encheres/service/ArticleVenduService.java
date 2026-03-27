@@ -12,5 +12,4 @@ public interface ArticleVenduService{
     void supprimerArticleVendu(int noArticle);
     ArticleVendu consulterArticleVendu(int noArticle);
     void modifierArticleVendu(ArticleVendu article);
-
 }

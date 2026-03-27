@@ -72,7 +72,7 @@ ALTER TABLE ARTICLE ADD constraint article_pk PRIMARY KEY (id_article);
 
 ALTER TABLE ARTICLE
     ADD CONSTRAINT article_utilisateurVendeur_fk FOREIGN KEY ( id_vendeur )
-        REFERENCES UTILISATEUR ( id_utilisateur ) on delete cascade;
+        REFERENCES UTILISATEUR ( id_utilisateur ) ON DELETE CASCADE;
 
 ALTER TABLE ENCHERE
     ADD CONSTRAINT enchere_article_fk FOREIGN KEY ( id_article )

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.eni.encheres.bo.ArticleVendu;
 import org.eni.encheres.bo.Retrait;
 import org.eni.encheres.dal.ArticleVenduDao;
+import org.eni.encheres.dal.EnchereDao;
 import org.eni.encheres.dal.RetraitDao;
 import org.eni.encheres.bo.dto.ArticleDto;
 import org.eni.encheres.service.ArticleVenduService;
@@ -21,6 +22,7 @@ public class ArticleVenduServiceJdbcImpl implements ArticleVenduService {
 
     private ArticleVenduDao articleVenduDao;
     private RetraitDao retraitDao;
+    private EnchereDao enchereDao;
 
 
 
@@ -49,10 +51,7 @@ public class ArticleVenduServiceJdbcImpl implements ArticleVenduService {
     }
 
     @Override
-    public List<ArticleVendu> listArticlesVenduParCategorie(int id) {
-
-        return articleVenduDao.listArticlesVenduParCategorie(id);
-    }
+    public List<ArticleVendu> listArticlesVenduParCategorie(int id) {return articleVenduDao.listArticlesVenduParCategorie(id);}
 
     /**
      * @Transactionnal est important pour l'atomicité de l'ACID !
@@ -97,8 +96,15 @@ public class ArticleVenduServiceJdbcImpl implements ArticleVenduService {
         return articleVenduDao.consulterArticleByNumero(noArticle);
     }
 
+    /**
+     * Methode transactionnal pour bien supprimer les ARTICLE et les ENCHERE
+     */
     @Override
-    public void supprimerArticleVendu(int noArticle) { articleVenduDao.supprimerArticleVendu(noArticle);}
+    @Transactional
+    public void supprimerArticleVendu(int noArticle) {
+        enchereDao.supprimerEncheresParIdArticle(noArticle);
+        articleVenduDao.supprimerArticleVendu(noArticle);
+    }
 
     @Override
     public void modifierArticleVendu(ArticleVendu article) {

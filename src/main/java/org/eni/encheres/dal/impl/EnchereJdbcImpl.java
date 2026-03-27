@@ -15,10 +15,10 @@ public class EnchereJdbcImpl implements EnchereDao {
 
     private JdbcTemplate jdbcTemplate;
 
-    private static final String INSERT = "insert into enchere (id_enchereur, id_article, date_enchere, montant_enchere) values (?,?,?,?)";
-    private static final String DELETE = "delete from enchere where id_enchereur=? and id_article=?";
-    private static final String SELECT_BY_ID = "select * from enchere where id_enchere = ?";
-    private static final String SELECT = "select * from enchere";
+    private static final String INSERT = "INSERT INTO ENCHERE (id_enchereur, id_article, date_enchere, montant_enchere) VALUES (?,?,?,?)";
+    private static final String DELETE = "DELETE FROM ENCHERE WHERE id_enchereur=? AND id_article=?";
+    private static final String SELECT_BY_ID = "SELECT * FROM ENCHERE where id_enchere = ?";
+    private static final String SELECT = "SELECT * FROM ENCHERE";
     private static final String SELECT_LAST_ENCHEREUR_BY_ARTICLE = "SELECT MAX(id_enchereur) FROM ENCHERE WHERE id_article = ?;";
     private static final String SELECT_MOST_PRICE_BY_ID_ENCHEREUR = "SELECT MAX(montant_enchere) FROM ENCHERE WHERE id_article = ? AND id_enchereur = ?;";
     private static final String SELECT_LAST_ENCHERE_BY_ID_ENCHEREUR = """
@@ -31,6 +31,10 @@ public class EnchereJdbcImpl implements EnchereDao {
             AND e.montant_enchere = max_e.montant_max
             WHERE e.id_enchereur = ?;
             """;
+    private static final String DELETE_ENCHERES_BY_ID_ARTICLE = """
+            DELETE FROM ENCHERE WHERE id_article = ?;
+            """;
+
 
     @Override
     public List<Enchere> ListEncheres() {
@@ -46,6 +50,11 @@ public class EnchereJdbcImpl implements EnchereDao {
     public void supprimerEnchereParId(int id) {
         jdbcTemplate.update(DELETE, id);
 
+    }
+
+    @Override
+    public void supprimerEncheresParIdArticle(int id) {
+        jdbcTemplate.update(DELETE_ENCHERES_BY_ID_ARTICLE, id);
     }
 
     @Override

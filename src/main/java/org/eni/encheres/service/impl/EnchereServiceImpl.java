@@ -89,6 +89,11 @@ public class EnchereServiceImpl implements EnchereService {
     }
 
     @Override
+    public void supprimerEncheresParIdArticle(int id) {
+        enchereDao.supprimerEncheresParIdArticle(id);
+    }
+
+    @Override
     public void supprimerEnchereParId(int id) {enchereDao.supprimerEnchereParId(id);
     }
 }

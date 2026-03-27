@@ -25,7 +25,7 @@ public class ArticleVenduJdbcImpl implements ArticleVenduDao {
         INSERT INTO article (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, imagePath, id_vendeur, id_categorie )
         VALUES (:nom_article, :description,:date_debut_encheres,:date_fin_encheres, :prix_initial, :imagePath,:id_vendeur,:id_categorie );
         """;
-    private static final String DELETE = "delete from article where id_article = ?";
+    private static final String DELETE = "DELETE FROM ARTICLE WHERE id_article = ?";
     //La sous-requete est là pour ne récupérer qu'une seule ligne
     private static final String SELECT_ALL= """
             SELECT	a.id_article, a.nom_article, a.description, a.date_debut_encheres, a.date_fin_encheres, a.prix_initial, a.etat_vente, a.prix_vente, a.imagePath,
