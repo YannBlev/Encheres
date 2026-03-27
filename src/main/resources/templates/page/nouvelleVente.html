@@ -3,6 +3,9 @@
 
 <body>
 <main layout:fragment="content">
+    <div th:if="${messageErreur}" style="color: red" th:text="${messageErreur}">
+        <span th:text="${messageErreur}"></span>
+    </div>
     <section>
     <fieldset class="table-container">
         <legend class="log"><h2 th:text="#{vente.titre}">Nouvelle Vente</h2></legend>
@@ -38,21 +41,21 @@
                    required>
 
             <label th:text="#{vente.dateDebut}">Début de l'enchère :</label>
-            <input type="date" th:field="*{dateDebutEncheres}" required>
+            <input type="date" th:field="*{dateDebutEncheres}" th:min="${dateMinDebut}" required>
 
             <label th:text="#{vente.dateFin}">Fin de l'enchère :</label>
-            <input type="date" th:field="*{dateFinEncheres}" required>
+            <input type="date" th:field="*{dateFinEncheres}" th:min="${dateMinFin}" required>
 
             <h2 th:text="#{vente.retrait}">Retrait</h2>
 
             <label th:text="#{profil.rue}">Rue :</label>
-            <input type="text" th:field="*{rue}" th:placeholder="${utilisateur.rue}" required>
+            <input type="text" th:field="*{rue}" th:placeholder="${utilisateur.rue}">
 
             <label th:text="#{profil.codePostal}">Code postal :</label>
-            <input type="text" th:field="*{code_postal}" th:placeholder="${utilisateur.codePostal}" required>
+            <input type="text" th:field="*{code_postal}" th:placeholder="${utilisateur.codePostal}">
 
             <label th:text="#{profil.ville}">Ville :</label>
-            <input type="text" th:field="*{ville}" th:placeholder="${utilisateur.ville}" required>
+            <input type="text" th:field="*{ville}" th:placeholder="${utilisateur.ville}">
 
 
             <button class="favorite styled" type="submit" th:text="#{vente.btn.enregistrer}">Enregistrer</button>
