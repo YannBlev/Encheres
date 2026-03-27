@@ -93,20 +93,3 @@ ALTER TABLE ENCHERE
 ALTER TABLE RETRAIT
     ADD CONSTRAINT retrait_article_fk FOREIGN KEY ( id_article )
         REFERENCES ARTICLE ( id_article ) ON DELETE CASCADE;
-
-
-UPDATE UTILISATEUR
-SET
-    pseudo = '',
-    nom = '',
-    prenom = '',
-    email = '',
-    telephone = '',
-    rue = '',
-    code_postal = '',
-    ville = '',
-    mot_de_passe = '',
-    credit = '',
-    administrateur = ''
-WHERE id_utilisateur = 0;
-

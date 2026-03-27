@@ -207,7 +207,6 @@ header select {
 
 .myFilters article label{
     padding-left: 10px;
-    padding-bottom: 10px;
 }
 
 .filters {
@@ -309,6 +308,8 @@ main section:has(label) {
 
 /* Lignes profil */
 main section:has(label) label {
+    margin-top: 10px;
+    margin-bottom: 5px;
     display: inline-block;
     width: 160px;
     font-weight: bold;
