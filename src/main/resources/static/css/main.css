@@ -25,6 +25,13 @@ main {
     padding: 20px;
 }
 
+.encheres {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 /* ===================== */
 /* TYPO */
 /* ===================== */
@@ -146,7 +153,7 @@ header select {
 }
 
 /* ===================== */
-/* CARD (réutilisable) */
+/* CARD                  */
 /* ===================== */
 .card {
     background: #fff;
@@ -188,6 +195,21 @@ header select {
 /* ===================== */
 /* FILTRES */
 /* ===================== */
+
+.myFilters {
+    display: flex;
+}
+
+.myFilters article {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.myFilters article label{
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
 .filters {
     display: flex;
     gap: 15px;

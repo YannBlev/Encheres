@@ -12,7 +12,7 @@
         <span th:text="${messageErreur}"></span>
     </div>
 
-
+<section>
     <h2
             th:if="${article.etatVente == 1 and article.acheteur != null and #authentication.principal.id != article.acheteur.id}"
             th:text="|${article.acheteur.pseudo} #{detail.enchere.gagnant.autre}|">
@@ -29,11 +29,12 @@
     </h2>
 
     <img th:src="@{|${article.imagePath}|}" style="width:200px" th:alt="#{detail.img.alt}">
-
+    <br>
     <label th:text="#{detail.intitule}"></label>
     <span th:text="${article.nomArticle}"></span><br>
 
     <label th:text="#{detail.description}"></label>
+    <br>
     <textarea cols="20" rows="4" disabled th:text="${article.description}"></textarea><br>
 
     <label th:text="#{detail.categorie}"></label>
@@ -87,7 +88,7 @@
     <div th:if="${article.etatVente == 1 and #authentication.principal.id != article.vendeur.id}">
         <a th:href="@{/encheres}" th:text="#{detail.btn.retour}"></a>
     </div>
-
+</section>
 </main>
 
 </body>

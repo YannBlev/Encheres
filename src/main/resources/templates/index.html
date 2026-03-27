@@ -4,40 +4,37 @@
 <body>
 
 <main layout:fragment="content">
-    <div>
-
-    <h1 th:text="#{encheres.liste.titre}">Liste des enchères</h1>
-        <section>
-            <article>
-                <label th:text="#{encheres.filtres}">Filtres :</label>
-                <input type="text" id="myInput" onkeyup="filterCards()" th:placeholder="#{encheres.recherche.placeholder}" placeholder="Rechercher ici">
-            </article>
-            <article>
-                <label th:text="#{encheres.categorie}">Catégorie :</label>
-                <select onchange="filterSelection(this.value)">
-                    <option value="all" th:text="#{encheres.categorie.toutes}">Toutes</option>
-                    <option th:each="categorie : ${categories}" th:value="${categorie.id}" th:text="${categorie.libelle}"></option>
-                </select>
-            </article>
-        </section>
-    <div class="articles-grid">
-        <article th:each="article : ${articles}" th:class="'filterDiv ' + ${article.categorie}">
-
-            <div class="card">
-                <img th:src="@{|${article.imagePath}|}">
-                <div class="container">
-                    <a sec:authorize="isAuthenticated()" th:href="@{|/encheres/article/${article.noArticle}|}" th:text="${article.nomArticle}"></a>
-                    <span sec:authorize="!isAuthenticated()" th:text="${article.nomArticle}"></span>
-                    <p><strong th:text="#{encheres.prix}"> Prix :</strong>
-                        <span th:if="${article.prixInitial > article.prixVente}" th:text="|${article.prixInitial} #{encheres.points}|"></span></p>
-                        <span th:if="${article.prixInitial < article.prixVente}" th:text="|${article.prixVente} #{encheres.points}|"></span></p>
-                    <p><strong th:text="#{encheres.fin}"> Fin :</strong><span th:text="${article.dateFinEncheres}"></span></p>
-                    <p><strong th:text="#{detail.vendeur}"> Vendeur :</strong><span th:text="${article.vendeur.pseudo}"></span></p>
+    <div class="encheres">
+        <h1 th:text="#{encheres.liste.titre}">Liste des enchères</h1>
+            <section class="myFilters">
+                <article>
+                    <label th:text="#{encheres.filtres}">Filtres :</label>
+                    <input type="text" id="myInput" onkeyup="filterCards()" th:placeholder="#{encheres.recherche.placeholder}" placeholder="Rechercher ici">
+                </article>
+                <article>
+                    <label th:text="#{encheres.categorie}">Catégorie :</label>
+                    <select onchange="filterSelection(this.value)">
+                        <option value="all" th:text="#{encheres.categorie.toutes}">Toutes</option>
+                        <option th:each="categorie : ${categories}" th:value="${categorie.id}" th:text="${categorie.libelle}"></option>
+                    </select>
+                </article>
+            </section>
+        <div class="articles-grid">
+            <article th:each="article : ${articles}" th:class="'filterDiv ' + ${article.categorie}">
+                <div class="card">
+                    <img th:src="@{|${article.imagePath}|}">
+                    <div class="container">
+                        <a sec:authorize="isAuthenticated()" th:href="@{|/encheres/article/${article.noArticle}|}" th:text="${article.nomArticle}"></a>
+                        <span sec:authorize="!isAuthenticated()" th:text="${article.nomArticle}"></span>
+                        <p><strong th:text="#{encheres.prix}">Prix : </strong>
+                            <span th:if="${article.prixInitial > article.prixVente}" th:text="|${article.prixInitial} #{encheres.points}|"></span>
+                            <span th:if="${article.prixInitial < article.prixVente}" th:text="|${article.prixVente} #{encheres.points}|"></span></p>
+                        <p><strong th:text="#{encheres.fin}">Fin : </strong><span th:text="${article.dateFinEncheres}"></span></p>
+                        <p><strong th:text="#{detail.vendeur}">Vendeur : </strong><span th:text="${article.vendeur.pseudo}"></span></p>
+                    </div>
                 </div>
-            </div>
-        </article>
-    </div>
-
+            </article>
+        </div>
     </div>
 <script th:src="@{js/search.js}"></script>
 <script th:src="@{js/script.js}"></script>

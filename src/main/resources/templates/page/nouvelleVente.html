@@ -15,12 +15,13 @@
                    maxlength="20"
                    required>
 
-            <label th:text="#{vente.description}">Description :</label><br>
+            <label th:text="#{vente.description}">Description :</label>
+            <br>
             <textarea cols="40" rows="6" th:field="*{description}"
                 minlength="10"
                 maxlength="300" required>
             </textarea>
-
+            <br>
             <label th:text="#{vente.categorie}">Catégorie :</label>
             <select th:field="*{categorie}">
                 <option th:each="categorie : ${categories}" th:value="${categorie.id}" th:text="${categorie.libelle}"></option>
